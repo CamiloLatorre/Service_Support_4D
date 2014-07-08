@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><directory>
+	<user name="camilo.latorre@4d.com" ID="D186DB345ED5D14486045136B1C51FA7" fullName="Camilo Latorre" password="bb43477b6ca9f589003c24073463c5dd"/>
+	<user name="Angelo.Caroprese@4d.com" ID="1B1BEA6F726A2A479CCE3641D97A622A" fullName="Angelo Caroprese" password="805a7e2ad963ceb03ce6c5c39c1a346a"/>
+	<user name="sistemas.cavr@gmail.com" ID="88D98499AEC2124BB06299B6D159117A" fullName="Carlos Vivanco R." password="b6a9aa085941b1f9572a73ac335459d0"/>
+	<group name="Admin" ID="01000000000000000000000000000000" fullName="Admin">
+		<include user="camilo.latorre@4d.com" userID="D186DB345ED5D14486045136B1C51FA7"/>
+		<include user="Angelo.Caroprese@4d.com" userID="1B1BEA6F726A2A479CCE3641D97A622A"/>
+	</group>
+	<group name="Clientes" ID="E025D0EAE331D1479AE321423E4F54A0" fullName="Clientes">
+		<include user="sistemas.cavr@gmail.com" userID="88D98499AEC2124BB06299B6D159117A"/>
+	</group>
+	<group name="FuturosClientes" ID="0CFBAC8193CEAA4CA4FC9DA16C740CD6" fullName="FuturosClientes"/>
+	<group name="Disabled" ID="C278C64129C6724EA7822CC70CE0014B" fullName="Disables">
+		<include user="sistemas.cavr@gmail.com" ID="88D98499AEC2124BB06299B6D159117A"/>
+	</group>
+</directory>

@@ -1,0 +1,11 @@
+{
+	"toJSON": true,
+	"extraProperties": {
+		"version": "1",
+		"classes": {},
+		"model": {
+			"workspaceLeft": 0,
+			"workspaceTop": 0
+		}
+	}
+}
