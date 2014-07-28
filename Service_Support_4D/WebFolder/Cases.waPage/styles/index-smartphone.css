@@ -3,6 +3,794 @@
 	Changes to this CSS file might be lost when it is regenerated.
 */
 
+#richText29 {
+	 z-index: 1;
+	 width: 36px;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 5px;
+	
+	 position: absolute;
+	 
+}
+
+#container20 {
+	 z-index: 3;
+	 height: 40px;
+	 top: 80px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#richText28 {
+	 z-index: 1;
+	 width: 36px;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 5px;
+	
+	 position: absolute;
+	 
+}
+
+#container19 {
+	 z-index: 2;
+	 height: 40px;
+	 top: 40px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#richText27 {
+	 z-index: 1;
+	 width: 36px;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 5px;
+	
+	 position: absolute;
+	 
+}
+
+#container12 {
+	 z-index: 1;
+	 height: 40px;
+	 top: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#section3 {
+	 z-index: 2;
+	 width: 61px;
+	 height: 131px;
+	 top: 0px;
+	 left: -1px;
+	
+	 position: absolute;
+	 
+}
+
+#content1 {
+	 z-index: 1;
+	 top: 5px;
+	 bottom: 5px;
+	 left: 5px;
+	 right: 5px;
+	
+	 position: absolute;
+	 
+}
+
+#popover1 {
+	 z-index: 3;
+	 width: 70px;
+	 height: 143px;
+	 top: 38px;
+	 left: 223px;
+	
+	 position: absolute;
+	 
+}
+
+#dataGrid1 {
+	 z-index: 2;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#richText26 {
+	 width: 290px;
+	 height: 18px;
+	 top: 6px;
+	 left: 20px;
+	
+	 position: absolute;
+	 color: rgb(229, 229, 229);
+	 text-align: center;
+	 z-index: -2;
+	 
+}
+
+#textField8 {
+	 width: 291px;
+	 height: 20px;
+	 top: 18px;
+	 left: 19px;
+	
+	 position: absolute;
+	 background-color: transparent;
+	 text-shadow: rgba(255, 255, 255, 0) 0px 0px 0px;
+	 border-top-style: none;
+	 border-top-width: 0px;
+	 border-left-style: none;
+	 border-left-width: 0px;
+	 border-right-style: none;
+	 border-right-width: 0px;
+	 border-bottom-style: none;
+	 border-bottom-width: 0px;
+	 -webkit-box-shadow: transparent 0px 0px 2px 0px inset;
+	 -moz-box-shadow: transparent 0px 0px 2px 0px inset;
+	 box-shadow: transparent 0px 0px 2px 0px inset;
+	
+	 color: rgb(229, 229, 229);
+	 font-size: 12px;
+	 font-style: normal;
+	 text-align: center;
+	 z-index: -2;
+	 
+}
+
+#icon5 {
+	 z-index: 10;
+	 width: 25px;
+	 height: 25px;
+	 top: 9px;
+	 right: 11px;
+	
+	 position: absolute;
+	 
+}
+
+#label3 {
+	 z-index: 2;
+	 width: 31px;
+	 top: 216.5px;
+	 bottom: 0px;
+	 left: -44px;
+	
+	 position: absolute;
+	 
+}
+
+#textField7 {
+	 z-index: 2;
+	 width: 333px;
+	 top: -2px;
+	 bottom: -13px;
+	 left: -8px;
+	
+	 position: absolute;
+	 font-size: 14px;
+	 
+}
+
+#body9 {
+	 z-index: 9;
+	 top: 44px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#backButton9 {
+	 z-index: 9;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 20px;
+	
+	 position: absolute;
+	 
+}
+
+#title9 {
+	 z-index: 9;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 font-size: 14px;
+	 
+}
+
+#header9 {
+	 z-index: 9;
+	 height: 44px;
+	 top: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#view9 {
+	 z-index: 9;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#icon4 {
+	 z-index: 9;
+	 width: 24px;
+	 height: 24px;
+	 top: 8px;
+	 right: 5px;
+	
+	 position: absolute;
+	 
+}
+
+#icon3 {
+	 z-index: 8;
+	 width: 24px;
+	 height: 24px;
+	 top: 7px;
+	 right: 5px;
+	
+	 position: absolute;
+	 
+}
+
+#richText13 {
+	 z-index: 3;
+	 top: 32px;
+	 bottom: 5px;
+	 left: 10px;
+	 right: 5px;
+	
+	 position: absolute;
+	 font-size: 16px;
+	 background-color: rgba(255, 255, 255, 0.589844);
+	 
+}
+
+#richText12 {
+	 z-index: 2;
+	 width: 85px;
+	 height: 17px;
+	 top: 8px;
+	 left: 86px;
+	
+	 position: absolute;
+	 
+}
+
+#richText9 {
+	 z-index: 1;
+	 width: 74px;
+	 height: 16px;
+	 top: 8px;
+	 left: 9px;
+	
+	 position: absolute;
+	 font-weight: bold;
+	 
+}
+
+#container5 {
+	 z-index: 1;
+	 height: 425px;
+	 top: 5px;
+	 left: 5px;
+	 right: 7px;
+	
+	 position: absolute;
+	 background-color: rgba(255, 255, 255, 0.496094);
+	 
+}
+
+#body8 {
+	 z-index: 8;
+	 top: 44px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#backButton8 {
+	 z-index: 8;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 20px;
+	
+	 position: absolute;
+	 
+}
+
+#title8 {
+	 z-index: 8;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 font-size: 14px;
+	 
+}
+
+#header8 {
+	 z-index: 8;
+	 height: 44px;
+	 top: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#view8 {
+	 z-index: 8;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#matrix2 .waf-widget.waf-clone-richText6 {
+	 position: absolute;
+	 color: rgb(0, 127, 255);
+	 font-weight: bold;
+	 
+}
+
+#richText6 {
+	 z-index: 8;
+	 width: 141px;
+	 height: 14px;
+	 top: 5px;
+	 left: 92px;
+	
+	 position: absolute;
+	 color: rgb(0, 127, 255);
+	 font-weight: bold;
+	 
+}
+
+#matrix2 .waf-widget.waf-clone-container18.waf-state-selected {
+	 background-color: rgb(255, 255, 255);
+	 
+}
+
+#container18.waf-state-selected {
+	 background-color: rgb(255, 255, 255);
+	 
+}
+
+#matrix2 .waf-widget.waf-clone-container18 {
+	 background-color: rgba(255, 255, 255, 0.699219);
+	 
+}
+
+.waf-widget.waf-clone-richText25 {
+	 position: absolute;
+	 
+}
+
+.waf-widget.waf-clone-richText23 {
+	 position: absolute;
+	 
+}
+
+.waf-widget.waf-clone-richText22 {
+	 position: absolute;
+	 
+}
+
+.waf-widget.waf-clone-container18 {
+	 position: absolute;
+	 
+}
+
+#matrix2 .waf-widget.waf-clone-richText25 {
+	 position: absolute;
+	 font-size: 11px;
+	 
+}
+
+#matrix2 .waf-widget.waf-clone-richText23 {
+	 position: absolute;
+	 text-align: right;
+	 
+}
+
+#matrix2 .waf-widget.waf-clone-richText22 {
+	 position: absolute;
+	 
+}
+
+#matrix2 {
+	 z-index: 3;
+	 top: 4px;
+	 bottom: 11px;
+	 left: 3px;
+	 right: 4px;
+	
+	 position: absolute;
+	 
+}
+
+#richText25 {
+	 z-index: 7;
+	 top: 25px;
+	 bottom: 6px;
+	 left: 5px;
+	 right: 5px;
+	
+	 position: absolute;
+	 font-size: 11px;
+	 
+}
+
+#richText23 {
+	 z-index: 5;
+	 width: 72px;
+	 height: 15px;
+	 top: 5px;
+	 right: 2px;
+	
+	 position: absolute;
+	 text-align: right;
+	 
+}
+
+#richText22 {
+	 z-index: 3;
+	 width: 78px;
+	 height: 16px;
+	 top: 5px;
+	 left: 6px;
+	
+	 position: absolute;
+	 
+}
+
+#container18 {
+	 z-index: 1;
+	 width: 314px;
+	 height: 74px;
+	 top: 1px;
+	 left: 1px;
+	
+	 position: absolute;
+	 background-color: rgba(255, 255, 255, 0.699219);
+	 
+}
+
+#button2 {
+	 z-index: 7;
+	 width: 58px;
+	 height: 29px;
+	 top: 7px;
+	 right: 6px;
+	
+	 position: absolute;
+	 
+}
+
+#body7 {
+	 z-index: 7;
+	 top: 44px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#backButton7 {
+	 z-index: 7;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 20px;
+	
+	 position: absolute;
+	 
+}
+
+#title7 {
+	 z-index: 7;
+	 top: 0px;
+	 bottom: -9px;
+	 left: 0px;
+	 right: -2px;
+	
+	 position: absolute;
+	 font-size: 14px;
+	 
+}
+
+#header7 {
+	 z-index: 7;
+	 height: 44px;
+	 top: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#view7 {
+	 z-index: 7;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#container17 {
+	 z-index: 8;
+	 height: 128px;
+	 top: 272px;
+	 left: 5px;
+	 right: 5px;
+	
+	 position: absolute;
+	 
+}
+
+#richText20 {
+	 z-index: 2;
+	 width: 92px;
+	 height: 20px;
+	 top: 6px;
+	 left: 8px;
+	
+	 position: absolute;
+	 font-weight: bold;
+	 font-size: 16px;
+	 
+}
+
+#richText19 {
+	 z-index: 1;
+	 top: 29px;
+	 bottom: 5px;
+	 left: 10px;
+	 right: 10px;
+	
+	 position: absolute;
+	 
+}
+
+#textField6 {
+	 z-index: 1;
+	 height: 40px;
+	 top: auto;
+	 left: 63px;
+	 right: 6px;
+	
+	 position: absolute;
+	 
+}
+
+#richText18 {
+	 z-index: 2;
+	 width: 48px;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 5px;
+	
+	 position: absolute;
+	 
+}
+
+#container16 {
+	 z-index: 10;
+	 height: 40px;
+	 top: 160px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#textField5 {
+	 z-index: 1;
+	 height: 40px;
+	 top: auto;
+	 left: 48px;
+	 right: 6px;
+	
+	 position: absolute;
+	 
+}
+
+#richText17 {
+	 z-index: 2;
+	 width: 33px;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 5px;
+	
+	 position: absolute;
+	 
+}
+
+#container15 {
+	 z-index: 9;
+	 height: 40px;
+	 top: 120px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#textField4 {
+	 z-index: 1;
+	 height: 40px;
+	 top: auto;
+	 left: 80px;
+	 right: 6px;
+	
+	 position: absolute;
+	 
+}
+
+#richText16 {
+	 z-index: 2;
+	 width: 65px;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 5px;
+	
+	 position: absolute;
+	 
+}
+
+#container14 {
+	 z-index: 8;
+	 height: 40px;
+	 top: 80px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#textField3 {
+	 z-index: 1;
+	 height: 40px;
+	 top: auto;
+	 left: 89px;
+	 right: 6px;
+	
+	 position: absolute;
+	 
+}
+
+#richText15 {
+	 z-index: 2;
+	 width: 74px;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 5px;
+	
+	 position: absolute;
+	 
+}
+
+#container13 {
+	 z-index: 7;
+	 height: 40px;
+	 top: 40px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#textField2 {
+	 z-index: 1;
+	 height: 40px;
+	 top: auto;
+	 left: 91px;
+	 right: 6px;
+	
+	 position: absolute;
+	 
+}
+
+#richText8 {
+	 z-index: 2;
+	 width: 76px;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 5px;
+	
+	 position: absolute;
+	 
+}
+
+#container6 {
+	 z-index: 2;
+	 height: 40px;
+	 top: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#section2 {
+	 z-index: 3;
+	 height: 204px;
+	 top: 60px;
+	 left: 5px;
+	 right: 5px;
+	
+	 position: absolute;
+	 
+}
+
+#container3 {
+	 z-index: 1;
+	 top: 5px;
+	 bottom: 7px;
+	 left: 5px;
+	 right: 7px;
+	
+	 position: absolute;
+	 background-color: rgba(255, 255, 255, 0.496094);
+	 
+}
+
 #body6 {
 	 z-index: 2;
 	 top: 44px;
@@ -33,6 +821,7 @@
 	 right: 0px;
 	
 	 position: absolute;
+	 font-size: 14px;
 	 
 }
 
@@ -72,7 +861,7 @@
 #label2 {
 	 z-index: 3;
 	 height: 15px;
-	 top: 13px;
+	 top: NaNpx;
 	 left: -36px;
 	 right: 0px;
 	
@@ -245,7 +1034,7 @@
 #label6 {
 	 z-index: 4;
 	 height: 22px;
-	 top: 61px;
+	 top: NaNpx;
 	 left: 25px;
 	 right: 202px;
 	
@@ -258,7 +1047,7 @@
 #label1 {
 	 z-index: 2;
 	 height: 22px;
-	 top: 3px;
+	 top: NaNpx;
 	 left: 25px;
 	 right: 105px;
 	
@@ -913,7 +1702,7 @@
 #nvAppSupport {
 	 z-index: 1;
 	 top: 1px;
-	 bottom: -31px;
+	 bottom: -61px;
 	 left: 0px;
 	 right: 0px;
 	
@@ -1000,6 +1789,28 @@
 	 box-shadow: rgb(0, 0, 0) 0px 0px 2px 0px inset, rgb(204, 204, 204) 10px -17px 41px 24px;
 	
 	 background-image: none;
+	 
+}
+
+#imageComplexy {
+	 z-index: 1;
+	 width: 32px;
+	 height: 32px;
+	 top: 5px;
+	 left: 13px;
+	
+	 position: absolute;
+	 
+}
+
+#imageImportant {
+	 z-index: 2;
+	 width: 32px;
+	 height: 32px;
+	 top: 5px;
+	 right: 11px;
+	
+	 position: absolute;
 	 
 }
 

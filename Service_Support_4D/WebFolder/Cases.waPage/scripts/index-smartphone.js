@@ -2,6 +2,13 @@
 WAF.onAfterInit = function onAfterInit() {// @lock
 
 // @region namespaceDeclaration// @startlock
+	var eMPRESASEvent = {};	// @dataSource
+	var pERSONASInformeEvent = {};	// @dataSource
+	var icon5 = {};	// @icon
+	var icon3 = {};	// @icon
+	var icon4 = {};	// @icon
+	var container18 = {};	// @container
+	var button2 = {};	// @button
 	var row1 = {};	// @container
 	var tfUserName = {};	// @textField
 	var tfSearch = {};	// @textField
@@ -18,9 +25,142 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	var OKPDWChange;
 // eventHandlers// @lock
 
+	eMPRESASEvent.onCollectionChange = function eMPRESASEvent_onCollectionChange (event)// @startlock
+	{// @endlock
+		arrCasosRespondidos = new Array;
+		var result = sources.eMPRESAS.Info_Informe_Casos("Empresas", "2014");
+		result.Casos.forEach(function(valor, i){
+			arrCasosRespondidos.push({
+				Key: i, 
+				Valor: valor.Nombre,
+				Tam: valor.Tam
+			});
+			sources.arrCasosRespondidos.sync();
+		});
+		
+			
+		createChartColumn();
+		arrCasosRespondidos = new Array;
+		var result = sources.eMPRESAS.Info_Informe_Casos("Meses", "2014");
+		result.Casos.forEach(function(valor, i){
+			arrCasosRespondidos.push({
+				Key: i, 
+				Valor: valor.Nombre,
+				Tam: valor.Tam
+			});
+			sources.arrCasosRespondidos.sync();
+		});
+		creatChartPie();
+	};// @lock
+
+	pERSONASInformeEvent.onCollectionChange = function pERSONASInformeEvent_onCollectionChange (event)// @startlock
+	{// @endlock
+		arrEmpresas = new Array;
+		var result = sources.pERSONAS.Info_Informe_Incidencias("show", "2014");
+		result.empresas.forEach(function(empresa, i){
+			arrEmpresas.push({
+				Key: i, 
+				Nombre: empresa.nombre,
+				Incidencias: empresa.numCasos,
+				Mensajes: empresa.numMensj
+			});
+			sources.arrEmpresas.sync();
+		});
+		
+		sources.arrEmpresas.orderBy("Incidencias Desc");
+	};// @lock
+
+	icon5.click = function icon5_click (event)// @startlock
+	{// @endlock
+		source.cmpEditMessage_uSUARIOS.query('ID_Directory = :1', {
+			onSuccess:function(entity){
+			 	var currentUser = entity.dataSource.Adquirido.load({					
+			    	onSuccess: function(relation){
+			   			currentPerson = relation.entity;
+						sources.Respondido.newEntity();
+						sources.Respondido.Cod_Caso = source.cASOS.Codigo;
+						sources.Respondido.Cuerpo = response;
+						sources.Respondido.Fecha = new Date();
+						sources.Respondido.Hora = source.Respondido.Fecha.getTime();
+						sources.Respondido.Contesto = currentPerson;
+						sources.Respondido.Cod_Persona = currentPerson.Codigo.value;
+						var tipoPersona = currentPerson.Cod_Tipo.value;
+						if((tipoPersona ==1) || (tipoPersona ==3)){ 
+							sources.Respondido.Tipo = 'Pregunta';
+						}else{
+							sources.Respondido.Tipo = 'Respuesta';
+						}
+						sources.Respondido.save({
+							onSuccess:function(event){
+		  							sources.Respondido.addEntity(source.Respondido.getCurrentElement());
+		  							sources.Respondido.serverRefresh();
+		  							sources.Respondido.orderBy('Fecha desc, Hora desc');
+			    			}
+						});
+					}
+				});
+			}, 
+			params: [waf.directory.currentUser().ID]
+		});
+	};// @lock
+
+	icon3.click = function icon3_click (event)// @startlock
+	{// @endlock
+		waf.widgets.nvAppSupport.goToView(9);
+		sources.Respondido.addNewElement();
+	};// @lock
+
+	icon4.click = function icon4_click (event)// @startlock
+	{// @endlock
+		waf.widgets.nvAppSupport.goToView(9);
+		sources.Respondido.addNewElement()
+	};// @lock
+
+	container18.click = function container18_click (event)// @startlock
+	{// @endlock
+		waf.widgets.nvAppSupport.goToView(8);
+	};// @lock
+
+	button2.click = function button2_click (event)// @startlock
+	{// @endlock
+		waf.widgets.nvAppSupport.goToView(7);
+	};// @lock
+
 	row1.click = function row1_click (event)// @startlock
 	{// @endlock
 		waf.widgets.nvAppSupport.goToView(6);
+		
+		try{
+			var entityCase = sources.cASOS.getCurrentElement();
+			var importantCase = entityCase.Importante.value;
+			var complexityCase = entityCase.Cod_Complejidad.value;
+			
+			if(importantCase){
+				$$('imageImportant').setValue('/Images/onebit_44.png');
+			}else{
+				$$('imageImportant').setValue('/Images/onebit_46.png');
+			}
+			$$('imageComplexy').show('');
+		
+			switch(complexityCase) {
+				case 1:
+					$$('imageComplexy').setValue('/Images/onebit_50.png');
+					break;
+				case 2:
+					$$('imageComplexy').setValue('/Images/onebit_48.png');
+					break;
+				case 3:
+					$$('imageComplexy').hide('');
+					break;
+				case 4:
+					$$('imageComplexy').setValue('/Images/onebit_47.png');
+					break;
+				case 5:
+					$$('imageComplexy').setValue('/Images/onebit_49.png');
+					break;
+			}
+		}catch(e){
+		}
 	};// @lock
 
 	tfUserName.click = function tfUserName_click (event)// @startlock
@@ -156,6 +296,13 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	};// @lock
 
 // @region eventManager// @startlock
+	WAF.addListener("eMPRESAS", "onCollectionChange", eMPRESASEvent.onCollectionChange, "WAF");
+	WAF.addListener("pERSONASInforme", "onCollectionChange", pERSONASInformeEvent.onCollectionChange, "WAF");
+	WAF.addListener("icon5", "click", icon5.click, "WAF");
+	WAF.addListener("icon3", "click", icon3.click, "WAF");
+	WAF.addListener("icon4", "click", icon4.click, "WAF");
+	WAF.addListener("container18", "click", container18.click, "WAF");
+	WAF.addListener("button2", "click", button2.click, "WAF");
 	WAF.addListener("row1", "click", row1.click, "WAF");
 	WAF.addListener("tfUserName", "click", tfUserName.click, "WAF");
 	WAF.addListener("tfSearch", "keyup", tfSearch.keyup, "WAF");
@@ -169,3 +316,74 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	WAF.addListener("richText1", "click", richText1.click, "WAF");
 // @endregion
 };// @endlock
+
+function createChartColumn(){
+	var chart;
+
+        
+		     // SERIAL CHART
+            chart = new AmCharts.AmSerialChart();
+            chart.dataProvider = arrCasosRespondidos;
+            chart.categoryField = "Valor";
+            // the following two lines makes chart 3D
+            chart.depth3D = 20;
+            chart.angle = 30;
+
+            // AXES
+            // category
+            var categoryAxis = chart.categoryAxis;
+            categoryAxis.labelRotation = 90;
+            categoryAxis.dashLength = 5;
+            categoryAxis.gridPosition = "start";
+
+            // value
+            var valueAxis = new AmCharts.ValueAxis();
+            valueAxis.title = "Incidencias";
+            valueAxis.dashLength = 5;
+            chart.addValueAxis(valueAxis);
+
+            // GRAPH
+            var graph = new AmCharts.AmGraph();
+            graph.valueField = "Tam";
+//            graph.colorField = "color";
+            graph.balloonText = "<span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>";
+            graph.type = "column";
+            graph.lineAlpha = 0;
+            graph.fillAlphas = 1;
+            chart.addGraph(graph);
+
+            // CURSOR
+            var chartCursor = new AmCharts.ChartCursor();
+            chartCursor.cursorAlpha = 0;
+            chartCursor.zoomable = false;
+            chartCursor.categoryBalloonEnabled = false;
+            chart.addChartCursor(chartCursor);
+
+            chart.creditsPosition = "top-right";
+
+            // WRITE
+            chart.write("spaceChartColumn");
+}
+
+function creatChartPie(){
+	chart = new AmCharts.AmPieChart();
+
+    // title of the chart
+    chart.addTitle("", 16);
+
+    chart.dataProvider = arrCasosRespondidos;
+    chart.titleField = "Valor";
+    chart.valueField = "Tam";
+    chart.sequencedAnimation = true;
+    chart.startEffect = "elastic";
+    chart.innerRadius = "30%";
+    chart.startDuration = 2;
+    chart.labelRadius = 15;
+    chart.balloonText = "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>";
+    // the following two lines makes the chart 3D
+    chart.depth3D = 10;
+    chart.angle = 15;
+
+    // WRITE                                 
+    chart.write("spaceChartPie");
+}

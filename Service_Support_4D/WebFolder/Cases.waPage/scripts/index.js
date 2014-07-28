@@ -123,13 +123,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 				$$('imageImportant').setValue('/Images/onebit_46.png');
 			}
 			$$('imageComplexy').show('');
-			
-			if(entityCase.Cod_Estado.value == 3){
-				$$('imageNewMsj').hide();
-			}else{
-				$$('imageNewMsj').show();
-			}
-			
+		
 			switch(complexityCase) {
 				case 1:
 					$$('imageComplexy').setValue('/Images/onebit_50.png');
