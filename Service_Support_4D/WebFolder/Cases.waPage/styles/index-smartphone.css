@@ -3,6 +3,171 @@
 	Changes to this CSS file might be lost when it is regenerated.
 */
 
+#container10 {
+	 z-index: 5;
+	 top: 49px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#richText21 {
+	 z-index: 1;
+	 width: 53px;
+	 height: 37px;
+	 top: 0px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#menuItem2 {
+	 z-index: 2;
+	 width: 53px;
+	 height: 37px;
+	 top: 0px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#container9 {
+	 z-index: 4;
+	 top: 49px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#richText14 {
+	 z-index: 1;
+	 width: 55px;
+	 height: 37px;
+	 top: 0px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#menuItem1 {
+	 z-index: 1;
+	 width: 55px;
+	 height: 37px;
+	 top: 0px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#menuBar1 {
+	 z-index: 3;
+	 height: 49px;
+	 top: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#tabView1 {
+	 z-index: 1;
+	 width: 320px;
+	 height: 496px;
+	 top: 0px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#icon6 {
+	 z-index: 5;
+	 width: 24px;
+	 height: 24px;
+	 top: 10px;
+	 right: 12px;
+	
+	 position: absolute;
+	 
+}
+
+#body10 {
+	 z-index: 10;
+	 top: 44px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#backButton10 {
+	 z-index: 10;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 20px;
+	
+	 position: absolute;
+	 
+}
+
+#title10 {
+	 z-index: 10;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#header10 {
+	 z-index: 10;
+	 height: 44px;
+	 top: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#view10 {
+	 z-index: 2;
+	 width: 320px;
+	 height: 540px;
+	 top: 0px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#image3 {
+	 z-index: 4;
+	 width: 24px;
+	 height: 24px;
+	 top: 18px;
+	 right: 36px;
+	
+	 position: absolute;
+	 
+}
+
 #richText29 {
 	 z-index: 1;
 	 width: 36px;
@@ -70,11 +235,11 @@
 }
 
 #section3 {
-	 z-index: 2;
+	 z-index: 1;
 	 width: 61px;
-	 height: 131px;
+	 height: 134px;
 	 top: 0px;
-	 left: -1px;
+	 left: -2px;
 	
 	 position: absolute;
 	 
@@ -91,19 +256,8 @@
 	 
 }
 
-#popover1 {
-	 z-index: 3;
-	 width: 70px;
-	 height: 143px;
-	 top: 38px;
-	 left: 223px;
-	
-	 position: absolute;
-	 
-}
-
 #dataGrid1 {
-	 z-index: 2;
+	 z-index: 1;
 	 top: 0px;
 	 bottom: 0px;
 	 left: 0px;
@@ -114,6 +268,7 @@
 }
 
 #richText26 {
+	 z-index: -2;
 	 width: 290px;
 	 height: 18px;
 	 top: 6px;
@@ -122,11 +277,11 @@
 	 position: absolute;
 	 color: rgb(229, 229, 229);
 	 text-align: center;
-	 z-index: -2;
 	 
 }
 
 #textField8 {
+	 z-index: -2;
 	 width: 291px;
 	 height: 20px;
 	 top: 18px;
@@ -151,7 +306,6 @@
 	 font-size: 12px;
 	 font-style: normal;
 	 text-align: center;
-	 z-index: -2;
 	 
 }
 
@@ -169,7 +323,7 @@
 #label3 {
 	 z-index: 2;
 	 width: 31px;
-	 top: 216.5px;
+	 top: -9.5px;
 	 bottom: 0px;
 	 left: -44px;
 	
@@ -861,7 +1015,7 @@
 #label2 {
 	 z-index: 3;
 	 height: 15px;
-	 top: NaNpx;
+	 top: 13px;
 	 left: -36px;
 	 right: 0px;
 	
@@ -1034,7 +1188,7 @@
 #label6 {
 	 z-index: 4;
 	 height: 22px;
-	 top: NaNpx;
+	 top: 61px;
 	 left: 25px;
 	 right: 202px;
 	
@@ -1047,7 +1201,7 @@
 #label1 {
 	 z-index: 2;
 	 height: 22px;
-	 top: NaNpx;
+	 top: 3px;
 	 left: 25px;
 	 right: 105px;
 	
@@ -1811,6 +1965,50 @@
 	 right: 11px;
 	
 	 position: absolute;
+	 
+}
+
+#pMenuYear {
+	 z-index: 3;
+	 width: 70px;
+	 height: 143px;
+	 top: 8px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#Loading {
+	 z-index: 4;
+	 width: 32px;
+	 height: 32px;
+	 top: 205px;
+	 left: 142px;
+	
+	 position: absolute;
+	 
+}
+
+#spaceChartPie {
+	 z-index: 2;
+	 width: 322px;
+	 height: 387px;
+	 top: 4px;
+	 left: -1px;
+	
+	 position: absolute;
+	 
+}
+
+#spaceChartColumn {
+	 width: 325px;
+	 height: 389px;
+	 top: 0px;
+	 left: 1px;
+	
+	 position: absolute;
+	 z-index: 1;
 	 
 }
 

@@ -2,10 +2,19 @@
 WAF.onAfterInit = function onAfterInit() {// @lock
 
 // @region namespaceDeclaration// @startlock
+	var documentEvent = {};	// @document
 	var button1 = {};	// @button
 // @endregion// @endlock
 
 // eventHandlers// @lock
+
+	documentEvent.onLoad = function documentEvent_onLoad (event)// @startlock
+	{// @endlock
+		var currentUser = waf.directory.currentUser();
+		if(currentUser != null){
+			location.href = "/Cases.waPage";
+		}
+	};// @lock
 
 	button1.click = function button1_click (event)// @startlock
 	{// @endlock
@@ -34,6 +43,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	};// @lock
 
 // @region eventManager// @startlock
+	WAF.addListener("document", "onLoad", documentEvent.onLoad, "WAF");
 	WAF.addListener("button1", "click", button1.click, "WAF");
 // @endregion
 };// @endlock

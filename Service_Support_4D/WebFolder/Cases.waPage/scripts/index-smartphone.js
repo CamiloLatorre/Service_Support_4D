@@ -1,9 +1,31 @@
-﻿
+﻿var showInforms;
+var spinnerLoading;
+var opts = {
+	  lines: 13, // The number of lines to draw
+  length: 21, // The length of each line
+  width: 11, // The line thickness
+  radius: 25, // The radius of the inner circle
+  corners: 1, // Corner roundness (0..1)
+  rotate: 31, // The rotation offset
+  direction: 1, // 1: clockwise, -1: counterclockwise
+  color: '#000', // #rgb or #rrggbb or array of colors
+  speed: 1.1, // Rounds per second
+  trail: 57, // Afterglow percentage
+  shadow: false, // Whether to render a shadow
+  hwaccel: false, // Whether to use hardware acceleration
+  className: 'spinner', // The CSS class to assign to the spinner
+  zIndex: 2e9, // The z-index (defaults to 2000000000)
+  top: '50%', // Top position relative to parent
+  left: '50%' // Left position relative to parent
+};
+
 WAF.onAfterInit = function onAfterInit() {// @lock
 
 // @region namespaceDeclaration// @startlock
+	var icon6 = {};	// @icon
 	var eMPRESASEvent = {};	// @dataSource
-	var pERSONASInformeEvent = {};	// @dataSource
+	var section3 = {};	// @section
+	var image3 = {};	// @image
 	var icon5 = {};	// @icon
 	var icon3 = {};	// @icon
 	var icon4 = {};	// @icon
@@ -23,51 +45,49 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 // @endregion// @endlock
 	var ctnChangePwd = waf.widgets.ctnChangePwd;
 	var OKPDWChange;
+
 // eventHandlers// @lock
+
+	icon6.click = function icon6_click (event)// @startlock
+	{// @endlock
+		waf.widgets.nvAppSupport.goToView(10);
+		
+		
+	};// @lock
 
 	eMPRESASEvent.onCollectionChange = function eMPRESASEvent_onCollectionChange (event)// @startlock
 	{// @endlock
-		arrCasosRespondidos = new Array;
-		var result = sources.eMPRESAS.Info_Informe_Casos("Empresas", "2014");
-		result.Casos.forEach(function(valor, i){
-			arrCasosRespondidos.push({
-				Key: i, 
-				Valor: valor.Nombre,
-				Tam: valor.Tam
-			});
-			sources.arrCasosRespondidos.sync();
-		});
-		
-			
-		createChartColumn();
-		arrCasosRespondidos = new Array;
-		var result = sources.eMPRESAS.Info_Informe_Casos("Meses", "2014");
-		result.Casos.forEach(function(valor, i){
-			arrCasosRespondidos.push({
-				Key: i, 
-				Valor: valor.Nombre,
-				Tam: valor.Tam
-			});
-			sources.arrCasosRespondidos.sync();
-		});
-		creatChartPie();
+		refreshDataInform();
 	};// @lock
 
-	pERSONASInformeEvent.onCollectionChange = function pERSONASInformeEvent_onCollectionChange (event)// @startlock
+	section3.touchstart = function section3_touchstart (event)// @startlock
 	{// @endlock
-		arrEmpresas = new Array;
-		var result = sources.pERSONAS.Info_Informe_Incidencias("show", "2014");
-		result.empresas.forEach(function(empresa, i){
-			arrEmpresas.push({
-				Key: i, 
-				Nombre: empresa.nombre,
-				Incidencias: empresa.numCasos,
-				Mensajes: empresa.numMensj
-			});
-			sources.arrEmpresas.sync();
-		});
+		var target = document.getElementById('Loading');
+		spinnerLoading = new Spinner(opts).spin(target);
 		
-		sources.arrEmpresas.orderBy("Incidencias Desc");
+		var seccionSelected = event.srcElement.id;
+		var year = $$(seccionSelected).getValue();
+		waf.widgets.pMenuYear.hide();
+		waf.widgets.image3.setValue('/Images/001_26.png');
+//		debugger;
+		refreshDataInform(year);
+		varYearReport = year;
+		sources.varYearReport.sync();
+
+		
+	};// @lock
+
+	image3.click = function image3_click (event)// @startlock
+	{// @endlock
+		var srcImage = this.getValue();
+		if(srcImage.indexOf(26) > -1){
+			waf.widgets.pMenuYear.show();
+			this.setValue('/Images/001_28.png');
+		}else{
+			waf.widgets.pMenuYear.hide();
+			this.setValue('/Images/001_26.png');
+		}
+		
 	};// @lock
 
 	icon5.click = function icon5_click (event)// @startlock
@@ -244,12 +264,18 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	ctnItemMenu.click = function ctnItemMenu_click (event)// @startlock
 	{// @endlock
 		var pageView = sources.arrMenu.View;
+		if(pageView == 3){
+			showInforms = true;
+			sources.eMPRESAS.collectionRefresh();
+		}
 		waf.widgets.nvAppSupport.goToView(pageView);
 	};// @lock
 
 	documentEvent.onLoad = function documentEvent_onLoad (event)// @startlock
 	{// @endlock
-		
+		var target = document.getElementById('Loading');
+		spinnerLoading = new Spinner(opts).spin(target);
+				
 		var currentUser = waf.directory.currentUser();
 		if(currentUser != null){
 			varCurrentName = currentUser.fullName;
@@ -296,8 +322,10 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	};// @lock
 
 // @region eventManager// @startlock
+	WAF.addListener("icon6", "click", icon6.click, "WAF");
 	WAF.addListener("eMPRESAS", "onCollectionChange", eMPRESASEvent.onCollectionChange, "WAF");
-	WAF.addListener("pERSONASInforme", "onCollectionChange", pERSONASInformeEvent.onCollectionChange, "WAF");
+	WAF.addListener("section3", "touchstart", section3.touchstart, "WAF");
+	WAF.addListener("image3", "click", image3.click, "WAF");
 	WAF.addListener("icon5", "click", icon5.click, "WAF");
 	WAF.addListener("icon3", "click", icon3.click, "WAF");
 	WAF.addListener("icon4", "click", icon4.click, "WAF");
@@ -317,13 +345,68 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 // @endregion
 };// @endlock
 
+function refreshDataInform(pYear){
+	if(showInforms){
+		if(pYear == ""){
+			pYear = "2014";
+		}
+		
+		arrCasosRespondidos = new Array;
+		sources.eMPRESAS.Info_Informe_Casos("Empresas", pYear, {
+			onSuccess: function(event){
+				event.result.Casos.forEach(function(valor, i){
+					arrCasosRespondidos.push({
+						Key: i, 
+						Valor: valor.Nombre,
+						Tam: valor.Tam
+					});
+					sources.arrCasosRespondidos.sync();
+				});
+			}
+		});
+			
+		sources.eMPRESAS.Info_Informe_Casos("Meses", pYear, {
+			onSuccess: function(event){
+				arrCasosRespondidos = new Array;
+				event.result.Casos.forEach(function(valor, i){
+					arrCasosRespondidos.push({
+						Key: i, 
+						Valor: valor.Nombre,
+						Tam: valor.Tam
+					});
+					sources.arrCasosRespondidos.sync();
+					creatChartPie();
+				});			
+			}
+		});
+		
+		sources.pERSONAS.Info_Informe_Incidencias("show", pYear, {
+			onSuccess: function(event){
+				arrEmpresas = new Array;
+				event.result.empresas.forEach(function(empresa, i){
+					arrEmpresas.push({
+						Key: i, 
+						Nombre: empresa.nombre,
+						Incidencias: empresa.numCasos,
+						Mensajes: empresa.numMensj
+					});
+					sources.arrEmpresas.sync();
+					sources.arrEmpresas.orderBy("Incidencias Desc");
+				});
+				spinnerLoading.stop();
+				createChartColumn();
+			}
+		});	
+	}
+}
+
 function createChartColumn(){
 	var chart;
 
         
 		     // SERIAL CHART
             chart = new AmCharts.AmSerialChart();
-            chart.dataProvider = arrCasosRespondidos;
+            chart.dataProvider = arrEmpresas;
             chart.categoryField = "Valor";
             // the following two lines makes chart 3D
             chart.depth3D = 20;
