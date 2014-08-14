@@ -9,8 +9,9 @@ function constructor (id) {
 	var $comp = this;
 	this.name = 'searchCase';
 	// @endregion// @endlock
-
+	
 	this.load = function (data) {// @lock
+		$("#"+id).css("z-index", "6");
 
 	// @region namespaceDeclaration// @startlock
 	var image1 = {};	// @image
@@ -23,6 +24,7 @@ function constructor (id) {
 	image1.click = function image1_click (event)// @startlock
 	{// @endlock
 		$$(id).removeComponent();
+		$("#"+id).css("z-index", "-100");
 	};// @lock
 	
 	button1.click = function button1_click (event)// @startlock
@@ -53,89 +55,110 @@ function constructor (id) {
 
 	};// @lock
 	
-	function SearchCases(vtoptionConsult, vtLineConsult, pVdStart, pVdEnd){
+	this.SearchCases = function (i, vtLineConsult, vtoptionConsult, pVdStart, pVdEnd){
+//		debugger;
 		var vQueryArray;
-		debugger;
 		var vdStart = new Date(pVdStart);
-		var vdEnd = new Date(pVdEnd);
+		var	vdEnd = new Date(pVdEnd);
+		var optionSelector = i;
 		
-		switch(vtoptionConsult) {
-			case "SO":
-				vQueryArray = 'So == "'+vtLineConsult+'"';
-				break;
-			case "Contacto":
-				var arrParams = vtLineConsult.split(' ');
-				var arrParams1 = new Array();
-				for(var i=0; i <= arrParams.length; i++){
-					if(arrParams[i] != ''){
-					   arrParams1.push(arrParams[i]);
-					}
+		try{
+			vtoptionConsult = optionChoose(vtLineConsult, optionSelector);			
+				switch(vtoptionConsult) {
+					case "SO":
+						vQueryArray = 'So == "'+vtLineConsult+'*"';
+						break;
+					case "Contacto":
+						var arrParams = vtLineConsult.split(' ');
+						var arrParams1 = new Array();
+						
+						for(var i=0; i <= arrParams.length; i++){
+							if(arrParams[i] != ''){
+							   arrParams1.push(arrParams[i]);
+							}
+						}
+						
+						arrParams = arrParams1;
+						vQueryArray = 'Obtenido.Nombre == '+'"*'+arrParams[0]+'*" || '+'Obtenido.Apellido == '+'"*'+arrParams[1]+'*"';
+						break;
+					case "Empresa":
+						vQueryArray = 'Obtenido.Integra.Nombre == "*'+vtLineConsult+'*"';
+						break;
+					case "Versión":
+						vQueryArray = 'Version == "'+vtLineConsult+'"';
+						break;
+					case "Clasificación":
+						vQueryArray = 'Clasifica.Nombre == "'+vtLineConsult+'"';
+						break;
+					case "Complejidad":
+						vQueryArray = 'Compete.Nombre == "'+vtLineConsult+'"';
+						break;
+					case "Tema":
+						vQueryArray = 'Corresponde.Nombre == "'+vtLineConsult+'"';
+						break;
 				}
 				
-				arrParams = arrParams1;
-				vQueryArray = 'Obtenido.Nombre == '+'"*'+arrParams[0]+'*" && '+'Obtenido.Apellido == '+'"*'+arrParams[1]+'*"';
-				break;
-			case "Empresa":
-				vQueryArray = 'Obtenido.Integra.Nombre == "*'+vtLineConsult+'*"';
-				break;
-			case "Versión":
-				vQueryArray = 'Version == "'+vtLineConsult+'"';
-				break;
-			case "Clasificación":
-				vQueryArray = 'Clasifica.Nombre == "'+vtLineConsult+'"';
-				break;
-			case "Complejidad":
-				vQueryArray = 'Compete.Nombre == "'+vtLineConsult+'"';
-				break;
-			case "Tema":
-				vQueryArray = 'Corresponde.Nombre == "'+vtLineConsult+'"';
-				break;
+				if(vdStart != "Invalid Date"){
+					vQueryArray += ' && Fecha_Inicio >= '+vdStart.toISOString()+' && Fecha_Final <= '+vdEnd.toISOString();
+				}
+						
+				sources.cASOS.query(vQueryArray, {
+			        onSuccess: function(e){
+			            var vCountCases = sources.cASOS.length;
+						$$(id+'_tfCountCases').setValue(vCountCases);
+						try{
+							if(vCountCases == 0) throw "Not Entities";
+							sources.cASOS.orderBy('Fecha_Final desc, Hora_Final desc');
+			           	}catch(e){
+							if(e == "Not Entities")
+							debugger;
+							if(optionSelector < 5){
+			           	 		optionSelector++;
+			           	 		waf.widgets.cpmSearchCase.SearchCases(optionSelector, vtLineConsult, vtoptionConsult, pVdStart, pVdEnd);
+			           		}
+			           	}
+			        }
+		        });	  
+		           	
+	     	image1.click();
+	     	
+		}catch(e){
+			console.log(e.message);
+		}
+	};
+	
+	function optionChoose(pTextQuery, pSelector){
+		var option;
+		var vFound;
+		
+		vFound = pTextQuery.charAt(0);
+		
+		if(vFound.toLocaleUpperCase() == "V")
+		option = "Versión";
+		
+		var arrSOs = this.sources.cASOS.GET_LIST_SO().soS;
+		vFound = arrSOs.join(" ").search(pTextQuery.replace(pTextQuery.charAt(0), pTextQuery.charAt(0).toUpperCase()));
+		
+		if(vFound != -1)
+		option = "SO";
+		
+		var arrOption = new Array();
+			arrOption[0] = "Contacto";
+			arrOption[1] = "Empresa";
+			arrOption[2] = "Clasificación";
+			arrOption[3] = "Complejidad";
+			arrOption[4] = "Tema";
+
+		if(option == undefined){
+			result = arrOption[pSelector];
+		}else{
+			result = option;
 		}
 		
-		vQueryArray+=' && Fecha_Inicio >= '+vdStart.toISOString()+' && Fecha_Final <= '+vdEnd.toISOString();
-
-		sources.cASOS.query(vQueryArray, {
-        onSuccess: function(){
-            var vCountCases = sources.cASOS.length;
-			$$(id+'_tfCountCases').setValue(vCountCases);
-			 try{
-           	 	sources.cASOS.orderBy('Fecha_Final desc, Hora_Final desc');
-//           	 	sources.cASOS.sync();
-           	 }catch(e){}
-            }
-        });
-	}
-
-
+		return result;
+	};
 }// @startlock
 return constructor;
 })();// @endlock
 
-function searchCases(option, keyWord, dStart, dEnd){
-	var countCases;
-	switch(option) {
-		case "Nombre del caso":
-			break;
-		case "SO":
-			break;
-		case "Contacto":
-			break;
-		case "Empresa":
-			break;
-		case "Versión":
-			break;
-		case "Clasificación":
-			break;
-		case "Complejidad":
-			break;
-		case "Tema":
-			break;		
-	}
-	
-	if((dStart!="00/00/0000") && (dEnd!="00/00/0000")){
-	
-	}
-	
-	return countCases;
-}
 	

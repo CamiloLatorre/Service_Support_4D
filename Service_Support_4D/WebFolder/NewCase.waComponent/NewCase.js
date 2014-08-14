@@ -23,14 +23,13 @@ function constructor (id) {
 		var top = $(window).innerHeight(); // returns height of browser viewport
 		this.move(left/4, top/4);
 		
-		
 		try{
 			SetShortCuts('Disable');
 		}catch(e){}
 
 		$$(id+'_menuBar1').disable(2);
 		this.sources.cASOS.addNewElement();
-		this.sources.Respondido.addNewElement();
+//		this.sources.Respondido.addNewElement();
 		var atListSO = this.sources.cASOS.GET_LIST_SO().soS;
 		for (var i = 0; i < atListSO.length; i++) {
 			$$(id+'_cbListSO').addOption(atListSO[i]);
@@ -81,6 +80,7 @@ function constructor (id) {
 								sources.cASOS.orderBy('Fecha_Final desc, Hora_Final desc');
 								$$(id).removeComponent();
 								SetShortCuts('Enable');
+								location.reload();
 							}catch(e){}
 	    				}
 	    			});
@@ -121,6 +121,7 @@ function constructor (id) {
 		try{
 			$$(id).removeComponent();
 			SetShortCuts('Enable');
+			location.reload();
 		}catch(e){}
 	};// @lock
 

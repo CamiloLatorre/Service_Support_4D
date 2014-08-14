@@ -25,8 +25,8 @@ function constructor (id) {
 	
 	image1.click = function image1_click (event)// @startlock
 	{// @endlock
-		$$(id).removeComponent();
 		SetShortCuts('Enable');
+		location.reload();
 	};// @lock
 
 	image2.click = function image2_click (event)// @startlock
@@ -57,6 +57,7 @@ function constructor (id) {
 	 	  							sources.Respondido.addEntity(source.Respondido.getCurrentElement());
 	 	  							sources.Respondido.serverRefresh();
 	 	  							sources.Respondido.orderBy('Fecha desc, Hora desc');
+	 	  							location.reload();
 				    			}
 							});
 	    				}

@@ -11,11 +11,11 @@ function constructor (id) {
 	// @endregion// @endlock
 
 	this.load = function (data) {// @lock
-		
 		var currentUser = waf.directory.currentUser();
 		
 		if(window.location.href.length <= 26){
 			$$(id).removeComponent();
+			$("#"+id).css("z-index", "-100");
 			$$('tfUserName').hide();
 		}	
 		if( currentUser != null ){

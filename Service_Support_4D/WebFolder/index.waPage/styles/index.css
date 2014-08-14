@@ -178,8 +178,8 @@
 	 z-index: 3;
 	 width: 16px;
 	 height: 16px;
-	 top: 5px;
-	 left: 246px;
+	 top: 9px;
+	 left: 251px;
 	
 	 position: absolute;
 	 
@@ -217,10 +217,10 @@
 
 #ctnBanner {
 	 z-index: 1;
-	 width: 1250px;
 	 height: 54px;
 	 top: 12px;
 	 left: 16px;
+	 right: 10px;
 	
 	 position: absolute;
 	 background-color: transparent;
@@ -270,8 +270,8 @@
 #ctnMenus {
 	 z-index: 6;
 	 width: 226px;
-	 height: 657px;
 	 top: 75px;
+	 bottom: 25px;
 	 left: 17px;
 	
 	 position: absolute;
@@ -283,7 +283,7 @@
 	 width: 319px;
 	 height: 34px;
 	 top: 9px;
-	 left: 925px;
+	 right: 5px;
 	
 	 position: absolute;
 	 background-color: transparent;
@@ -332,10 +332,10 @@
 
 #frmBody {
 	 z-index: 9;
-	 width: 1005px;
-	 height: 607px;
-	 top: 126px;
-	 left: 254px;
+	 top: 119px;
+	 bottom: 25px;
+	 left: 250px;
+	 right: 10px;
 	
 	 position: absolute;
 	 background-color: transparent;
@@ -360,10 +360,10 @@
 
 #ctnBreadcrumbs {
 	 z-index: 2;
-	 width: 1005px;
 	 height: 37px;
 	 top: 75px;
 	 left: 254px;
+	 right: 10px;
 	
 	 position: absolute;
 	 background-color: transparent;
@@ -374,7 +374,7 @@
 	 z-index: 4;
 	 width: 243px;
 	 height: 55px;
-	 top: 600px;
+	 bottom: -2px;
 	 left: -9px;
 	
 	 position: absolute;
@@ -398,8 +398,8 @@
 	 z-index: 1;
 	 width: 45px;
 	 height: 14px;
-	 top: 7px;
-	 left: 266px;
+	 top: 11px;
+	 left: 271px;
 	
 	 position: absolute;
 	 font-weight: bold;

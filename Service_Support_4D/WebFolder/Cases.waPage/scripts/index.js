@@ -64,6 +64,66 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 // eventHandlers// @lock
 
+	image4.click = function image4_click (event)// @startlock
+	{// @endlock
+		waf.widgets.textField1.setValue("");
+		this.hide();
+		image5.click();
+	};// @lock
+
+	textField1.keyup = function textField1_keyup (event)// @startlock
+	{// @endlock
+		var textSearched = this.getValue();
+		if(textSearched.length >= 3){
+			waf.widgets.cpmSearchCase.loadComponent();
+			waf.widgets.cpmSearchCase.SearchCases(0, textSearched);
+			waf.widgets.cpmSearchCase.removeComponent();
+			
+		}
+		
+		if(textSearched.length == 0){
+			waf.widgets.image4.hide();
+		}else{
+			waf.widgets.image4.show();
+		}
+		
+	};// @lock
+
+	menuItem3.click = function menuItem3_click (event)// @startlock
+	{// @endlock
+		setStatusCase();
+	};// @lock
+
+	menuItem2.click = function menuItem2_click (event)// @startlock
+	{// @endlock
+		setStatusCase();
+	};// @lock
+
+	menuItem1.click = function menuItem1_click (event)// @startlock
+	{// @endlock
+		setStatusCase();
+	};// @lock
+
+	dataGridCases.onRowRightClick = function dataGridCases_onRowRightClick (event)// @startlock
+	{// @endlock
+		var posX = window.event.clientX;
+		var posY = window.event.clientY;
+		var menu = waf.widgets.menuStatusCase;
+		menu.move(posX, posY);
+		menu.show();
+//		debugger;
+		setTimeout (function (){menu.hide()}, 1000); 
+	};// @lock
+
+	dataGridCases.onRowDblClick = function dataGridCases_onRowDblClick (event)// @startlock
+	{// @endlock
+//		var posX = window.event.clientX;
+//		var posY = window.event.clientY;
+//		var menu = waf.widgets.menuStatusCase;
+//		menu.move(posX, posY);
+//		menu.show();
+	};// @lock
+
 	image7.click = function image7_click (event)// @startlock
 	{// @endlock
 		$$('cpmSearchCase').loadComponent('/searchCase.waComponent');
@@ -108,6 +168,10 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	documentEvent.onLoad = function documentEvent_onLoad (event)// @startlock
 	{// @endlock
 		SetShortCuts('Enable');
+		var columnStatus = waf.widgets.dataGridCases.column(3);
+		 waf.widgets.dataGridCases.centerRow(3);
+		columnStatus.setWidth(100);
+		
 	};// @lock
 
 	cASOSEvent.onCurrentElementChange = function cASOSEvent_onCurrentElementChange (event)// @startlock
@@ -124,6 +188,11 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 			}
 			$$('imageComplexy').show('');
 		
+			if(entityCase.Cod_Estado.value == 3){
+				waf.widgets.imageNewMsj.hide();
+			}else{
+				waf.widgets.imageNewMsj.show();
+			}
 			switch(complexityCase) {
 				case 1:
 					$$('imageComplexy').setValue('/Images/onebit_50.png');
@@ -167,6 +236,13 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	};// @lock
 
 // @region eventManager// @startlock
+	WAF.addListener("image4", "click", image4.click, "WAF");
+	WAF.addListener("textField1", "keyup", textField1.keyup, "WAF");
+	WAF.addListener("dataGridCases", "onRowRightClick", dataGridCases.onRowRightClick, "WAF");
+	WAF.addListener("menuItem3", "click", menuItem3.click, "WAF");
+	WAF.addListener("menuItem2", "click", menuItem2.click, "WAF");
+	WAF.addListener("menuItem1", "click", menuItem1.click, "WAF");
+	WAF.addListener("dataGridCases", "onRowDblClick", dataGridCases.onRowDblClick, "WAF");
 	WAF.addListener("image7", "click", image7.click, "WAF");
 	WAF.addListener("btnNewCase", "click", btnNewCase.click, "WAF");
 	WAF.addListener("imSearchImportant", "click", imSearchImportant.click, "WAF");
@@ -183,6 +259,20 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	WAF.addListener("image1", "click", image1.click, "WAF");
 // @endregion
 };// @endlock
+
+function setStatusCase(){
+	var menu = waf.widgets.menuStatusCase;
+	var item = menu.getSelectedMenuItem();
+	sources.cASOS.Cod_Estado = parseInt(item.id.substring(8));
+	sources.cASOS.save();
+
+//	debugger;
+	setTimeout (source.cASOS.collectionRefresh(), 2000); 
+	
+	menu.hide();
+	
+}
+
 
 function setDetailMessage(Entity){
 	var title = Entity.Tipo;
@@ -223,6 +313,6 @@ function getUrlVars(){
 	var url = window.location.href;
 	var index =  getUrlVars()["Index"];
 	if(index == undefined){
-		document.location = "/?callback="+url.substring(25);
+		document.location = "/?callback="+url.substring(22);
 	}
 })();

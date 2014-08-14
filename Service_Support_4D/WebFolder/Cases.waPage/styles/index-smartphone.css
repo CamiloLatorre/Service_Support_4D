@@ -3,6 +3,44 @@
 	Changes to this CSS file might be lost when it is regenerated.
 */
 
+#matrix2 .waf-widget.waf-clone-image5 {
+	 position: absolute;
+	 
+}
+
+#image5 {
+	 z-index: 9;
+	 width: 24px;
+	 height: 24px;
+	 top: 31px;
+	 left: 278px;
+	
+	 position: absolute;
+	 
+}
+
+#image4 {
+	 z-index: 4;
+	 width: 20px;
+	 height: 20px;
+	 top: 9px;
+	 right: 19px;
+	
+	 position: absolute;
+	 
+}
+
+#label4 {
+	 z-index: 2;
+	 height: 16px;
+	 top: 14px;
+	 left: -38px;
+	 right: 323px;
+	
+	 position: absolute;
+	 
+}
+
 #container10 {
 	 z-index: 5;
 	 top: 49px;
@@ -322,10 +360,10 @@
 
 #label3 {
 	 z-index: 2;
-	 width: 31px;
-	 top: -9.5px;
+	 width: 35px;
+	 top: -10px;
 	 bottom: 0px;
-	 left: -44px;
+	 left: -48px;
 	
 	 position: absolute;
 	 
@@ -598,9 +636,9 @@
 }
 
 #matrix2 {
-	 z-index: 3;
-	 top: 4px;
-	 bottom: 11px;
+	 z-index: 2;
+	 top: 45px;
+	 bottom: 24px;
 	 left: 3px;
 	 right: 4px;
 	
@@ -609,11 +647,11 @@
 }
 
 #richText25 {
-	 z-index: 7;
+	 z-index: 5;
 	 top: 25px;
 	 bottom: 6px;
 	 left: 5px;
-	 right: 5px;
+	 right: 38px;
 	
 	 position: absolute;
 	 font-size: 11px;
@@ -1014,9 +1052,9 @@
 
 #label2 {
 	 z-index: 3;
-	 height: 15px;
+	 height: 16px;
 	 top: 13px;
-	 left: -36px;
+	 left: -40px;
 	 right: 0px;
 	
 	 position: absolute;
@@ -2002,13 +2040,45 @@
 }
 
 #spaceChartColumn {
+	 z-index: 1;
 	 width: 325px;
 	 height: 389px;
 	 top: 0px;
 	 left: 1px;
 	
 	 position: absolute;
-	 z-index: 1;
+	 
+}
+
+#tfSearchMessage {
+	 z-index: 3;
+	 height: 40px;
+	 top: 2px;
+	 left: 2px;
+	 right: 2px;
+	
+	 position: absolute;
+	 border-top-width: 0px;
+	 border-left-width: 0px;
+	 border-right-width: 0px;
+	 border-bottom-width: 2px;
+	 border-top-color: rgb(0, 63, 127);
+	 border-left-color: rgb(0, 63, 127);
+	 border-right-color: rgb(0, 63, 127);
+	 border-bottom-color: rgb(0, 63, 127);
+	 border-top-left-radius: 30px;
+	-moz-border-radius-topleft: 30px;
+	 border-top-right-radius: 30px;
+	-moz-border-radius-topright: 30px;
+	 border-bottom-left-radius: 30px;
+	-moz-border-radius-bottomleft: 30px;
+	 border-bottom-right-radius: 30px;
+	-moz-border-radius-bottomright: 30px;
+	 -webkit-box-shadow: rgb(0, 0, 0) 0px 0px 2px 0px inset, rgb(204, 204, 204) 10px -17px 41px 24px;
+	 -moz-box-shadow: rgb(0, 0, 0) 0px 0px 2px 0px inset, rgb(204, 204, 204) 10px -17px 41px 24px;
+	 box-shadow: rgb(0, 0, 0) 0px 0px 2px 0px inset, rgb(204, 204, 204) 10px -17px 41px 24px;
+	
+	 background-image: none;
 	 
 }
 

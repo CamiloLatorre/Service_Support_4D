@@ -3,12 +3,125 @@
 	Changes to this CSS file might be lost when it is regenerated.
 */
 
+#image4 {
+	 z-index: 111;
+	 width: 16px;
+	 height: 16px;
+	 top: 9px;
+	 right: 46px;
+	
+	 position: absolute;
+	 
+}
+
+#keyboardShortcuts1 {
+	 z-index: 0;
+	 width: 0px;
+	 height: 0px;
+	 top: auto;
+	 left: auto;
+	
+	 position: absolute;
+	 
+}
+
+#textField1.waf-state-focus {
+	 color: rgb(0, 0, 0);
+	 font-family: 'Arial Narrow', Arial, sans-serif;
+	 text-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
+	 font-size: 16px;
+	 border-top-color: rgb(255, 201, 86);
+	 border-left-color: rgb(255, 201, 86);
+	 border-right-color: rgb(255, 201, 86);
+	 border-bottom-color: rgb(255, 201, 86);
+	 background-image: none;
+	 background-repeat: no-repeat;
+	 
+}
+
+#textField1 {
+	 z-index: 11;
+	 width: 376px;
+	 height: 22px;
+	 top: 6px;
+	 right: 40px;
+	
+	 position: absolute;
+	 
+}
+
+#richText6 {
+	 z-index: 1;
+	 width: 58px;
+	 height: 50px;
+	 top: 0px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#menuItem3 {
+	 z-index: 3;
+	 width: 58px;
+	 height: 50px;
+	 top: 0px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#richText5 {
+	 z-index: 1;
+	 width: 58px;
+	 height: 50px;
+	 top: 0px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#menuItem2 {
+	 z-index: 2;
+	 width: 58px;
+	 height: 50px;
+	 top: 0px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#richText2 {
+	 z-index: 1;
+	 width: 58px;
+	 height: 50px;
+	 top: 0px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#menuItem1 {
+	 z-index: 1;
+	 width: 58px;
+	 height: 50px;
+	 top: 0px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
 #image7 {
 	 z-index: 1;
-	 width: 24px;
-	 height: 24px;
-	 top: 16px;
-	 left: 7px;
+	 width: 22px;
+	 height: 21px;
+	 top: 7px;
+	 right: 9px;
 	
 	 position: absolute;
 	 
@@ -37,24 +150,28 @@
 }
 
 #container3 {
-	 z-index: 4;
-	 width: 37px;
-	 height: 766px;
-	 top: 5px;
-	 left: 972px;
+	 z-index: 5;
+	 height: 34px;
+	 top: 0px;
+	 left: 5px;
+	 right: 0px;
 	
 	 position: absolute;
 	 
 }
 
 #container2 {
-	 z-index: 2;
-	 width: 960px;
-	 height: 351px;
+	 z-index: 3;
 	 top: 421px;
+	 bottom: 0px;
 	 left: 4px;
+	 right: 0px;
 	
 	 position: absolute;
+	 -webkit-box-shadow: rgba(0, 0, 0, 0.292969) 0px 0px 10px 2px;
+	 -moz-box-shadow: rgba(0, 0, 0, 0.292969) 0px 0px 10px 2px;
+	 box-shadow: rgba(0, 0, 0, 0.292969) 0px 0px 10px 2px;
+	
 	 
 }
 
@@ -71,8 +188,8 @@
 
 #textField10 {
 	 z-index: 18;
-	 width: 483px;
-	 height: 99px;
+	 width: 499px;
+	 height: 71px;
 	 top: 278px;
 	 left: 23px;
 	
@@ -94,7 +211,7 @@
 
 #richText4 {
 	 z-index: 17;
-	 width: 369px;
+	 width: 361px;
 	 height: 38px;
 	 top: 15px;
 	 left: 101px;
@@ -103,6 +220,7 @@
 	 color: rgb(86, 170, 255);
 	 font-weight: bold;
 	 font-size: 18px;
+	 text-align: center;
 	 
 }
 
@@ -121,7 +239,7 @@
 	 z-index: 16;
 	 width: 75px;
 	 height: 15px;
-	 top: 134px;
+	 top: 134.5px;
 	 left: 22px;
 	
 	 position: absolute;
@@ -131,10 +249,10 @@
 
 #textField8 {
 	 z-index: 15;
-	 width: 130px;
+	 width: 128px;
 	 height: 22px;
-	 top: 222px;
-	 left: 379px;
+	 top: 219px;
+	 left: 392px;
 	
 	 position: absolute;
 	 
@@ -144,8 +262,8 @@
 	 z-index: 15;
 	 width: 75px;
 	 height: 15px;
-	 top: 225px;
-	 left: 299px;
+	 top: 222.5px;
+	 left: 312px;
 	
 	 position: absolute;
 	 min-width: 75px;
@@ -154,10 +272,10 @@
 
 #textField7 {
 	 z-index: 14;
-	 width: 130px;
+	 width: 128px;
 	 height: 22px;
-	 top: 86px;
-	 left: 381px;
+	 top: 83px;
+	 left: 392px;
 	
 	 position: absolute;
 	 
@@ -167,8 +285,8 @@
 	 z-index: 14;
 	 width: 75px;
 	 height: 15px;
-	 top: 89px;
-	 left: 301px;
+	 top: 86.5px;
+	 left: 312px;
 	
 	 position: absolute;
 	 min-width: 75px;
@@ -190,7 +308,7 @@
 	 z-index: 12;
 	 width: 75px;
 	 height: 15px;
-	 top: 89px;
+	 top: 89.5px;
 	 left: 22px;
 	
 	 position: absolute;
@@ -215,7 +333,7 @@
 	 z-index: 10;
 	 width: 75px;
 	 height: 15px;
-	 top: 225px;
+	 top: 225.5px;
 	 left: 22px;
 	
 	 position: absolute;
@@ -225,10 +343,10 @@
 
 #textField4 {
 	 z-index: 8;
-	 width: 130px;
+	 width: 128px;
 	 height: 22px;
-	 top: 131px;
-	 left: 381px;
+	 top: 128px;
+	 left: 392px;
 	
 	 position: absolute;
 	 
@@ -238,8 +356,8 @@
 	 z-index: 8;
 	 width: 75px;
 	 height: 15px;
-	 top: 134px;
-	 left: 301px;
+	 top: 131.5px;
+	 left: 312px;
 	
 	 position: absolute;
 	 min-width: 75px;
@@ -248,10 +366,10 @@
 
 #textField3 {
 	 z-index: 6;
-	 width: 130px;
+	 width: 128px;
 	 height: 22px;
-	 top: 172px;
-	 left: 381px;
+	 top: 169px;
+	 left: 392px;
 	
 	 position: absolute;
 	 
@@ -261,8 +379,8 @@
 	 z-index: 6;
 	 width: 75px;
 	 height: 15px;
-	 top: 175px;
-	 left: 301px;
+	 top: 172.5px;
+	 left: 312px;
 	
 	 position: absolute;
 	 min-width: 75px;
@@ -284,7 +402,7 @@
 	 z-index: 4;
 	 width: 75px;
 	 height: 15px;
-	 top: 175px;
+	 top: 175.5px;
 	 left: 22px;
 	
 	 position: absolute;
@@ -293,11 +411,11 @@
 }
 
 #container1 {
-	 z-index: 1;
-	 width: 535px;
-	 height: 404px;
-	 top: 5px;
-	 left: 428px;
+	 z-index: 2;
+	 height: 363px;
+	 top: 47px;
+	 left: 432px;
+	 right: 0px;
 	
 	 position: absolute;
 	 
@@ -332,10 +450,10 @@
 
 #ctnLabelResponse {
 	 z-index: 3;
-	 width: 963px;
-	 height: 318px;
 	 top: 30px;
+	 bottom: -1px;
 	 left: 0px;
+	 right: 0px;
 	
 	 position: absolute;
 	 -webkit-box-shadow: rgb(178, 178, 178) 0px 0px 46px 2px;
@@ -350,7 +468,7 @@
 	 width: 83px;
 	 height: 242px;
 	 top: 52px;
-	 left: 863px;
+	 right: 5px;
 	
 	 position: absolute;
 	 background-image: none;
@@ -377,10 +495,10 @@
 
 #ctnHeaderMsj {
 	 z-index: 61;
-	 width: 927px;
 	 height: 31px;
 	 top: 13px;
 	 left: 16px;
+	 right: 5px;
 	
 	 position: absolute;
 	 background-color: transparent;
@@ -420,13 +538,21 @@
 }
 
 #dataGridCases {
-	 z-index: 3;
+	 z-index: 4;
 	 width: 410px;
-	 height: 403px;
-	 top: 5px;
+	 height: 365px;
+	 top: 47px;
 	 left: 5px;
 	
 	 position: absolute;
+	 -webkit-box-shadow: rgba(0, 0, 0, 0.292969) 0px 0px 10px 2px;
+	 -moz-box-shadow: rgba(0, 0, 0, 0.292969) 0px 0px 10px 2px;
+	 box-shadow: rgba(0, 0, 0, 0.292969) 0px 0px 10px 2px;
+	
+	 border-top-color: rgb(178, 178, 178);
+	 border-left-color: rgb(178, 178, 178);
+	 border-right-color: rgb(178, 178, 178);
+	 border-bottom-color: rgb(178, 178, 178);
 	 
 }
 
@@ -445,10 +571,10 @@
 
 #imageComplexy {
 	 z-index: 20;
-	 width: 43px;
+	 width: 41px;
 	 height: 40px;
 	 top: 15px;
-	 left: 467px;
+	 left: 481px;
 	
 	 position: absolute;
 	 
@@ -456,10 +582,10 @@
 
 #rtResponse {
 	 z-index: 3;
-	 width: 129px;
+	 width: 152px;
 	 height: 22px;
 	 top: 8px;
-	 left: 134px;
+	 left: 111px;
 	
 	 position: absolute;
 	 font-weight: bold;
@@ -471,7 +597,7 @@
 	 width: 16px;
 	 height: 16px;
 	 top: 8px;
-	 left: 936px;
+	 right: 5px;
 	
 	 position: absolute;
 	 
@@ -479,10 +605,10 @@
 
 #richTextMsg {
 	 z-index: 6;
-	 width: 812px;
-	 height: 249px;
+	 height: 231px;
 	 top: 53px;
 	 left: 25px;
+	 right: 111px;
 	
 	 position: absolute;
 	 color: rgb(0, 0, 0);
@@ -504,6 +630,7 @@
 }
 
 #cmpEditMessage {
+	 z-index: 1;
 	 width: 368px;
 	 height: 434px;
 	 top: 7px;
@@ -549,7 +676,7 @@
 }
 
 #vtnOptionCases {
-	 z-index: 5;
+	 z-index: 6;
 	 width: 145px;
 	 height: 24px;
 	 top: 380px;
@@ -595,7 +722,6 @@
 }
 
 #cpmNewCase {
-	 z-index: -1;
 	 width: 561px;
 	 height: 471px;
 	 top: 7px;
@@ -634,11 +760,38 @@
 	 z-index: 6;
 	 width: 425px;
 	 height: 102px;
-	 top: 64px;
-	 left: 534px;
+	 top: 37px;
+	 right: 8px;
 	
 	 position: absolute;
 	 background-color: transparent;
+	 
+}
+
+#menuStatusCase {
+	 z-index: 7;
+	 width: 62px;
+	 height: 152px;
+	 top: 1px;
+	 left: -1px;
+	
+	 position: absolute;
+	 -webkit-box-shadow: rgba(0, 0, 0, 0.199219) 0px 1px 22px 0px, rgba(255, 255, 255, 0.496094) 0px 1px 0px 0px inset;
+	 -moz-box-shadow: rgba(0, 0, 0, 0.199219) 0px 1px 22px 0px, rgba(255, 255, 255, 0.496094) 0px 1px 0px 0px inset;
+	 box-shadow: rgba(0, 0, 0, 0.199219) 0px 1px 22px 0px, rgba(255, 255, 255, 0.496094) 0px 1px 0px 0px inset;
+	
+	 border-top-width: 2px;
+	 border-top-style: solid;
+	 border-left-width: 2px;
+	 border-left-style: solid;
+	 border-right-width: 2px;
+	 border-right-style: solid;
+	 border-bottom-width: 2px;
+	 border-bottom-style: solid;
+	 border-top-color: rgb(178, 178, 178);
+	 border-left-color: rgb(178, 178, 178);
+	 border-right-color: rgb(178, 178, 178);
+	 border-bottom-color: rgb(178, 178, 178);
 	 
 }
 

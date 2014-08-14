@@ -45,8 +45,9 @@ function constructor (id) {
 			$$(id).removeComponent();
 		}catch(e){
 			$$(id+'_errorDivProfile').setValue(e);
+			$$(id).removeComponent();
+			$("#"+id).css("z-index", "-100");
 		}
-		
 	};// @lock
 
 	tfPdwRepet.change = function tfPdwRepet_change (event)// @startlock
@@ -93,6 +94,7 @@ function constructor (id) {
 	image1.click = function image1_click (event)// @startlock
 	{// @endlock
 		$$(id).removeComponent();
+		$("#"+id).css("z-index", "-100");
 	};// @lock
 
 	// @region eventManager// @startlock

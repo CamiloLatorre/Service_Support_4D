@@ -30,21 +30,16 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	documentEvent.onLoad = function documentEvent_onLoad (event)// @startlock
 	{// @endlock
 		var currentUser = waf.directory.currentUser();
-		
 		if( currentUser == null ){
 			$$('matrix1').hide();
+		}else{
+			$("#cpmLoginUser").css("z-index", "-100");
 		}
 		
 		var Width = $(window).innerWidth();
 		var Height = $(window).innerHeight(); // returns height of browser viewport
 		$$('cpmProfile').move(-Width+"px", -Height+"px");
-		$$('frmBody').setHeight(Height-115);
-		$$('frmBody').setWidth(Width-265);
-		$$('ctnMenus').setHeight($$('frmBody').getHeight()+40);
-		$$('ctnBanner').setWidth(Width-30);
-		$$('ctnBreadcrumbs').setWidth(Width-270);
-		$$('ctnLogin').setLeft($$('ctnBanner').getWidth()-340);
-		$$('ctnCredits').move("0px",$$('ctnMenus').getHeight()-50+"px");
+
 		
 		sources.arrMenu.addNewElement({
 			ID: 1,
@@ -70,7 +65,10 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		
 		var url = window.location.href;
 		var callback =  getUrlVars()["callback"];
-		
+		if(callback !=undefined){
+			callback = "/"+callback;
+		}
+	
 		try{
 			if(callback.length > 4){
 				history.pushState({
@@ -84,6 +82,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 	btnLogin.click = function btnLogin_click (event)// @startlock
 	{// @endlock
+		debugger;
 		if($$("btnLogin").getValue() == "Salir"){
 			waf.directory.logout();
 			location.reload();

@@ -129,3 +129,19 @@ function creatChartPie(){
     // WRITE                                 
     chart.write("spaceChartPie");
 }
+
+function getUrlVars(){
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+(function() {
+	var url = window.location.href;
+	var index =  getUrlVars()["Index"];
+	if(index == undefined){
+		document.location = "/?callback="+url.substring(22);
+	}
+})();

@@ -22,6 +22,8 @@ var opts = {
 WAF.onAfterInit = function onAfterInit() {// @lock
 
 // @region namespaceDeclaration// @startlock
+	var image5 = {};	// @image
+	var tfSearchMessage = {};	// @textField
 	var icon6 = {};	// @icon
 	var eMPRESASEvent = {};	// @dataSource
 	var section3 = {};	// @section
@@ -29,7 +31,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	var icon5 = {};	// @icon
 	var icon3 = {};	// @icon
 	var icon4 = {};	// @icon
-	var container18 = {};	// @container
 	var button2 = {};	// @button
 	var row1 = {};	// @container
 	var tfUserName = {};	// @textField
@@ -47,6 +48,34 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	var OKPDWChange;
 
 // eventHandlers// @lock
+
+	image5.touchend = function image5_touchend (event)// @startlock
+	{// @endlock
+		waf.widgets.nvAppSupport.goToView(8);
+	};// @lock
+
+	tfSearchMessage.keyup = function tfSearchMessage_keyup (event)// @startlock
+	{// @endlock
+		var vtQuery;
+		var valueSearched = this.getValue();
+		if(valueSearched.length >= 4){
+				valueSearched =this.getValue();
+				vtQuery = 'Cuerpo == '+'"*'+valueSearched+'*"';
+				
+				sources.Respondido.filterQuery(vtQuery, {
+		        	onSuccess: function(){
+					 	try{
+		           	 		sources.Respondido.orderBy('Fecha desc, Hora desc');
+		           	    }catch(e){}
+		            }
+		        });
+		    
+		}else if(valueSearched.length <= 1){
+			sources.cASOS.selectNext();
+			sources.cASOS.selectPrevious();
+		}else{
+		}
+	};// @lock
 
 	icon6.click = function icon6_click (event)// @startlock
 	{// @endlock
@@ -134,11 +163,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	{// @endlock
 		waf.widgets.nvAppSupport.goToView(9);
 		sources.Respondido.addNewElement()
-	};// @lock
-
-	container18.click = function container18_click (event)// @startlock
-	{// @endlock
-		waf.widgets.nvAppSupport.goToView(8);
 	};// @lock
 
 	button2.click = function button2_click (event)// @startlock
@@ -322,6 +346,9 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	};// @lock
 
 // @region eventManager// @startlock
+	WAF.addListener("image5", "touchend", image5.touchend, "WAF");
+	WAF.addListener("row1", "click", row1.click, "WAF");
+	WAF.addListener("tfSearchMessage", "keyup", tfSearchMessage.keyup, "WAF");
 	WAF.addListener("icon6", "click", icon6.click, "WAF");
 	WAF.addListener("eMPRESAS", "onCollectionChange", eMPRESASEvent.onCollectionChange, "WAF");
 	WAF.addListener("section3", "touchstart", section3.touchstart, "WAF");
@@ -329,9 +356,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	WAF.addListener("icon5", "click", icon5.click, "WAF");
 	WAF.addListener("icon3", "click", icon3.click, "WAF");
 	WAF.addListener("icon4", "click", icon4.click, "WAF");
-	WAF.addListener("container18", "click", container18.click, "WAF");
 	WAF.addListener("button2", "click", button2.click, "WAF");
-	WAF.addListener("row1", "click", row1.click, "WAF");
 	WAF.addListener("tfUserName", "click", tfUserName.click, "WAF");
 	WAF.addListener("tfSearch", "keyup", tfSearch.keyup, "WAF");
 	WAF.addListener("tfAgainPass", "change", tfAgainPass.change, "WAF");
