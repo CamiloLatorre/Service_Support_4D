@@ -22,6 +22,8 @@ var opts = {
 WAF.onAfterInit = function onAfterInit() {// @lock
 
 // @region namespaceDeclaration// @startlock
+	var image4 = {};	// @image
+	var image1 = {};	// @image
 	var image5 = {};	// @image
 	var tfSearchMessage = {};	// @textField
 	var icon6 = {};	// @icon
@@ -46,8 +48,24 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 // @endregion// @endlock
 	var ctnChangePwd = waf.widgets.ctnChangePwd;
 	var OKPDWChange;
+	var stampSearchedCases;
+	
 
 // eventHandlers// @lock
+
+	image4.click = function image4_click (event)// @startlock
+	{// @endlock
+		sources.cASOS.next();
+		sources.cASOS.previous();
+		waf.widgets.image4.setValue("/images/search.png");
+	};// @lock
+
+	image1.click = function image1_click (event)// @startlock
+	{// @endlock
+		this.setValue("/images/search.png");
+		sources.cASOS.allEntities();
+		waf.widgets.tfSearch.setValue("");
+	};// @lock
 
 	image5.touchend = function image5_touchend (event)// @startlock
 	{// @endlock
@@ -56,11 +74,10 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 	tfSearchMessage.keyup = function tfSearchMessage_keyup (event)// @startlock
 	{// @endlock
-		var vtQuery;
-		var valueSearched = this.getValue();
-		if(valueSearched.length >= 4){
-				valueSearched =this.getValue();
-				vtQuery = 'Cuerpo == '+'"*'+valueSearched+'*"';
+		if((event.timeStamp-stampSearchedCases) >= 1000 || (stampSearchedCases == undefined)){
+			var textSearched = this.getValue();
+			if(textSearched.length >= 4){	
+				var vtQuery = 'Cuerpo == '+'"*'+textSearched+'*"';
 				
 				sources.Respondido.filterQuery(vtQuery, {
 		        	onSuccess: function(){
@@ -69,11 +86,13 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		           	    }catch(e){}
 		            }
 		        });
-		    
-		}else if(valueSearched.length <= 1){
-			sources.cASOS.selectNext();
-			sources.cASOS.selectPrevious();
-		}else{
+			}
+		
+			if(textSearched.length >= 1){
+				waf.widgets.image4.setValue("/images/action_delete.png");
+			}else{
+				waf.widgets.image4.setValue("/images/search.png");
+			}
 		}
 	};// @lock
 
@@ -86,7 +105,9 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 	eMPRESASEvent.onCollectionChange = function eMPRESASEvent_onCollectionChange (event)// @startlock
 	{// @endlock
-		refreshDataInform();
+		if(sources.arrCasosRespondidos.length == 0){
+			refreshDataInform();
+		}
 	};// @lock
 
 	section3.touchstart = function section3_touchstart (event)// @startlock
@@ -221,25 +242,23 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 	tfSearch.keyup = function tfSearch_keyup (event)// @startlock
 	{// @endlock
-		var vtQuery;
-		var valueSearched = WAF.widgets.tfSearch.getValue();
-		if(valueSearched.length >= 4){
-				var valueSearched = WAF.widgets.tfSearch.getValue();
-				vtQuery = 'Fecha_Final == '+valueSearched+' || '+'Fecha_Inicio == '+''+valueSearched;	
-				vtQuery = vtQuery+'" || '+'Obtenido.Nombre == '+'"*'+valueSearched+'*" || '+'Obtenido.Apellido == '+'"*'+valueSearched+'*"';
-				//vtQuery = vtQuery+'" || '+'Nombre == '+'"*'+valueSearched+'*" || '+'Descripcion == '+'"*'+valueSearched+'*"';
-				
-				sources.cASOS.query(vtQuery, {
-		        	onSuccess: function(){
-					 	try{
-		           	 		sources.cASOS.orderBy('Fecha_Final desc, Hora_Final desc');
-		           	 		clearTimeout(queryTime);
-		           		 }catch(e){
-		           		 	clearTimeout(queryTime);
-		           		 }
-		            }
-		        });
-		    
+		if((event.timeStamp-stampSearchedCases) >= 1000 || (stampSearchedCases == undefined)){
+			var textSearched = this.getValue();
+			if(textSearched.length >= 4){
+				stampSearchedCases = event.timeStamp;
+				console.log(event.timeStamp);
+			
+				var textSearched = WAF.widgets.tfSearch.getValue();
+				var cpmSearched = new SearchedPlugin();
+				cpmSearched.setOptionSearch(["Contacto","Empresa","Versión","Tema","Clasificación","Complejidad","Descripción"]);
+				cpmSearched.SearchCases(0, textSearched);
+			}
+		
+			if(textSearched.length >= 1){
+				waf.widgets.image1.setValue("/images/action_delete.png");
+			}else{
+				waf.widgets.image1.setValue("/images/search.png");
+			}
 		}
 	};// @lock
 
@@ -346,6 +365,8 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	};// @lock
 
 // @region eventManager// @startlock
+	WAF.addListener("image4", "click", image4.click, "WAF");
+	WAF.addListener("image1", "click", image1.click, "WAF");
 	WAF.addListener("image5", "touchend", image5.touchend, "WAF");
 	WAF.addListener("row1", "click", row1.click, "WAF");
 	WAF.addListener("tfSearchMessage", "keyup", tfSearchMessage.keyup, "WAF");
@@ -380,12 +401,15 @@ function refreshDataInform(pYear){
 		sources.eMPRESAS.Info_Informe_Casos("Empresas", pYear, {
 			onSuccess: function(event){
 				event.result.Casos.forEach(function(valor, i){
-					arrCasosRespondidos.push({
-						Key: i, 
-						Valor: valor.Nombre,
-						Tam: valor.Tam
-					});
-					sources.arrCasosRespondidos.sync();
+					if(valor.Tam != 0 ){
+						arrCasosRespondidos.push({
+							Key: i, 
+							Valor: valor.Nombre,
+							Tam: valor.Tam
+						});
+						sources.arrCasosRespondidos.sync();
+						createChartColumn();
+					}
 				});
 			}
 		});
@@ -419,7 +443,6 @@ function refreshDataInform(pYear){
 					sources.arrEmpresas.orderBy("Incidencias Desc");
 				});
 				spinnerLoading.stop();
-				createChartColumn();
 			}
 		});	
 	}
@@ -431,7 +454,7 @@ function createChartColumn(){
         
 		     // SERIAL CHART
             chart = new AmCharts.AmSerialChart();
-            chart.dataProvider = arrEmpresas;
+            chart.dataProvider = arrCasosRespondidos;
             chart.categoryField = "Valor";
             // the following two lines makes chart 3D
             chart.depth3D = 20;
@@ -453,7 +476,7 @@ function createChartColumn(){
             // GRAPH
             var graph = new AmCharts.AmGraph();
             graph.valueField = "Tam";
-//            graph.colorField = "color";
+            graph.colorField = "#FFFFFF";
             graph.balloonText = "<span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>";
             graph.type = "column";
             graph.lineAlpha = 0;

@@ -3,12 +3,23 @@
 	Changes to this CSS file might be lost when it is regenerated.
 */
 
+#{id}image2 {
+	 z-index: 1;
+	 width: 44px;
+	 height: 44px;
+	 top: 0px;
+	 left: 1px;
+	
+	 position: absolute;
+	 
+}
+
 #{id}image1 {
 	 z-index: 1;
 	 width: 24px;
 	 height: 24px;
-	 top: 5px;
-	 left: 466px;
+	 top: 4px;
+	 left: 455px;
 	
 	 position: absolute;
 	 
@@ -16,28 +27,36 @@
 
 #{id}container14 {
 	 z-index: 30;
-	 width: 558px;
-	 height: 38px;
-	 top: 433px;
+	 width: 553px;
+	 height: 31px;
+	 top: 412px;
 	 left: 2px;
 	
 	 position: absolute;
-	 background-color: rgb(86, 170, 255);
-	 border-top-color: transparent;
 	 border-top-style: none;
 	 border-top-width: 0px;
-	 border-left-color: transparent;
 	 border-left-style: none;
 	 border-left-width: 0px;
-	 border-right-color: transparent;
 	 border-right-style: none;
 	 border-right-width: 0px;
-	 border-bottom-color: transparent;
 	 border-bottom-style: none;
 	 border-bottom-width: 0px;
-	 -webkit-box-shadow: transparent 0px 0px 0px 0px;
-	 -moz-box-shadow: transparent 0px 0px 0px 0px;
-	 box-shadow: transparent 0px 0px 0px 0px;
+	 background-color: transparent;
+	 border-top-color: transparent;
+	 border-left-color: transparent;
+	 border-right-color: transparent;
+	 border-bottom-color: transparent;
+	 border-top-left-radius: 0px;
+	-moz-border-radius-topleft: 0px;
+	 border-top-right-radius: 0px;
+	-moz-border-radius-topright: 0px;
+	 border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	 border-bottom-right-radius: 0px;
+	-moz-border-radius-bottomright: 0px;
+	 -webkit-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px -10px, transparent 0px 0px 0px 0px inset;
+	 -moz-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px -10px, transparent 0px 0px 0px 0px inset;
+	 box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px -10px, transparent 0px 0px 0px 0px inset;
 	
 	 
 }
@@ -202,10 +221,10 @@
 
 #{id}container12 {
 	 z-index: 5;
+	 width: 551px;
 	 top: 5px;
 	 bottom: 29px;
 	 left: 0px;
-	 right: 5px;
 	
 	 position: absolute;
 	 
@@ -235,10 +254,10 @@
 
 #{id}container11 {
 	 z-index: 4;
+	 width: 551px;
 	 top: 5px;
 	 bottom: 29px;
 	 left: 0px;
-	 right: 5px;
 	
 	 position: absolute;
 	 
@@ -283,15 +302,15 @@
 	 width: 138px;
 	 height: 24px;
 	 top: 418px;
-	 right: 5px;
+	 right: 418px;
 	
 	 position: absolute;
 	 
 }
 
 #{id}tabView1 {
-	 z-index: 27;
-	 width: 568px;
+	 z-index: 3;
+	 width: 561px;
 	 height: 447px;
 	 top: -7px;
 	 left: -3px;
@@ -339,8 +358,8 @@
 	 z-index: 3;
 	 width: 24px;
 	 height: 24px;
-	 top: 5px;
-	 left: 495px;
+	 top: 4px;
+	 left: 484px;
 	
 	 position: absolute;
 	 
@@ -350,8 +369,8 @@
 	 z-index: 4;
 	 width: 24px;
 	 height: 24px;
-	 top: 5px;
-	 left: 521px;
+	 top: 4px;
+	 left: 510px;
 	
 	 position: absolute;
 	 
@@ -392,18 +411,30 @@
 }
 
 #{id}edAlert {
-	 z-index: 31;
-	 width: 246px;
-	 height: 47px;
-	 top: 484px;
-	 left: 2px;
+	 z-index: 2;
+	 width: 141px;
+	 height: 35px;
+	 top: 4px;
+	 left: 45px;
 	
 	 position: absolute;
 	 color: rgb(255, 0, 0);
+	 font-weight: bold;
+	 background-image: none;
 	 text-align: left;
-	 line-height: 30px;
-	 background-image: url('/images/onebit_36.png');
+	 line-height: 15px;
 	 background-repeat: no-repeat;
+	 
+}
+
+#{id}ctnAlert {
+	 z-index: 32;
+	 width: 188px;
+	 height: 47px;
+	 top: 444px;
+	 left: 2px;
+	
+	 position: absolute;
 	 
 }
 

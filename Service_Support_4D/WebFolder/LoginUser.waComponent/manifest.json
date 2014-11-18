@@ -1,1 +1,1 @@
-﻿{"name":"LoginUser","html":"LoginUser.html","scripts":["LoginUser.js","/Scripts/jquery.crypt.js"],"styles":["LoginUser.css"]}
+﻿{"name":"LoginUser","html":"LoginUser.html","scripts":["LoginUser.js","/Scripts/jquery.crypt.js","/Scripts/mousetrap.min.js"],"styles":["LoginUser.css"]}

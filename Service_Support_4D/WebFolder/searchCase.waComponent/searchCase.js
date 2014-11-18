@@ -1,6 +1,7 @@
 ﻿
-(function Component (id) {// @lock
 
+(function Component (id) {// @lock
+	
 // Add the code that needs to be shared between components here
 
 function constructor (id) {
@@ -33,7 +34,7 @@ function constructor (id) {
 		var vdEnd = $$(id+'_tfEndDate').getValue();
 		var vtLineConsult = $$(id+'_cbOptionsSearch').getValue();
 		var vtoptionConsult = $$(id+'_cbOptions').getValue();
-		SearchCases(vtoptionConsult, vtLineConsult, vdStart, vdEnd);		
+		$comp.SearchCases(-1, vtLineConsult, vtoptionConsult, vdStart, vdEnd);		
 	};// @lock
 
 	cbOptions.change = function cbOptions_change (event)// @startlock
@@ -56,14 +57,14 @@ function constructor (id) {
 	};// @lock
 	
 	this.SearchCases = function (i, vtLineConsult, vtoptionConsult, pVdStart, pVdEnd){
-//		debugger;
 		var vQueryArray;
 		var vdStart = new Date(pVdStart);
 		var	vdEnd = new Date(pVdEnd);
 		var optionSelector = i;
 		
 		try{
-			vtoptionConsult = optionChoose(vtLineConsult, optionSelector);			
+			if(optionSelector != -1)
+			vtoptionConsult = optionChoose(vtLineConsult, optionSelector);		
 				switch(vtoptionConsult) {
 					case "SO":
 						vQueryArray = 'So == "'+vtLineConsult+'*"';
@@ -96,30 +97,38 @@ function constructor (id) {
 					case "Tema":
 						vQueryArray = 'Corresponde.Nombre == "'+vtLineConsult+'"';
 						break;
+					case "Título":
+						vQueryArray = 'Nombre == "*'+vtLineConsult+'*"';
+						break;
+					case "Descripción":
+						vQueryArray = 'Descripcion == "*'+vtLineConsult+'*"';
+						break;
+					case "Mensajes":
+						vQueryArray = 'Respondido.Cuerpo == "*'+vtLineConsult+'*"';
+						break;
 				}
 				
 				if(vdStart != "Invalid Date"){
 					vQueryArray += ' && Fecha_Inicio >= '+vdStart.toISOString()+' && Fecha_Final <= '+vdEnd.toISOString();
 				}
-						
+				
 				sources.cASOS.query(vQueryArray, {
 			        onSuccess: function(e){
 			            var vCountCases = sources.cASOS.length;
-						$$(id+'_tfCountCases').setValue(vCountCases);
+//						$$(id+'_tfCountCases').setValue(vCountCases);
 						try{
-							if(vCountCases == 0) throw "Not Entities";
+							if((vCountCases == 0) && (optionSelector != -1)) throw "Not Entities";
 							sources.cASOS.orderBy('Fecha_Final desc, Hora_Final desc');
 			           	}catch(e){
-							if(e == "Not Entities")
-							debugger;
-							if(optionSelector < 5){
+							var opts = waf.widgets.cpmSearchCase.widgets.cbOptions.domNode.firstChild;
+							if(optionSelector <= opts.length+1){
 			           	 		optionSelector++;
 			           	 		waf.widgets.cpmSearchCase.SearchCases(optionSelector, vtLineConsult, vtoptionConsult, pVdStart, pVdEnd);
 			           		}
 			           	}
-			        }
-		        });	  
-		           	
+			        },
+		    		progressBar: waf.widgets.pbSearchedCases.id
+		       	});	  		           	
 	     	image1.click();
 	     	
 		}catch(e){
@@ -131,31 +140,23 @@ function constructor (id) {
 		var option;
 		var vFound;
 		
-		vFound = pTextQuery.charAt(0);
-		
-		if(vFound.toLocaleUpperCase() == "V")
-		option = "Versión";
-		
-		var arrSOs = this.sources.cASOS.GET_LIST_SO().soS;
-		vFound = arrSOs.join(" ").search(pTextQuery.replace(pTextQuery.charAt(0), pTextQuery.charAt(0).toUpperCase()));
-		
-		if(vFound != -1)
-		option = "SO";
-		
-		var arrOption = new Array();
-			arrOption[0] = "Contacto";
-			arrOption[1] = "Empresa";
-			arrOption[2] = "Clasificación";
-			arrOption[3] = "Complejidad";
-			arrOption[4] = "Tema";
-
-		if(option == undefined){
-			result = arrOption[pSelector];
-		}else{
+		if(pSelector == 0){		
+			vFound = pTextQuery.charAt(0);
+			if(vFound.toLocaleUpperCase() == "V")
+			option = "Versión";
+			
+			var arrSOs = this.sources.cASOS.GET_LIST_SO().soS;
+			vFound = arrSOs.join(" ").search(pTextQuery.replace(pTextQuery.charAt(0), pTextQuery.charAt(0).toUpperCase()));
+			
+			if(vFound != -1)
+			option = "SO";
 			result = option;
-		}
+		}	
 		
-		return result;
+		var opts = waf.widgets.cpmSearchCase.widgets.cbOptions.domNode.firstChild;
+		result = opts[pSelector].innerText;
+						
+	return result;
 	};
 }// @startlock
 return constructor;

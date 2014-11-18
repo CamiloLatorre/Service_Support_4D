@@ -1,0 +1,17 @@
+﻿body {
+
+}
+
+#textField1 {
+	 z-index: 2;
+	 width: 130px;
+	 height: 22px;
+	 top: 245px;
+	 left: 119px;
+	
+	 position: absolute;
+	 
+	 data-rel: "popup";
+	 data-transition: "slideup";
+	 class: "ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a";
+}

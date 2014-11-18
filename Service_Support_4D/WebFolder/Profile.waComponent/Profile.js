@@ -43,6 +43,7 @@ function constructor (id) {
 		try{
 			sources.cpmProfile_pERSONAS.save();
 			$$(id).removeComponent();
+			$("#"+id).css("z-index", "-100");
 		}catch(e){
 			$$(id+'_errorDivProfile').setValue(e);
 			$$(id).removeComponent();

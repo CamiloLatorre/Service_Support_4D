@@ -30,11 +30,6 @@ function SetShortCuts(option){
 	afMethod.push(NextMessage);
 	afMethod.push(PreviousMessage);
 	
-//	Mousetrap.bind("up", NextCase);
-//	Mousetrap.bind("down", PreviousCase);
-//	Mousetrap.bind("right", NextMessage);
-//	Mousetrap.bind("left", PreviousMessage);
-
 	function DisbleKey(){	
 	}
 	switch(option) {
@@ -61,7 +56,8 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	var image1 = {};	// @image
 	var RespondidoEvent = {};	// @dataSource
 // @endregion// @lock
-
+	var stampSearchedCases;
+	
 // eventHandlers// @lock
 
 	image4.click = function image4_click (event)// @startlock
@@ -73,18 +69,24 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 	textField1.keyup = function textField1_keyup (event)// @startlock
 	{// @endlock
-		var textSearched = this.getValue();
-		if(textSearched.length >= 3){
-			waf.widgets.cpmSearchCase.loadComponent();
-			waf.widgets.cpmSearchCase.SearchCases(0, textSearched);
-			waf.widgets.cpmSearchCase.removeComponent();
+		if((event.timeStamp-stampSearchedCases) >= 600 || (stampSearchedCases == undefined)){
+			stampSearchedCases = event.timeStamp;
+			console.log(event.timeStamp);
+			var textSearched = this.getValue();
+			if(textSearched.length >= 2){
+				setTimeout (function (){ 
+					waf.widgets.cpmSearchCase.loadComponent();
+					waf.widgets.cpmSearchCase.SearchCases(0, textSearched);
+					waf.widgets.cpmSearchCase.removeComponent();
+				}, 1000);
+				
+			}
 			
-		}
-		
-		if(textSearched.length == 0){
-			waf.widgets.image4.hide();
-		}else{
-			waf.widgets.image4.show();
+			if(textSearched.length == 0){
+				waf.widgets.image4.hide();
+			}else{
+				waf.widgets.image4.show();
+			}
 		}
 		
 	};// @lock
@@ -111,17 +113,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		var menu = waf.widgets.menuStatusCase;
 		menu.move(posX, posY);
 		menu.show();
-//		debugger;
 		setTimeout (function (){menu.hide()}, 1000); 
-	};// @lock
-
-	dataGridCases.onRowDblClick = function dataGridCases_onRowDblClick (event)// @startlock
-	{// @endlock
-//		var posX = window.event.clientX;
-//		var posY = window.event.clientY;
-//		var menu = waf.widgets.menuStatusCase;
-//		menu.move(posX, posY);
-//		menu.show();
 	};// @lock
 
 	image7.click = function image7_click (event)// @startlock
@@ -193,6 +185,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 			}else{
 				waf.widgets.imageNewMsj.show();
 			}
+			
 			switch(complexityCase) {
 				case 1:
 					$$('imageComplexy').setValue('/Images/onebit_50.png');
@@ -210,6 +203,18 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 					$$('imageComplexy').setValue('/Images/onebit_49.png');
 					break;
 			}
+			
+			if(entityCase.Cod_Estado.value == 3){
+				varClosed = new Date(entityCase.Fecha_Final.value.toString()).toLocaleDateString();
+			}else{
+				varClosed = "--/--/--";	
+			}
+	
+			varTime = entityCase.GET_TIME_STM();
+			sources.varTime.sync();
+			sources.varClosed.sync();
+			
+			$$("vtCodeCase").setValue(entityCase.Codigo.getValue());			
 		}catch(e){
 		}
 	};// @lock
@@ -242,7 +247,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	WAF.addListener("menuItem3", "click", menuItem3.click, "WAF");
 	WAF.addListener("menuItem2", "click", menuItem2.click, "WAF");
 	WAF.addListener("menuItem1", "click", menuItem1.click, "WAF");
-	WAF.addListener("dataGridCases", "onRowDblClick", dataGridCases.onRowDblClick, "WAF");
 	WAF.addListener("image7", "click", image7.click, "WAF");
 	WAF.addListener("btnNewCase", "click", btnNewCase.click, "WAF");
 	WAF.addListener("imSearchImportant", "click", imSearchImportant.click, "WAF");
@@ -266,9 +270,7 @@ function setStatusCase(){
 	sources.cASOS.Cod_Estado = parseInt(item.id.substring(8));
 	sources.cASOS.save();
 
-//	debugger;
 	setTimeout (source.cASOS.collectionRefresh(), 2000); 
-	
 	menu.hide();
 	
 }
@@ -310,9 +312,19 @@ function getUrlVars(){
 }
 
 (function() {
-	var url = window.location.href;
-	var index =  getUrlVars()["Index"];
-	if(index == undefined){
-		document.location = "/?callback="+url.substring(22);
+	var url = window.location.pathname;
+	var index = getUrlVars()["Index"];
+	var idCase = getUrlVars()["ID"];
+	var vlnCookie = document.cookie.split(";")[0];
+	vlnCookie = vlnCookie.substr(vlnCookie.indexOf("=")+1);
+	if(index != vlnCookie){
+		document.location = "/?callback="+url+"&ID="+idCase;
+	}else{
+		if(idCase > 0){
+			setTimeout(function(){
+				sources.cASOS.query("Codigo=:1",idCase);
+			}, 1000);
+			
+		}
 	}
 })();

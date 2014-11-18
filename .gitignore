@@ -1,4 +1,4 @@
-# OS X
+﻿# OS X
 *.DS_Store
 ._*
 # Wakanda data
@@ -27,3 +27,4 @@ sessionID.json
 # Wakanda Remote Model Cache
 *.waRemoteModel
 
+/Service_Support_4D/scriptText.js

@@ -9,21 +9,24 @@ function constructor (id) {
 	var $comp = this;
 	this.name = 'Login';
 	// @endregion// @endlock
-
+	
 	this.load = function (data) {// @lock
-		var currentUser = waf.directory.currentUser();
 		
+		var currentUser = waf.directory.currentUser();
+//		
 		if(window.location.href.length <= 26){
 			$$(id).removeComponent();
 			$("#"+id).css("z-index", "-100");
-			$$('tfUserName').hide();
+			$('#tfUserName').hide();
 		}	
+//		
+//		debugger;
 		if( currentUser != null ){
-			$$('tfUserName').show();
+			$('#tfUserName').show();
 			$$(id).removeComponent();      
-			$$('tfUserName').setValue(currentUser.fullName);
-			$$('tfUserName').getLabel().setValue("Bienvenido");
-			$$('btnLogin').setValue("Salir");
+			$('#tfUserName').val(currentUser.fullName);
+			$("#label2").val("Bienvenido");
+			$('#btnLogin').text("Salir");
 		}
 		
 		var left = $(window).innerWidth();
@@ -31,10 +34,16 @@ function constructor (id) {
 		this.move(left/2.5, top/4);
 
 	// @region namespaceDeclaration// @startlock
+	var tfPwd = {};	// @textField
 	var button1 = {};	// @button
 	// @endregion// @endlock
 
 	// eventHandlers// @lock
+
+	tfPwd.change = function tfPwd_change (event)// @startlock
+	{// @endlock
+		button1.click();
+	};// @lock
 
 	button1.click = function button1_click (event)// @startlock
 	{// @endlock
@@ -50,8 +59,10 @@ function constructor (id) {
 			        if(event.result == true){  
 			        	var currentUser = waf.directory.currentUser();
 			        	$$('tfUserName').setValue(currentUser.fullName);
-			           $$(id).removeComponent();
-			           location.reload();
+			        	document.cookie = "session4DSupport="+new Date().getTime()+";path=/";
+			           	Mousetrap.bind("enter", "");
+			           	$$(id).removeComponent();
+			           	location.reload();
 			        } else {
 			        	$$(id+'_errorDiv1').setValue("El nombre de usuario o la contraseña introducidos no son correctos.");
 			        }  
@@ -64,11 +75,15 @@ function constructor (id) {
 			$$(id+'_errorDiv1').setValue("El nombre de usuario y contraseña deben ser mayor a 4 caracteres.");
 		}
 	};// @lock
-
+	
+	if( currentUser != null ){
+		Mousetrap.bind("enter", button1.click);
+	}
 	// @region eventManager// @startlock
+	WAF.addListener(this.id + "_tfPwd", "change", tfPwd.change, "WAF");
 	WAF.addListener(this.id + "_button1", "click", button1.click, "WAF");
 	// @endregion// @endlock
-
+		
 	};// @lock
 
 
