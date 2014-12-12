@@ -3,6 +3,208 @@
 	Changes to this CSS file might be lost when it is regenerated.
 */
 
+#textField1 {
+	 z-index: 17;
+	 width: 26px;
+	 height: 21px;
+	 top: 11px;
+	 right: 39px;
+	
+	 position: absolute;
+	 border-top-color: transparent;
+	 border-top-style: none;
+	 border-top-width: 0px;
+	 border-left-color: transparent;
+	 border-left-style: none;
+	 border-left-width: 0px;
+	 border-right-color: transparent;
+	 border-right-style: none;
+	 border-right-width: 0px;
+	 border-bottom-color: transparent;
+	 border-bottom-style: none;
+	 border-bottom-width: 0px;
+	 background-color: transparent;
+	 background-image: url('/images/package_add.png');
+	 background-repeat: no-repeat;
+	 
+}
+
+#container21 {
+	 z-index: 3;
+	 width: 154px;
+	 height: 390px;
+	 top: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 background-color: transparent;
+	 border-top-color: transparent;
+	 border-top-style: none;
+	 border-top-width: 0px;
+	 border-left-color: transparent;
+	 border-left-style: none;
+	 border-left-width: 0px;
+	 border-right-color: transparent;
+	 border-right-style: none;
+	 border-right-width: 0px;
+	 border-bottom-color: transparent;
+	 border-bottom-style: none;
+	 border-bottom-width: 0px;
+	 -webkit-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, transparent 0px 0px 0px 0px inset;
+	 -moz-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, transparent 0px 0px 0px 0px inset;
+	 box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, transparent 0px 0px 0px 0px inset;
+	
+	 
+}
+
+#container11 {
+	 z-index: 2;
+	 width: 162px;
+	 height: 390px;
+	 top: -1px;
+	 left: -1px;
+	
+	 position: absolute;
+	 background-color: transparent;
+	 border-top-color: transparent;
+	 border-top-style: none;
+	 border-top-width: 0px;
+	 border-left-color: transparent;
+	 border-left-style: none;
+	 border-left-width: 0px;
+	 border-right-color: transparent;
+	 border-right-style: none;
+	 border-right-width: 0px;
+	 border-bottom-color: transparent;
+	 border-bottom-style: none;
+	 border-bottom-width: 0px;
+	 -webkit-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, transparent 0px 0px 0px 0px inset;
+	 -moz-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, transparent 0px 0px 0px 0px inset;
+	 box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, transparent 0px 0px 0px 0px inset;
+	
+	 
+}
+
+#image6 {
+	 z-index: 1;
+	 top: 0px;
+	 bottom: -1px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#view11 {
+	 z-index: 11;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#body11 {
+	 z-index: 10;
+	 top: 44px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#backButton11 {
+	 z-index: 10;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 20px;
+	
+	 position: absolute;
+	 
+}
+
+#title11 {
+	 z-index: 0;
+	 top: 0px;
+	 bottom: -1px;
+	 left: 42px;
+	 right: 30px;
+	
+	 position: absolute;
+	 text-align: center;
+	 background-color: transparent;
+	 
+}
+
+#header11 {
+	 z-index: 11;
+	 height: 44px;
+	 top: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#dataGrid1 .waf-dataGrid-row.waf-widget-odd {
+	 background-color: rgb(170, 212, 255);
+	 
+}
+
+#dataGrid1 .waf-dataGrid-row.waf-widget-even {
+	 text-shadow: transparent 0px 0px 0px;
+	 background-color: rgb(255, 255, 255);
+	 
+}
+
+#richText32 {
+	 z-index: -2;
+	 height: 18px;
+	 top: 20px;
+	 left: 12px;
+	 right: 11px;
+	
+	 position: absolute;
+	 text-align: center;
+	 font-size: 14px;
+	 font-weight: normal;
+	 
+}
+
+#richText31 {
+	 z-index: -2;
+	 height: 16px;
+	 top: 5px;
+	 left: 12px;
+	 right: 12px;
+	
+	 position: absolute;
+	 color: rgb(0, 0, 0);
+	 text-align: center;
+	 
+}
+
+#richText30 {
+	 z-index: 3;
+	 height: 18px;
+	 top: 22px;
+	 left: 12px;
+	 right: 12px;
+	
+	 position: absolute;
+	 text-align: center;
+	 font-size: 14px;
+	 font-weight: normal;
+	 
+}
+
 .waf-widget.waf-clone-ctnItemMenu {
 	 position: absolute;
 	 border-top-style: none;
@@ -31,7 +233,7 @@
 	 width: 24px;
 	 height: 24px;
 	 top: 31px;
-	 left: 278px;
+	 right: 9px;
 	
 	 position: absolute;
 	 
@@ -53,7 +255,7 @@
 	 height: 16px;
 	 top: 14px;
 	 left: -38px;
-	 right: 323px;
+	 right: 321px;
 	
 	 position: absolute;
 	 
@@ -148,7 +350,7 @@
 }
 
 #icon6 {
-	 z-index: 5;
+	 z-index: 7;
 	 width: 24px;
 	 height: 24px;
 	 top: 10px;
@@ -184,8 +386,8 @@
 	 z-index: 10;
 	 top: 0px;
 	 bottom: 0px;
-	 left: 0px;
-	 right: 0px;
+	 left: 67px;
+	 right: 70px;
 	
 	 position: absolute;
 	 
@@ -214,7 +416,7 @@
 }
 
 #image3 {
-	 z-index: 4;
+	 z-index: 7;
 	 width: 24px;
 	 height: 24px;
 	 top: 18px;
@@ -323,53 +525,11 @@
 	 
 }
 
-#richText26 {
-	 z-index: -2;
-	 width: 290px;
-	 height: 18px;
-	 top: 6px;
-	 left: 20px;
-	
-	 position: absolute;
-	 text-align: center;
-	 color: rgb(0, 0, 0);
-	 
-}
-
-#textField8 {
-	 z-index: -2;
-	 width: 291px;
-	 height: 20px;
-	 top: 18px;
-	 left: 19px;
-	
-	 position: absolute;
-	 background-color: transparent;
-	 text-shadow: rgba(255, 255, 255, 0) 0px 0px 0px;
-	 border-top-style: none;
-	 border-top-width: 0px;
-	 border-left-style: none;
-	 border-left-width: 0px;
-	 border-right-style: none;
-	 border-right-width: 0px;
-	 border-bottom-style: none;
-	 border-bottom-width: 0px;
-	 -webkit-box-shadow: transparent 0px 0px 2px 0px inset;
-	 -moz-box-shadow: transparent 0px 0px 2px 0px inset;
-	 box-shadow: transparent 0px 0px 2px 0px inset;
-	
-	 font-size: 12px;
-	 font-style: normal;
-	 text-align: center;
-	 color: rgb(0, 0, 0);
-	 
-}
-
 #icon5 {
 	 z-index: 10;
 	 width: 25px;
 	 height: 25px;
-	 top: 9px;
+	 top: 8px;
 	 right: 11px;
 	
 	 position: absolute;
@@ -389,13 +549,25 @@
 
 #textField7 {
 	 z-index: 2;
-	 width: 333px;
+	 width: 324px;
 	 top: -2px;
-	 bottom: -13px;
+	 bottom: 3px;
 	 left: -8px;
 	
 	 position: absolute;
 	 font-size: 14px;
+	 border-top-color: transparent;
+	 border-top-style: none;
+	 border-top-width: 0px;
+	 border-left-color: transparent;
+	 border-left-style: none;
+	 border-left-width: 0px;
+	 border-right-color: transparent;
+	 border-right-style: none;
+	 border-right-width: 0px;
+	 border-bottom-color: transparent;
+	 border-bottom-style: none;
+	 border-bottom-width: 0px;
 	 
 }
 
@@ -425,11 +597,12 @@
 	 z-index: 9;
 	 top: 0px;
 	 bottom: 0px;
-	 left: 0px;
-	 right: 0px;
+	 left: 41px;
+	 right: 68px;
 	
 	 position: absolute;
 	 font-size: 14px;
+	 background-image: none;
 	 
 }
 
@@ -515,8 +688,8 @@
 
 #container5 {
 	 z-index: 1;
-	 height: 425px;
 	 top: 5px;
+	 bottom: 4px;
 	 left: 5px;
 	 right: 7px;
 	
@@ -544,6 +717,7 @@
 	 left: 20px;
 	
 	 position: absolute;
+	 background-color: transparent;
 	 
 }
 
@@ -551,8 +725,8 @@
 	 z-index: 8;
 	 top: 0px;
 	 bottom: 0px;
-	 left: 0px;
-	 right: 0px;
+	 left: 44px;
+	 right: 70px;
 	
 	 position: absolute;
 	 font-size: 14px;
@@ -638,7 +812,8 @@
 
 #matrix2 .waf-widget.waf-clone-richText25 {
 	 position: absolute;
-	 font-size: 11px;
+	 text-align: justify;
+	 font-size: 10px;
 	 
 }
 
@@ -656,9 +831,9 @@
 #matrix2 {
 	 z-index: 2;
 	 top: 45px;
-	 bottom: 24px;
-	 left: 3px;
-	 right: 4px;
+	 bottom: -1px;
+	 left: 1px;
+	 right: -2px;
 	
 	 position: absolute;
 	 
@@ -669,10 +844,11 @@
 	 top: 25px;
 	 bottom: 6px;
 	 left: 5px;
-	 right: 38px;
+	 right: 40px;
 	
 	 position: absolute;
-	 font-size: 11px;
+	 text-align: justify;
+	 font-size: 10px;
 	 
 }
 
@@ -701,8 +877,8 @@
 
 #container18 {
 	 z-index: 1;
-	 width: 314px;
-	 height: 74px;
+	 width: 313px;
+	 height: 69px;
 	 top: 1px;
 	 left: 1px;
 	
@@ -747,9 +923,9 @@
 #title7 {
 	 z-index: 7;
 	 top: 0px;
-	 bottom: -9px;
-	 left: 0px;
-	 right: -2px;
+	 bottom: 1px;
+	 left: 42px;
+	 right: 38px;
 	
 	 position: absolute;
 	 font-size: 14px;
@@ -780,8 +956,8 @@
 
 #container17 {
 	 z-index: 8;
-	 height: 128px;
 	 top: 272px;
+	 bottom: 2px;
 	 left: 5px;
 	 right: 5px;
 	
@@ -810,6 +986,7 @@
 	 right: 10px;
 	
 	 position: absolute;
+	 text-align: justify;
 	 
 }
 
@@ -980,7 +1157,7 @@
 
 #section2 {
 	 z-index: 3;
-	 height: 204px;
+	 height: 201px;
 	 top: 60px;
 	 left: 5px;
 	 right: 5px;
@@ -991,10 +1168,10 @@
 
 #container3 {
 	 z-index: 1;
-	 top: 5px;
-	 bottom: 7px;
-	 left: 5px;
-	 right: 7px;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
 	
 	 position: absolute;
 	 background-color: rgba(255, 255, 255, 0.496094);
@@ -1027,8 +1204,8 @@
 	 z-index: 6;
 	 top: 0px;
 	 bottom: 0px;
-	 left: 0px;
-	 right: 0px;
+	 left: 40px;
+	 right: 66px;
 	
 	 position: absolute;
 	 font-size: 14px;
@@ -1073,7 +1250,7 @@
 	 height: 16px;
 	 top: 13px;
 	 left: -40px;
-	 right: 323px;
+	 right: 320px;
 	
 	 position: absolute;
 	 
@@ -1179,43 +1356,14 @@
 
 #richText3 {
 	 z-index: -2;
-	 width: 290px;
 	 height: 16px;
 	 top: 7px;
 	 left: 12px;
+	 right: 13px;
 	
 	 position: absolute;
 	 color: rgb(0, 0, 0);
 	 text-align: center;
-	 
-}
-
-#textField1 {
-	 z-index: -2;
-	 width: 291px;
-	 height: 20px;
-	 top: 19px;
-	 left: 11px;
-	
-	 position: absolute;
-	 background-color: transparent;
-	 text-shadow: rgba(255, 255, 255, 0) 0px 0px 0px;
-	 border-top-style: none;
-	 border-top-width: 0px;
-	 border-left-style: none;
-	 border-left-width: 0px;
-	 border-right-style: none;
-	 border-right-width: 0px;
-	 border-bottom-style: none;
-	 border-bottom-width: 0px;
-	 -webkit-box-shadow: transparent 0px 0px 2px 0px inset;
-	 -moz-box-shadow: transparent 0px 0px 2px 0px inset;
-	 box-shadow: transparent 0px 0px 2px 0px inset;
-	
-	 font-size: 12px;
-	 font-style: normal;
-	 text-align: center;
-	 color: rgb(0, 0, 0);
 	 
 }
 
@@ -1472,8 +1620,8 @@
 	 z-index: 1;
 	 top: 0px;
 	 bottom: 0px;
-	 left: 0px;
-	 right: 0px;
+	 left: 68px;
+	 right: 73px;
 	
 	 position: absolute;
 	 
@@ -1554,7 +1702,7 @@
 	 z-index: 1;
 	 top: 0px;
 	 bottom: 0px;
-	 left: 0px;
+	 left: 37px;
 	 right: 0px;
 	
 	 position: absolute;
@@ -1605,17 +1753,6 @@
 	 
 }
 
-#title3 {
-	 z-index: 1;
-	 top: 0px;
-	 bottom: 0px;
-	 left: 0px;
-	 right: 0px;
-	
-	 position: absolute;
-	 
-}
-
 #header3 {
 	 z-index: 1;
 	 height: 44px;
@@ -1657,18 +1794,6 @@
 	 left: 20px;
 	
 	 position: absolute;
-	 
-}
-
-#title2 {
-	 z-index: 1;
-	 top: 0px;
-	 bottom: 0px;
-	 left: 0px;
-	 right: 0px;
-	
-	 position: absolute;
-	 background-image: none;
 	 
 }
 
@@ -1746,10 +1871,10 @@
 
 #matrix1 {
 	 z-index: 1;
-	 width: 315px;
-	 height: 433px;
-	 top: 0px;
-	 left: 2px;
+	 top: -3px;
+	 bottom: 3px;
+	 left: 0px;
+	 right: 0px;
 	
 	 position: absolute;
 	 border-top-color: transparent;
@@ -1762,10 +1887,10 @@
 
 #richText2 {
 	 z-index: 4;
-	 width: 290px;
-	 height: 16px;
+	 height: 20px;
 	 top: 4px;
 	 left: 12px;
+	 right: 12px;
 	
 	 position: absolute;
 	 color: rgb(0, 0, 0);
@@ -1838,13 +1963,17 @@
 	 right: 0px;
 	
 	 position: absolute;
+	 -webkit-box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+	 -moz-box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+	 box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+	
 	 
 }
 
 #footer1 {
 	 z-index: 2;
-	 height: 47px;
-	 bottom: 0px;
+	 height: 0px;
+	 bottom: 43px;
 	 left: 0px;
 	 right: 0px;
 	
@@ -1860,34 +1989,10 @@
 	 right: 0px;
 	
 	 position: absolute;
-	 
-}
-
-#tfUserName {
-	 z-index: 3;
-	 width: 289px;
-	 height: 16px;
-	 top: 20px;
-	 left: 12px;
+	 -webkit-box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+	 -moz-box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+	 box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
 	
-	 position: absolute;
-	 background-color: transparent;
-	 text-shadow: rgba(255, 255, 255, 0) 0px 0px 0px;
-	 border-top-style: none;
-	 border-top-width: 0px;
-	 border-left-style: none;
-	 border-left-width: 0px;
-	 border-right-style: none;
-	 border-right-width: 0px;
-	 border-bottom-style: none;
-	 border-bottom-width: 0px;
-	 -webkit-box-shadow: transparent 0px 0px 2px 0px inset;
-	 -moz-box-shadow: transparent 0px 0px 2px 0px inset;
-	 box-shadow: transparent 0px 0px 2px 0px inset;
-	
-	 font-size: 12px;
-	 text-align: center;
-	 color: rgb(0, 0, 0);
 	 
 }
 
@@ -1895,8 +2000,8 @@
 	 z-index: 1;
 	 width: 81px;
 	 height: 98px;
-	 top: 22px;
-	 left: 22px;
+	 top: 19px;
+	 left: 19px;
 	
 	 position: absolute;
 	 border-top-style: none;
@@ -1916,13 +2021,13 @@
 }
 
 #nvAppSupport {
-	 z-index: 1;
-	 top: 1px;
-	 bottom: -61px;
+	 top: 0px;
+	 bottom: 0px;
 	 left: 0px;
 	 right: 0px;
 	
 	 position: absolute;
+	 background-color: transparent;
 	 
 }
 
@@ -2031,7 +2136,7 @@
 }
 
 #pMenuYear {
-	 z-index: 3;
+	 z-index: 2;
 	 width: 70px;
 	 height: 143px;
 	 top: 8px;
@@ -2042,7 +2147,7 @@
 }
 
 #Loading {
-	 z-index: 4;
+	 z-index: 3;
 	 width: 32px;
 	 height: 32px;
 	 top: 205px;
@@ -2055,9 +2160,9 @@
 #spaceChartPie {
 	 z-index: 2;
 	 top: 4px;
-	 bottom: 52px;
-	 left: -1px;
-	 right: -5px;
+	 bottom: 106px;
+	 left: 0px;
+	 right: 1px;
 	
 	 position: absolute;
 	 
@@ -2066,7 +2171,7 @@
 #spaceChartColumn {
 	 z-index: 1;
 	 top: 0px;
-	 bottom: 0px;
+	 bottom: 105px;
 	 left: 1px;
 	 right: 0px;
 	
@@ -2103,6 +2208,54 @@
 	 box-shadow: rgb(0, 0, 0) 0px 0px 2px 0px inset, rgb(204, 204, 204) 10px -17px 41px 24px;
 	
 	 background-image: none;
+	 
+}
+
+#tfUserName {
+	 z-index: 5;
+	 height: 18px;
+	 top: 21px;
+	 left: 12px;
+	 right: 12px;
+	
+	 position: absolute;
+	 text-align: center;
+	 font-size: 14px;
+	 font-weight: normal;
+	 
+}
+
+#iAttachemnt {
+	 z-index: 10;
+	 width: 24px;
+	 height: 24px;
+	 top: 9px;
+	 right: 38px;
+	
+	 position: absolute;
+	 
+}
+
+#imgAttachP {
+	 z-index: 1;
+	 width: 24px;
+	 height: 24px;
+	 top: 185px;
+	 left: 4px;
+	
+	 position: absolute;
+	 
+}
+
+#imgAttachN {
+	 z-index: 1;
+	 width: 24px;
+	 height: 24px;
+	 top: 160px;
+	 right: 4px;
+	
+	 position: absolute;
+	 background-color: transparent;
 	 
 }
 

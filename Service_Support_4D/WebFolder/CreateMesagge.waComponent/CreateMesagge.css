@@ -3,12 +3,78 @@
 	Changes to this CSS file might be lost when it is regenerated.
 */
 
+#{id}container4 {
+	 z-index: 5;
+	 width: 260px;
+	 height: 50px;
+	 top: 35px;
+	 left: -1px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}button4 {
+	 z-index: 4;
+	 width: 20px;
+	 height: 22px;
+	 top: 3px;
+	 right: 80px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}button3 {
+	 z-index: 3;
+	 width: 20px;
+	 height: 22px;
+	 top: 3px;
+	 right: 57px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}button2 {
+	 z-index: 2;
+	 width: 25px;
+	 height: 22px;
+	 top: 3px;
+	 right: 29px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}button1 {
+	 z-index: 1;
+	 width: 23px;
+	 height: 22px;
+	 top: 3px;
+	 right: 3px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}fileUpload1 {
+	 z-index: 5;
+	 width: 260px;
+	 height: 35px;
+	 top: 1px;
+	 left: 1px;
+	
+	 position: absolute;
+	 
+}
+
 #{id}richText3 {
 	 z-index: 3;
-	 width: 106px;
+	 width: 74px;
 	 height: 16px;
-	 top: 9px;
-	 left: 188px;
+	 top: 1px;
+	 left: 259px;
 	
 	 position: absolute;
 	 color: rgb(255, 255, 255);
@@ -62,8 +128,8 @@
 	 z-index: 1;
 	 width: 24px;
 	 height: 24px;
-	 top: 6px;
-	 left: 300px;
+	 top: 11px;
+	 left: 301px;
 	
 	 position: absolute;
 	 
@@ -73,8 +139,8 @@
 	 z-index: 2;
 	 width: 24px;
 	 height: 24px;
-	 top: 6px;
-	 left: 329px;
+	 top: 11px;
+	 left: 330px;
 	
 	 position: absolute;
 	 

@@ -3,6 +3,83 @@
 	Changes to this CSS file might be lost when it is regenerated.
 */
 
+#{id}container1 {
+	 z-index: 5;
+	 width: 442px;
+	 height: 50px;
+	 top: 35px;
+	 left: -1px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}button4 {
+	 z-index: 4;
+	 width: 20px;
+	 height: 22px;
+	 top: 3px;
+	 right: 80px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}button3 {
+	 z-index: 3;
+	 width: 20px;
+	 height: 22px;
+	 top: 3px;
+	 right: 57px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}button2 {
+	 z-index: 2;
+	 width: 25px;
+	 height: 22px;
+	 top: 3px;
+	 right: 29px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}button1 {
+	 z-index: 1;
+	 width: 23px;
+	 height: 22px;
+	 top: 3px;
+	 right: 3px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}label1 {
+	 z-index: 15;
+	 width: 48px;
+	 height: 13px;
+	 top: 376px;
+	 left: 27px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}fileUpload1 {
+	 z-index: 15;
+	 width: 442px;
+	 height: 35px;
+	 top: 365px;
+	 left: 80px;
+	
+	 position: absolute;
+	 
+}
+
 #{id}image2 {
 	 z-index: 1;
 	 width: 44px;
@@ -26,10 +103,10 @@
 }
 
 #{id}container14 {
-	 z-index: 30;
+	 z-index: 32;
 	 width: 553px;
 	 height: 31px;
-	 top: 412px;
+	 top: 416px;
 	 left: 2px;
 	
 	 position: absolute;
@@ -63,10 +140,10 @@
 
 #{id}label32 {
 	 z-index: 10;
-	 width: 22px;
-	 height: 13px;
-	 top: 64px;
-	 left: 387px;
+	 width: 25px;
+	 height: 16px;
+	 top: 63px;
+	 left: 384px;
 	
 	 position: absolute;
 	 font-weight: bold;
@@ -98,8 +175,8 @@
 #{id}label31 {
 	 z-index: 8;
 	 width: 75px;
-	 height: 13px;
-	 top: 24px;
+	 height: 16px;
+	 top: 22px;
 	 left: 25px;
 	
 	 position: absolute;
@@ -111,8 +188,8 @@
 #{id}label30 {
 	 z-index: 7;
 	 width: 75px;
-	 height: 13px;
-	 top: 64px;
+	 height: 16px;
+	 top: 63px;
 	 left: 24px;
 	
 	 position: absolute;
@@ -134,10 +211,10 @@
 
 #{id}label29 {
 	 z-index: 5;
-	 width: 44px;
-	 height: 13px;
-	 top: 64px;
-	 left: 244px;
+	 width: 45px;
+	 height: 16px;
+	 top: 63px;
+	 left: 243px;
 	
 	 position: absolute;
 	 font-weight: bold;
@@ -196,8 +273,8 @@
 #{id}label25 {
 	 z-index: 28;
 	 width: 75px;
-	 height: 13px;
-	 top: 67px;
+	 height: 16px;
+	 top: 65px;
 	 left: 19px;
 	
 	 position: absolute;
@@ -209,9 +286,9 @@
 
 #{id}label24 {
 	 z-index: 27;
-	 width: 67px;
-	 height: 13px;
-	 top: 155px;
+	 width: 66px;
+	 height: 16px;
+	 top: 152px;
 	 left: 19px;
 	
 	 position: absolute;
@@ -221,10 +298,10 @@
 
 #{id}container12 {
 	 z-index: 5;
-	 width: 551px;
 	 top: 5px;
 	 bottom: 29px;
 	 left: 0px;
+	 right: 10px;
 	
 	 position: absolute;
 	 
@@ -254,10 +331,10 @@
 
 #{id}container11 {
 	 z-index: 4;
-	 width: 551px;
 	 top: 5px;
 	 bottom: 29px;
 	 left: 0px;
+	 right: 10px;
 	
 	 position: absolute;
 	 
@@ -322,8 +399,8 @@
 #{id}label26 {
 	 z-index: 29;
 	 width: 75px;
-	 height: 13px;
-	 top: 23px;
+	 height: 16px;
+	 top: 21px;
 	 left: 19px;
 	
 	 position: absolute;
@@ -378,10 +455,10 @@
 
 #{id}detailMsg {
 	 z-index: 12;
-	 width: 494px;
-	 height: 236px;
+	 width: 496px;
+	 height: 197px;
 	 top: 116px;
-	 left: 25px;
+	 left: 26px;
 	
 	 position: absolute;
 	 
@@ -428,7 +505,7 @@
 }
 
 #{id}ctnAlert {
-	 z-index: 32;
+	 z-index: 31;
 	 width: 188px;
 	 height: 47px;
 	 top: 444px;

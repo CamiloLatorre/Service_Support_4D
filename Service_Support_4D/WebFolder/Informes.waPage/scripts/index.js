@@ -47,9 +47,9 @@ function refreshDataInform(pYear){
 	$$("vtYear").setValue(new Date().getFullYear());
 	$$("vtYear").setValue(pYear);	
 
-	arrCasosRespondidos = new Array;
 	sources.eMPRESAS.Info_Informe_Casos("Empresas", pYear, {
 		onSuccess: function(event){
+			arrCasosRespondidos = new Array;
 			event.result.Casos.forEach(function(valor, i){
 
 				
@@ -105,59 +105,51 @@ function refreshDataInform(pYear){
 
 function createChartColumn(){
 	var chart;
-		     // SERIAL CHART
-            chart = new AmCharts.AmSerialChart();
-            chart.dataProvider = arrCasosRespondidos;
-            chart.categoryField = "Valor";
-			chart.colors = ["#04B486"]; 
-			   
-            // the following two lines makes chart 3D
-            chart.depth3D = 15;
-            chart.angle = 40;
+     // SERIAL CHART
+    chart = new AmCharts.AmSerialChart();
+    chart.dataProvider = arrCasosRespondidos;
+    chart.categoryField = "Valor";
+	chart.colors = ["#04B486"]; 
+	   
+    // the following two lines makes chart 3D
+    chart.depth3D = 15;
+    chart.angle = 40;
 
-            // AXES
-            // category
-            var categoryAxis = chart.categoryAxis;
-            categoryAxis.labelRotation = 90;
-            categoryAxis.dashLength = 5;
-            categoryAxis.gridPosition = "start";
+    // AXES
+    // category
+    var categoryAxis = chart.categoryAxis;
+    categoryAxis.labelRotation = 90;
+    categoryAxis.dashLength = 5;
+    categoryAxis.gridPosition = "start";
 
-            // value
-            var valueAxis = new AmCharts.ValueAxis();
-            valueAxis.title = "Incidencias";
-            valueAxis.dashLength = 5;
-            chart.addValueAxis(valueAxis);
+    // value
+    var valueAxis = new AmCharts.ValueAxis();
+    valueAxis.title = "Incidencias";
+    valueAxis.dashLength = 5;
+    chart.addValueAxis(valueAxis);
 
-            // GRAPH
-            var graph = new AmCharts.AmGraph();
-            graph.valueField = "Tam";
-            graph.balloonText = "<span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>";
-            graph.type = "column";
-            graph.lineAlpha = 0;
-            graph.fillAlphas = 1;
-            chart.addGraph(graph);
+    // GRAPH
+    var graph = new AmCharts.AmGraph();
+    graph.valueField = "Tam";
+    graph.balloonText = "<span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>";
+    graph.type = "column";
+    graph.lineAlpha = 0;
+    graph.fillAlphas = 1;
+    chart.addGraph(graph);
 
-            // CURSOR
-            var chartCursor = new AmCharts.ChartCursor();
-            chartCursor.cursorAlpha = 0;
-            chartCursor.zoomable = true;
-            chartCursor.categoryBalloonEnabled = false;
-            chart.addChartCursor(chartCursor);
-			
-
-//            for(var i=0; i < chart.columnsArray.length; i++){
-//            	if(i>5){
-//            		chart.columnsArray[i].bcolor = "#FFBF00";
-//            		chart.columnsArray[i].colors = "#FFBF00";
-//            	}
-//            };
-            // WRITE
-            chart.write("spaceChartColumn");
-            
+    // CURSOR
+    var chartCursor = new AmCharts.ChartCursor();
+    chartCursor.cursorAlpha = 0;
+    chartCursor.zoomable = true;
+    chartCursor.categoryBalloonEnabled = false;
+    chart.addChartCursor(chartCursor);
+	
+    chart.write("spaceChartColumn");
+        
 }
 
 function creatChartPie(){
-	chart = new AmCharts.AmPieChart();
+	var chart = new AmCharts.AmPieChart();
     // title of the chart
     chart.addTitle("", 16);
 
@@ -199,7 +191,7 @@ function getUrlVars(){
 		if(year != ""){
 			setTimeout(function(){
 				refreshDataInform(year);
-				waf.widgets.combobox1.setValue(year);
+				
 			}, 500);
 			
 		}

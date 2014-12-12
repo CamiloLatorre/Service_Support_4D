@@ -1,0 +1,10 @@
+﻿#cpmNewCase_container1{
+	z-index: 19;
+	left: 0px;
+	top: 20px;
+}
+
+#cpmNewCase_container1::before{
+	left: 85%;
+	top: -5px;
+}

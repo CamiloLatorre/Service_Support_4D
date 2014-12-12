@@ -1,0 +1,175 @@
+﻿#nvAppSupport {
+	 z-index: 1;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#footer1 {
+	 z-index: 2;
+	 height: 43px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#mainText1 {
+	 z-index: 1;
+	 height: 20px;
+	 top: 8px;
+	 left: 20px;
+	 right: 115px;
+	
+	 position: absolute;
+	 
+}
+
+#numberValue1 {
+	 z-index: 6;
+	 width: 108px;
+	 height: 16px;
+	 top: 12px;
+	 right: 0px;
+	
+	 position: absolute;
+	 
+}
+
+button[data-text="Back"]{
+	left: 0px;
+}
+
+#section2 div > input, #section1 div > input {
+	left: 60px;	
+}
+
+#mainContainer-matrix2 > div{
+	width: 100%;
+}
+
+#backButton1 {
+	 z-index: 10;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#backButton2 {
+	 z-index: 10;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#backButton3 {
+	 z-index: 10;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#backButton4 {
+	 z-index: 10;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#backButton5 {
+	 z-index: 10;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#backButton6 {
+	 z-index: 10;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#backButton7 {
+	 z-index: 10;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#backButton8 {
+	 z-index: 10;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#backButton9 {
+	 z-index: 10;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+#backButton10 {
+	 z-index: 10;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}
+
+#backButton11 {
+	 z-index: 10;
+	 width: 50px;
+	 height: 29px;
+	 top: 7px;
+	 left: 0px;
+	
+	 position: absolute;
+	 
+}

@@ -10,10 +10,12 @@ function constructor (id) {
 	this.name = 'NewCase';
 	// @endregion// @endlock
 	var OK =false;
+	var objAttach = {};
 	
 	this.load = function (data) {// @lock
 
 	// @region namespaceDeclaration// @startlock
+	var fileUpload1 = {};	// @fileUpload
 	var tfDescription = {};	// @textField
 	var imgSendCase = {};	// @image
 	var imgNextStep = {};	// @image
@@ -21,43 +23,59 @@ function constructor (id) {
 	// @endregion// @endlock
 
 	// eventHandlers// @lock
+
+	fileUpload1.filesUploaded = function fileUpload1_filesUploaded (event)// @startlock
+	{// @endlock
+		var blob = this.getFiles()[0];
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			objAttach.Attachment = e.target.result;
+		};
+		objAttach.name  = blob.name;
+		if(blob.type.indexOf("image") != -1){
+			objAttach.kind = "Imagen";
+		}else{
+			objAttach.kind = blob.type;
+		}
+		reader.readAsDataURL(blob);
+	};// @lock
 	
 	var left = $(window).innerWidth();
-	var top = $(window).innerHeight(); // returns height of browser viewport
+	var top = $(window).innerHeight();
 	this.move(left/4, top/4);
 	
 	try{
 		SetShortCuts('Disable');
+		$$(id+'_menuBar1').disable(2);
+		
+		$comp.sources.cASOS.addNewElement();
+		$comp.sources.Respondido.addNewElement();
+		
+		var atListSO = this.sources.cASOS.GET_LIST_SO().soS;
+		for (var i = 0; i < atListSO.length; i++) {
+			$$(id+'_cbListSO').addOption(atListSO[i]);
+		};
+				
+		var atListVersion = this.sources.cASOS.GET_LIST_VERSION().Versiones;
+		for (var i = 0; i < atListVersion.length; i++) {
+			$$(id+'_cbListVersion').addOption(atListVersion[i]);
+		};
+		
+		this.sources.cASOS.getCurrentElement().So.setValue(atListSO[0]);
+		this.sources.cASOS.getCurrentElement().Version.setValue(atListVersion[0]);
+	
 	}catch(e){}
-
-	$$(id+'_menuBar1').disable(2);
-	this.sources.cASOS.addNewElement();
-
-	var atListSO = this.sources.cASOS.GET_LIST_SO().soS;
-	for (var i = 0; i < atListSO.length; i++) {
-		$$(id+'_cbListSO').addOption(atListSO[i]);
-	};
-			
-	var atListVersion = this.sources.cASOS.GET_LIST_VERSION().Versiones;
-	for (var i = 0; i < atListVersion.length; i++) {
-		$$(id+'_cbListVersion').addOption(atListVersion[i]);
-	};
-	
-	this.sources.cASOS.getCurrentElement().So.setValue(atListSO[0]);
-	this.sources.cASOS.getCurrentElement().Version.setValue(atListVersion[0]);
-	
 		
 	tfDescription.change = function tfDescription_change (event)// @startlock
 	{// @endlock
 		var enabledNextStep = 0;
-		
 		switch(enabledNextStep) {
 			case 0:
-				if(this.getValue().length < 8)
+				if($$($comp.id+'_tfDescription').getValue().length < 8)
 				break;
 			case 1:
 				var titleSize = $$($comp.id+"_tfName").getValue().length;
-				if(( titleSize <= 3) && (titleSize < 50))
+				if(( titleSize <= 3) && (titleSize > 50))
 				break;
 			case 2:
 				$comp.widgets.imgNextStep.enable();
@@ -86,6 +104,7 @@ function constructor (id) {
 				onSuccess:function(entity){
 				 	entity.dataSource.Adquirido.load({					
 				    	onSuccess: function(relation){
+							debugger;
 							var Respondido = sources.cpmNewCase_Respondido;
 							var vCase = sources.cpmNewCase_cASOS.getCurrentElement();
 							var Producto = sources.cpmNewCase_pRODUCTOS.getCurrentElement();
@@ -93,6 +112,8 @@ function constructor (id) {
 							var tipoPersona = currentPerson.Cod_Tipo.value;
 							vCase.Originado.setValue(Producto);
 							vCase.Obtenido.setValue(currentPerson);		
+							vCase.Fecha_Inicio.setValue(new Date());
+							vCase.Hora_Inicio.setValue(vCase.Fecha_Inicio.getValue().getTime());
 							Respondido.Fecha = new Date();
 							Respondido.Hora = Respondido.Fecha.getTime();
 							Respondido.Contesto = currentPerson;
@@ -106,12 +127,13 @@ function constructor (id) {
 							}
 							
 							try{
-								Respondido.save();
-								sources.cASOS.all();
-								sources.cASOS.orderBy('Fecha_Final desc, Hora_Final desc');
-								$$(id).removeComponent();
-								SetShortCuts('Enable');
-								location.reload();
+								Respondido.save({
+									onSuccess: function(event){
+										objAttach.IDMsg = event.dataSource.Codigo;
+										Respondido.GS_CREATE_ATTACHMENT(objAttach);
+										location.reload();
+									}
+								});
 							}catch(e){}
 	    				}
 	    			});
@@ -132,6 +154,7 @@ function constructor (id) {
 	
 	imgNextStep.click = function imgNextStep_click (event)// @startlock
 	{// @endlock
+		tfDescription.change();
 		if(!OK){
 			$$($comp.id+'_ctnAlert').show();
 			$$($comp.id+'_ctnAlert').move(200, 300);
@@ -171,6 +194,7 @@ function constructor (id) {
 	};// @lock
 
 	// @region eventManager// @startlock
+	WAF.addListener(this.id + "_fileUpload1", "filesUploaded", fileUpload1.filesUploaded, "WAF");
 	WAF.addListener(this.id + "_tfDescription", "change", tfDescription.change, "WAF");
 	WAF.addListener(this.id + "_imgSendCase", "click", imgSendCase.click, "WAF");
 	WAF.addListener(this.id + "_imgNextStep", "click", imgNextStep.click, "WAF");

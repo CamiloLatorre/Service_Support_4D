@@ -8,7 +8,7 @@
 	<service name="webApp" modulePath="services/webApp" enabled="true" autoStart="true"/>
 	<service name="rpc" modulePath="services/rpc" enabled="true" autoStart="true" proxyPattern="^/rpc-proxy/" publishInClientGlobalNamespace="true"/>
 	<service name="dataStore" modulePath="services/dataStore" enabled="true" autoStart="true"/>
-	<service name="upload" modulePath="services/upload" enabled="true" autoStart="true"/>
+	<service name="upload" modulePath="services/upload" enabled="true" autoStart="true" allowedExtensions="gif;jpeg;jpg;png;bmp;svg;zip;docx;doc;4db"/>
 	<service name="Git HTTP Service" modulePath="services/waf-git/waf-GitService" enabled="true"/>
 	<service name="Builder handler" modulePath="services/builder-service" enabled="true" max-age="0" hardCache="false" autoStart="true"/>
 	<service name="Print service" modulePath="services/print" autoStart="true" enabled="false"/>

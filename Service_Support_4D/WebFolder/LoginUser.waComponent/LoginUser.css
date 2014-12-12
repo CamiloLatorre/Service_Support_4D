@@ -3,6 +3,35 @@
 	Changes to this CSS file might be lost when it is regenerated.
 */
 
+#{id}container3 {
+	 z-index: 2;
+	 width: 51px;
+	 height: 91px;
+	 top: -18px;
+	 left: 7px;
+	
+	 position: absolute;
+	 background-color: transparent;
+	 background-image: url('/images/logo4D.jpg');
+	 border-top-color: transparent;
+	 border-top-style: none;
+	 border-top-width: 0px;
+	 border-left-color: transparent;
+	 border-left-style: none;
+	 border-left-width: 0px;
+	 border-right-color: transparent;
+	 border-right-style: none;
+	 border-right-width: 0px;
+	 border-bottom-color: transparent;
+	 border-bottom-style: none;
+	 border-bottom-width: 0px;
+	 -webkit-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, transparent 0px 0px 0px 0px inset;
+	 -moz-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, transparent 0px 0px 0px 0px inset;
+	 box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, transparent 0px 0px 0px 0px inset;
+	 background-repeat: no-repeat;
+	 
+}
+
 #{id}tfPwd.waf-state-focus {
 	 border-top-left-radius: 32px;
 	-moz-border-radius-topleft: 32px;
@@ -70,21 +99,6 @@
 	-moz-border-radius-bottomleft: 80px;
 	 border-bottom-right-radius: 80px;
 	-moz-border-radius-bottomright: 80px;
-	 
-}
-
-#{id}image1 {
-	 z-index: 1;
-	 width: 52px;
-	 height: 71px;
-	 top: -16px;
-	 left: 7px;
-	
-	 position: absolute;
-	 border-top-color: transparent;
-	 border-left-color: transparent;
-	 border-right-color: transparent;
-	 border-bottom-color: transparent;
 	 
 }
 

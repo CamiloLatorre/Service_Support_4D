@@ -22,6 +22,12 @@ var opts = {
 WAF.onAfterInit = function onAfterInit() {// @lock
 
 // @region namespaceDeclaration// @startlock
+	var RespondidoEvent = {};	// @dataSource
+	var container11 = {};	// @container
+	var container21 = {};	// @container
+	var AlmacenaEvent = {};	// @dataSource
+	var iAttachemnt = {};	// @icon
+	var tfUserName = {};	// @richText
 	var image4 = {};	// @image
 	var image1 = {};	// @image
 	var image5 = {};	// @image
@@ -35,7 +41,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	var icon4 = {};	// @icon
 	var button2 = {};	// @button
 	var row1 = {};	// @container
-	var tfUserName = {};	// @textField
 	var tfSearch = {};	// @textField
 	var tfAgainPass = {};	// @textField
 	var button3 = {};	// @button
@@ -52,6 +57,74 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	
 
 // eventHandlers// @lock
+
+	RespondidoEvent.onCurrentElementChange = function RespondidoEvent_onCurrentElementChange (event)// @startlock
+	{// @endlock
+		var MsgTime = sources.Respondido.GetTime();
+		if(MsgTime != null){
+			this.Hora = MsgTime;
+		}
+
+	};// @lock
+
+	RespondidoEvent.onCollectionChange = function RespondidoEvent_onCollectionChange (event)// @startlock
+	{// @endlock
+//		arrTimeMsg = sources.Respondido.GetTime();
+//		if(arrTimeMsg != null){
+//			arrTimeMsg = arrTimeMsg.times;
+//			sources.arrTimeMsg.sync();
+//		
+////			debugger;
+//			sources.Respondido.getEntityCollection().forEach(function(event){
+//				event.entity.Hora = arrTimeMsg[event.position];
+////				debugger
+//			});
+//		}
+	};// @lock
+
+	container11.touchend = function container11_touchend (event)// @startlock
+	{// @endlock
+		sources.Almacena.previous();
+		waf.widgets.imgAttachP.show();
+		setTimeout(function(){
+			waf.widgets.imgAttachP.hide();
+		},500);
+	};// @lock
+
+	container21.touchend = function container21_touchend (event)// @startlock
+	{// @endlock
+		sources.Almacena.next();
+		waf.widgets.imgAttachN.show();
+		setTimeout(function(){
+			waf.widgets.imgAttachN.hide();
+		},500);
+	};// @lock
+
+	AlmacenaEvent.onCurrentElementChange = function AlmacenaEvent_onCurrentElementChange (event)// @startlock
+	{// @endlock
+		if(sources.Almacena.length == 0){
+			waf.widgets.iAttachemnt.hide();
+		}else{
+			waf.widgets.iAttachemnt.show();
+		}
+	};// @lock
+
+	iAttachemnt.click = function iAttachemnt_click (event)// @startlock
+	{// @endlock
+		waf.widgets.nvAppSupport.goToView(11);
+	};// @lock
+
+	tfUserName.click = function tfUserName_click (event)// @startlock
+	{// @endlock
+		waf.widgets.nvAppSupport.goToView(5);
+		currentUser = waf.directory.currentUser();
+		sources.pERSONAS.query('Email = '+currentUser.userName,function(){
+			var Female = sources.pERSONAS.Femenino;
+			if(Female){
+				$$('imageProfile').setValue('/Images/user_female.png');
+			}
+		});
+	};// @lock
 
 	image4.click = function image4_click (event)// @startlock
 	{// @endlock
@@ -70,6 +143,8 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	image5.touchend = function image5_touchend (event)// @startlock
 	{// @endlock
 		waf.widgets.nvAppSupport.goToView(8);
+		
+		
 	};// @lock
 
 	tfSearchMessage.keyup = function tfSearchMessage_keyup (event)// @startlock
@@ -106,6 +181,8 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	eMPRESASEvent.onCollectionChange = function eMPRESASEvent_onCollectionChange (event)// @startlock
 	{// @endlock
 		if(sources.arrCasosRespondidos.length == 0){
+			varYearReport = new Date().getFullYear();
+			sources.varYearReport.sync();
 			refreshDataInform();
 		}
 	};// @lock
@@ -119,10 +196,9 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		var year = $$(seccionSelected).getValue();
 		waf.widgets.pMenuYear.hide();
 		waf.widgets.image3.setValue('/Images/001_26.png');
-//		debugger;
-		refreshDataInform(year);
 		varYearReport = year;
 		sources.varYearReport.sync();
+		refreshDataInform(year);
 
 		
 	};// @lock
@@ -228,18 +304,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		}
 	};// @lock
 
-	tfUserName.click = function tfUserName_click (event)// @startlock
-	{// @endlock
-		waf.widgets.nvAppSupport.goToView(5);
-		currentUser = waf.directory.currentUser();
-		sources.pERSONAS.query('Email = '+currentUser.userName,function(){
-			var Female = sources.pERSONAS.Femenino;
-			if(Female){
-				$$('imageProfile').setValue('/Images/user_female.png');
-			}
-		});
-	};// @lock
-
 	tfSearch.keyup = function tfSearch_keyup (event)// @startlock
 	{// @endlock
 		if((event.timeStamp-stampSearchedCases) >= 1000 || (stampSearchedCases == undefined)){
@@ -338,13 +402,13 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 				View: 3,
 				Opcion: false
 			});
-			sources.arrMenu.addNewElement({
-				ID: 3,
-				Title: 'Configuración',
-				Icon: '/images/onebit_09.png',
-				View: 4,
-				Opcion: false
-			});
+//			sources.arrMenu.addNewElement({
+//				ID: 3,
+//				Title: 'Configuración',
+//				Icon: '/images/onebit_09.png',
+//				View: 4,
+//				Opcion: false
+//			});
 			
 		}else{
 			location.href = "/";
@@ -365,6 +429,13 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	};// @lock
 
 // @region eventManager// @startlock
+	WAF.addListener("Respondido", "onCurrentElementChange", RespondidoEvent.onCurrentElementChange, "WAF");
+	WAF.addListener("Respondido", "onCollectionChange", RespondidoEvent.onCollectionChange, "WAF");
+	WAF.addListener("container11", "touchend", container11.touchend, "WAF");
+	WAF.addListener("container21", "touchend", container21.touchend, "WAF");
+	WAF.addListener("Almacena", "onCurrentElementChange", AlmacenaEvent.onCurrentElementChange, "WAF");
+	WAF.addListener("iAttachemnt", "click", iAttachemnt.click, "WAF");
+	WAF.addListener("tfUserName", "click", tfUserName.click, "WAF");
 	WAF.addListener("image4", "click", image4.click, "WAF");
 	WAF.addListener("image1", "click", image1.click, "WAF");
 	WAF.addListener("image5", "touchend", image5.touchend, "WAF");
@@ -378,7 +449,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	WAF.addListener("icon3", "click", icon3.click, "WAF");
 	WAF.addListener("icon4", "click", icon4.click, "WAF");
 	WAF.addListener("button2", "click", button2.click, "WAF");
-	WAF.addListener("tfUserName", "click", tfUserName.click, "WAF");
 	WAF.addListener("tfSearch", "keyup", tfSearch.keyup, "WAF");
 	WAF.addListener("tfAgainPass", "change", tfAgainPass.change, "WAF");
 	WAF.addListener("button3", "click", button3.click, "WAF");
@@ -397,9 +467,9 @@ function refreshDataInform(pYear){
 			pYear = "2014";
 		}
 		
-		arrCasosRespondidos = new Array;
 		sources.eMPRESAS.Info_Informe_Casos("Empresas", pYear, {
 			onSuccess: function(event){
+				arrCasosRespondidos = new Array;
 				event.result.Casos.forEach(function(valor, i){
 					if(valor.Tam != 0 ){
 						arrCasosRespondidos.push({
@@ -450,50 +520,46 @@ function refreshDataInform(pYear){
 
 function createChartColumn(){
 	var chart;
+     // SERIAL CHART
+    chart = new AmCharts.AmSerialChart();
+    chart.dataProvider = arrCasosRespondidos;
+    chart.categoryField = "Valor";
+	chart.colors = ["#04B486"]; 
+	   
+    // the following two lines makes chart 3D
+    chart.depth3D = 15;
+    chart.angle = 40;
 
-        
-		     // SERIAL CHART
-            chart = new AmCharts.AmSerialChart();
-            chart.dataProvider = arrCasosRespondidos;
-            chart.categoryField = "Valor";
-            // the following two lines makes chart 3D
-            chart.depth3D = 20;
-            chart.angle = 30;
+    // AXES
+    // category
+    var categoryAxis = chart.categoryAxis;
+    categoryAxis.labelRotation = 90;
+    categoryAxis.dashLength = 5;
+    categoryAxis.gridPosition = "start";
 
-            // AXES
-            // category
-            var categoryAxis = chart.categoryAxis;
-            categoryAxis.labelRotation = 90;
-            categoryAxis.dashLength = 5;
-            categoryAxis.gridPosition = "start";
+    // value
+    var valueAxis = new AmCharts.ValueAxis();
+    valueAxis.title = "Incidencias";
+    valueAxis.dashLength = 5;
+    chart.addValueAxis(valueAxis);
 
-            // value
-            var valueAxis = new AmCharts.ValueAxis();
-            valueAxis.title = "Incidencias";
-            valueAxis.dashLength = 5;
-            chart.addValueAxis(valueAxis);
+    // GRAPH
+    var graph = new AmCharts.AmGraph();
+    graph.valueField = "Tam";
+    graph.balloonText = "<span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>";
+    graph.type = "column";
+    graph.lineAlpha = 0;
+    graph.fillAlphas = 1;
+    chart.addGraph(graph);
 
-            // GRAPH
-            var graph = new AmCharts.AmGraph();
-            graph.valueField = "Tam";
-            graph.colorField = "#FFFFFF";
-            graph.balloonText = "<span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>";
-            graph.type = "column";
-            graph.lineAlpha = 0;
-            graph.fillAlphas = 1;
-            chart.addGraph(graph);
-
-            // CURSOR
-            var chartCursor = new AmCharts.ChartCursor();
-            chartCursor.cursorAlpha = 0;
-            chartCursor.zoomable = false;
-            chartCursor.categoryBalloonEnabled = false;
-            chart.addChartCursor(chartCursor);
-
-            chart.creditsPosition = "top-right";
-
-            // WRITE
-            chart.write("spaceChartColumn");
+    // CURSOR
+    var chartCursor = new AmCharts.ChartCursor();
+    chartCursor.cursorAlpha = 0;
+    chartCursor.zoomable = true;
+    chartCursor.categoryBalloonEnabled = false;
+    chart.addChartCursor(chartCursor);
+	
+    chart.write("spaceChartColumn");
 }
 
 function creatChartPie(){

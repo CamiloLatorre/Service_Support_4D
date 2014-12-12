@@ -3,17 +3,45 @@
 	Changes to this CSS file might be lost when it is regenerated.
 */
 
+#container2 {
+	 z-index: 2;
+	 width: 51px;
+	 height: 91px;
+	 top: -17px;
+	 left: 7px;
+	
+	 position: absolute;
+	 background-color: transparent;
+	 border-top-color: transparent;
+	 border-top-style: none;
+	 border-top-width: 0px;
+	 border-left-color: transparent;
+	 border-left-style: none;
+	 border-left-width: 0px;
+	 border-right-color: transparent;
+	 border-right-style: none;
+	 border-right-width: 0px;
+	 border-bottom-color: transparent;
+	 border-bottom-style: none;
+	 border-bottom-width: 0px;
+	 -webkit-box-shadow: transparent 0px 0px 0px -10px;
+	 -moz-box-shadow: transparent 0px 0px 0px -10px;
+	 box-shadow: transparent 0px 0px 0px -10px;
+	 background-image: url('/images/logo4D.jpg');
+	 
+}
+
 #waf-body {
 	 background-image: none;
 	 
 }
 
 #container1 {
-	 z-index: 7;
+	 z-index: 4;
 	 width: 70px;
 	 height: 70px;
-	 top: 13px;
-	 left: 117px;
+	 top: 21px;
+	 left: 116px;
 	
 	 position: absolute;
 	 border-top-left-radius: 500px;
@@ -41,11 +69,11 @@
 }
 
 #button1 {
-	 z-index: 6;
+	 z-index: 3;
 	 width: 272px;
 	 height: 40px;
-	 top: 322px;
-	 left: 22px;
+	 top: 291px;
+	 left: 21px;
 	
 	 position: absolute;
 	 border-top-left-radius: 88px;
@@ -61,11 +89,11 @@
 }
 
 #label2 {
-	 z-index: 5;
+	 z-index: 2;
 	 width: 86px;
 	 height: 19px;
-	 top: 232px;
-	 left: 22px;
+	 top: 203px;
+	 left: 21px;
 	
 	 position: absolute;
 	 font-size: 15px;
@@ -74,11 +102,11 @@
 }
 
 #label1 {
-	 z-index: 3;
+	 z-index: 1;
 	 width: 138px;
 	 height: 19px;
-	 top: 140px;
-	 left: 22px;
+	 top: 118px;
+	 left: 21px;
 	
 	 position: absolute;
 	 font-size: 15px;
@@ -87,25 +115,12 @@
 	 
 }
 
-#image1 {
-	 z-index: 1;
-	 width: 52px;
-	 height: 71px;
-	 top: -19px;
-	 left: 6px;
-	
-	 position: absolute;
-	 background-color: rgb(255, 255, 255);
-	 background-image: url('/images/fondLogo.jpg');
-	 
-}
-
 #tfUser {
-	 z-index: 3;
+	 z-index: 1;
 	 width: 272px;
 	 height: 40px;
-	 top: 164px;
-	 left: 22px;
+	 top: 142px;
+	 left: 21px;
 	
 	 position: absolute;
 	 border-top-left-radius: 88px;
@@ -121,11 +136,11 @@
 }
 
 #tfPwd {
-	 z-index: 5;
+	 z-index: 2;
 	 width: 272px;
 	 height: 40px;
-	 top: 256px;
-	 left: 22px;
+	 top: 227px;
+	 left: 21px;
 	
 	 position: absolute;
 	 border-top-left-radius: 88px;
@@ -137,6 +152,17 @@
 	 border-bottom-right-radius: 88px;
 	-moz-border-radius-bottomright: 88px;
 	 font-size: 15px;
+	 
+}
+
+#ctnLogin {
+	 z-index: 0;
+	 top: 0px;
+	 bottom: 0px;
+	 left: 0px;
+	 right: 0px;
+	
+	 position: absolute;
 	 
 }
 

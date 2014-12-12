@@ -3,14 +3,19 @@
 	Changes to this CSS file might be lost when it is regenerated.
 */
 
-#keyboardShortcuts1 {
-	 z-index: 0;
-	 width: 0px;
-	 height: 0px;
-	 top: auto;
-	 left: auto;
+#richText8 {
+	 z-index: 5;
+	 width: 60px;
+	 height: 21px;
+	 top: 4px;
+	 right: 17px;
 	
 	 position: absolute;
+	 background-color: transparent;
+	 border-top-color: transparent;
+	 border-left-color: transparent;
+	 border-right-color: transparent;
+	 border-bottom-color: transparent;
 	 
 }
 
@@ -172,7 +177,7 @@
 }
 
 #container2 {
-	 z-index: 3;
+	 z-index: 0;
 	 top: 421px;
 	 bottom: 0px;
 	 left: 0px;
@@ -422,7 +427,7 @@
 }
 
 #container1 {
-	 z-index: 2;
+	 z-index: 0;
 	 width: 557px;
 	 height: 363px;
 	 top: 47px;
@@ -514,12 +519,12 @@
 	 position: absolute;
 	 background-color: transparent;
 	 background-image:url("data:image/svg+xml;base64, PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9IndhZi1pZS1ncmFkaWVudCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjAiIHk9IjAiIHgyPSIxMDAlIiB5Mj0iMCI+PHN0b3Agc3RvcC1jb2xvcj0iI2ZmZmZmZiIgb2Zmc2V0PSI2MyUiIHN0b3Atb3BhY2l0eT0iMCIgLz48c3RvcCBzdG9wLWNvbG9yPSIjZTVlNWU1IiBvZmZzZXQ9Ijg5JSIgc3RvcC1vcGFjaXR5PSIxIiAvPjxzdG9wIHN0b3AtY29sb3I9IiNiMmIyYjIiIG9mZnNldD0iMTAwJSIgc3RvcC1vcGFjaXR5PSIxIiAvPjwvbGluZWFyR3JhZGllbnQ+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCN3YWYtaWUtZ3JhZGllbnQpIiAvPjwvc3ZnPg==");
-	 background-image:-webkit-gradient(linear,0% 0%, 100% 0%,color-stop(0.63, rgba(255,255,255,0)),color-stop(0.89, rgb(229,229,229)),color-stop(1, rgb(178,178,178)));
-	 background-image:-webkit-linear-gradient(left, rgba(255,255,255,0) 63%,rgb(229,229,229) 89%,rgb(178,178,178) 100%);
-	 background-image:-moz-linear-gradient(left, rgba(255,255,255,0) 63%,rgb(229,229,229) 89%,rgb(178,178,178) 100%);
-	 background-image:-ms-linear-gradient(left, rgba(255,255,255,0) 63%,rgb(229,229,229) 89%,rgb(178,178,178) 100%);
-	 background-image:-o-linear-gradient(left, rgba(255,255,255,0) 63%,rgb(229,229,229) 89%,rgb(178,178,178) 100%);
-	 background-image:linear-gradient(left, rgba(255,255,255,0) 63%,rgb(229,229,229) 89%,rgb(178,178,178) 100%);
+	 background-image:-webkit-gradient(linear,0% 0%, 100% 0%,color-stop(0.63, rgba(255, 255, 255, 0)),color-stop(0.89, rgb(229, 229, 229)),color-stop(1, rgb(178, 178, 178)));
+	 background-image:-webkit-linear-gradient(left, rgba(255, 255, 255, 0) 63%,rgb(229, 229, 229) 89%,rgb(178, 178, 178) 100%);
+	 background-image:-moz-linear-gradient(left, rgba(255, 255, 255, 0) 63%,rgb(229, 229, 229) 89%,rgb(178, 178, 178) 100%);
+	 background-image:-ms-linear-gradient(left, rgba(255, 255, 255, 0) 63%,rgb(229, 229, 229) 89%,rgb(178, 178, 178) 100%);
+	 background-image:-o-linear-gradient(left, rgba(255, 255, 255, 0) 63%,rgb(229, 229, 229) 89%,rgb(178, 178, 178) 100%);
+	 background-image:linear-gradient(left, rgba(255, 255, 255, 0) 63%,rgb(229, 229, 229) 89%,rgb(178, 178, 178) 100%);
 	 
 }
 
@@ -528,7 +533,7 @@
 	 width: 105px;
 	 height: 21px;
 	 top: 4px;
-	 right: 5px;
+	 right: 82px;
 	
 	 position: absolute;
 	 font-style: italic;

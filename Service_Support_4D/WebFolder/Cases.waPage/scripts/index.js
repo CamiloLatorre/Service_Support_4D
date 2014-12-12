@@ -296,6 +296,12 @@ function setDetailMessage(Entity){
 		   	}
 		   }
 		});
+		
+		varTimeMsg = sources.Respondido.GetTime();
+		if(varTimeMsg != null){
+			sources.varTimeMsg.sync();
+		}
+		
 	}catch(e){
 		persona = sources.Respondido.Contesto;
 		response = persona.Nombre.value + " " + persona.Apellido.value;
