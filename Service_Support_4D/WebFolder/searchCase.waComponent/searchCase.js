@@ -32,9 +32,17 @@ function constructor (id) {
 	{// @endlock
 		var vdStart = $$(id+'_tfStartDate').getValue();
 		var vdEnd = $$(id+'_tfEndDate').getValue();
-		var vtLineConsult = $$(id+'_cbOptionsSearch').getValue();
+
+		var vtLineConsult = $$(id+'_cbOptionsSearch').$domNode[0].childNodes[1].value;
+		if(vtLineConsult == '')
+			vtLineConsult = $$(id+'_cbOptionsSearch').getValue();
 		var vtoptionConsult = $$(id+'_cbOptions').getValue();
-		$comp.SearchCases(-1, vtLineConsult, vtoptionConsult, vdStart, vdEnd);		
+
+		if(vdStart == vdEnd){
+			$comp.SearchCases(-1, vtLineConsult, vtoptionConsult);		
+		}else{
+			$comp.SearchCases(-1, vtLineConsult, vtoptionConsult, vdStart, vdEnd);			
+		}
 	};// @lock
 
 	cbOptions.change = function cbOptions_change (event)// @startlock
@@ -56,12 +64,15 @@ function constructor (id) {
 
 	};// @lock
 	
-	this.SearchCases = function (i, vtLineConsult, vtoptionConsult, pVdStart, pVdEnd){
+	$comp.SearchCases = function (i, vtLineConsult, vtoptionConsult, pVdStart, pVdEnd){
 		var vQueryArray;
 		var vdStart = new Date(pVdStart);
 		var	vdEnd = new Date(pVdEnd);
 		var optionSelector = i;
-		
+		if(optionSelector == -1)
+			vtLineConsult = "*"+vtLineConsult;
+		vtLineConsult = vtLineConsult.trim();
+
 		try{
 			if(optionSelector != -1)
 			vtoptionConsult = optionChoose(vtLineConsult, optionSelector);		
@@ -74,16 +85,21 @@ function constructor (id) {
 						var arrParams1 = new Array();
 						
 						for(var i=0; i <= arrParams.length; i++){
-							if(arrParams[i] != ''){
+							if((arrParams[i] != '') && (arrParams[i] != undefined)){
 							   arrParams1.push(arrParams[i]);
 							}
 						}
 						
 						arrParams = arrParams1;
-						vQueryArray = 'Obtenido.Nombre == '+'"*'+arrParams[0]+'*" || '+'Obtenido.Apellido == '+'"*'+arrParams[1]+'*"';
+						
+						if(arrParams.length >= 2){
+							vQueryArray = 'Obtenido.Nombre == '+'"'+arrParams[0]+'*" && '+'Obtenido.Apellido == '+'"'+arrParams[1]+'*"';
+						}else{
+							vQueryArray = 'Obtenido.Nombre == '+'"'+arrParams[0]+'*"';
+						}
 						break;
 					case "Empresa":
-						vQueryArray = 'Obtenido.Integra.Nombre == "*'+vtLineConsult+'*"';
+						vQueryArray = 'Obtenido.Integra.Nombre == "'+vtLineConsult+'*"';
 						break;
 					case "Versión":
 						vQueryArray = 'Version == "'+vtLineConsult+'"';
@@ -101,7 +117,7 @@ function constructor (id) {
 						vQueryArray = 'Nombre == "*'+vtLineConsult+'*"';
 						break;
 					case "Descripción":
-						vQueryArray = 'Descripcion == "*'+vtLineConsult+'*"';
+						vQueryArray = 'Descripcion % "'+vtLineConsult+'"';
 						break;
 					case "Mensajes":
 						vQueryArray = 'Respondido.Cuerpo == "*'+vtLineConsult+'*"';
@@ -112,12 +128,12 @@ function constructor (id) {
 					vQueryArray += ' && Fecha_Inicio >= '+vdStart.toISOString()+' && Fecha_Final <= '+vdEnd.toISOString();
 				}
 				
+				vQueryArray = vQueryArray.trim();
 				sources.cASOS.query(vQueryArray, {
 			        onSuccess: function(e){
 			            var vCountCases = sources.cASOS.length;
-//						$$(id+'_tfCountCases').setValue(vCountCases);
 						try{
-							if((vCountCases == 0) && (optionSelector != -1)) throw "Not Entities";
+							if((vCountCases <= 3) && (optionSelector != -1)) throw "Not Entities";
 							sources.cASOS.orderBy('Fecha_Final desc, Hora_Final desc');
 			           	}catch(e){
 							var opts = waf.widgets.cpmSearchCase.widgets.cbOptions.domNode.firstChild;

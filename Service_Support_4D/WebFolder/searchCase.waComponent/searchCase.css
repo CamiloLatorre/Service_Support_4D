@@ -3,92 +3,157 @@
 	Changes to this CSS file might be lost when it is regenerated.
 */
 
+#{id}htmlTag11 {
+	z-index: 0;
+	width: 0px;
+	height: 0px;
+	top: auto;
+	left: auto;
+	position: absolute;
+}
+
+#{id}htmlTag10 {
+	z-index: 0;
+	width: 0px;
+	height: 0px;
+	top: auto;
+	left: auto;
+	position: absolute;
+}
+
+#{id}htmlTag9 {
+	z-index: 0;
+	width: 0px;
+	height: 0px;
+	top: auto;
+	left: auto;
+	position: absolute;
+}
+
+#{id}htmlTag8 {
+	z-index: 0;
+	width: 0px;
+	height: 0px;
+	top: auto;
+	left: auto;
+	position: absolute;
+}
+
+#{id}htmlTag7 {
+	z-index: 0;
+	width: 0px;
+	height: 0px;
+	top: auto;
+	left: auto;
+	position: absolute;
+}
+
+#{id}htmlTag6 {
+	z-index: 0;
+	width: 0px;
+	height: 0px;
+	top: auto;
+	left: auto;
+	position: absolute;
+}
+
+#{id}htmlTag5 {
+	z-index: 0;
+	width: 0px;
+	height: 0px;
+	top: auto;
+	left: auto;
+	position: absolute;
+}
+
+#{id}htmlTag4 {
+	z-index: 0;
+	width: 0px;
+	height: 0px;
+	top: auto;
+	left: auto;
+	position: absolute;
+}
+
+#{id}htmlTag3 {
+	z-index: 0;
+	width: 0px;
+	height: 0px;
+	top: auto;
+	left: auto;
+	position: absolute;
+}
+
+#{id}htmlTag2 {
+	z-index: 0;
+	width: 0px;
+	height: 0px;
+	top: auto;
+	left: auto;
+	position: absolute;
+}
+
 #{id}image1 {
-	 z-index: 12;
-	 width: 21px;
-	 height: 20px;
-	 top: 0px;
-	 left: 403px;
-	
-	 position: absolute;
-	 
+	z-index: 12;
+	width: 21px;
+	height: 20px;
+	top: 0px;
+	left: 403px;
+	position: absolute;
 }
 
 #{id}button1 {
-	 z-index: 11;
-	 width: 60px;
-	 height: 22px;
-	 top: 28px;
-	 left: 353px;
-	
-	 position: absolute;
-	 
+	z-index: 11;
+	width: 60px;
+	height: 22px;
+	top: 28px;
+	left: 353px;
+	position: absolute;
 }
 
 #{id}container1 {
-	 z-index: 1;
-	 width: 425px;
-	 height: 107px;
-	 top: -1px;
-	 left: 0px;
-	
-	 position: absolute;
-	 background-color: rgb(0, 127, 255);
-	 
+	z-index: 1;
+	width: 425px;
+	height: 107px;
+	top: -1px;
+	left: 0px;
+	position: absolute;
+	background-color: rgb(0, 127, 255);
 }
 
 #{id}cbOptionsSearch {
-	 z-index: 4;
-	 width: 228px;
-	 height: 24px;
-	 top: 27px;
-	 left: 118px;
-	
-	 position: absolute;
-	 
+	z-index: 4;
+	width: 228px;
+	height: 24px;
+	top: 27px;
+	left: 118px;
+	position: absolute;
 }
 
 #{id}cbOptions {
-	 z-index: 2;
-	 width: 105px;
-	 height: 24px;
-	 top: 27px;
-	 left: 9px;
-	
-	 position: absolute;
-	 
+	z-index: 2;
+	width: 105px;
+	height: 24px;
+	top: 27px;
+	left: 9px;
+	position: absolute;
 }
 
 #{id}tfEndDate {
-	 z-index: 10;
-	 width: 75px;
-	 height: 22px;
-	 top: 69px;
-	 left: 216px;
-	
-	 position: absolute;
-	 
+	z-index: 10;
+	width: 75px;
+	height: 22px;
+	top: 69px;
+	left: 216px;
+	position: absolute;
 }
 
 #{id}tfStartDate {
-	 z-index: 8;
-	 width: 75px;
-	 height: 22px;
-	 top: 69px;
-	 left: 118px;
-	
-	 position: absolute;
-	 
-}
-
-#{id}tfCountCases {
-	 z-index: 6;
-	 width: 52px;
-	 height: 23px;
-	 top: 69px;
-	 left: 357px;
-	
-	 position: absolute;
-	 
+	z-index: 8;
+	width: 75px;
+	height: 22px;
+	top: 69px;
+	left: 118px;
+	position: absolute;
 }
 

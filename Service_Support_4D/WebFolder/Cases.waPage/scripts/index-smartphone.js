@@ -22,6 +22,12 @@ var opts = {
 WAF.onAfterInit = function onAfterInit() {// @lock
 
 // @region namespaceDeclaration// @startlock
+	var arrMenuEvent = {};	// @dataSource
+	var bSendNewCase = {};	// @button
+	var button4 = {};	// @button
+	var image7 = {};	// @image
+	var matrix2 = {};	// @matrix
+	var ctnItemMenu = {};	// @container
 	var RespondidoEvent = {};	// @dataSource
 	var container11 = {};	// @container
 	var container21 = {};	// @container
@@ -47,16 +53,126 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	var icon1 = {};	// @icon
 	var icon2 = {};	// @icon
 	var button1 = {};	// @button
-	var ctnItemMenu = {};	// @container
 	var documentEvent = {};	// @document
 	var richText1 = {};	// @richText
 // @endregion// @endlock
 	var ctnChangePwd = waf.widgets.ctnChangePwd;
 	var OKPDWChange;
 	var stampSearchedCases;
-	
+	var changePage;
 
 // eventHandlers// @lock
+
+	arrMenuEvent.onCurrentElementChange = function arrMenuEvent_onCurrentElementChange (event)// @startlock
+	{// @endlock
+		if(changePage){
+			var pageView = sources.arrMenu.View;
+			if(pageView == 3){
+				showInforms = true;
+				sources.eMPRESAS.collectionRefresh();
+			}
+			waf.widgets.nvAppSupport.goToView(pageView);
+		}
+	};// @lock
+
+	bSendNewCase.click = function bSendNewCase_click (event)// @startlock
+	{// @endlock
+		source.uSUARIOS.query('ID_Directory = :1', {
+			onSuccess:function(entity){
+			 	var currentUser = entity.dataSource.Adquirido.load({					
+			    	onSuccess: function(relation){
+			   			currentPerson = relation.entity;
+						sources.cASOS.Cod_Producto = $$("cbProduct").getValue();
+						sources.cASOS.Version = $$("cbListVersion").getValue();
+						sources.cASOS.So = $$("cbListSO").getValue();
+
+						sources.Respondido.Fecha = new Date();
+						sources.Respondido.Hora = source.Respondido.Fecha.getTime();
+						sources.Respondido.Cod_Persona = currentPerson.Codigo.value;
+						
+						var tipoPersona = currentPerson.Cod_Tipo.value;
+						if((tipoPersona == 1) || (tipoPersona == 3)){ 
+							sources.cASOS.Cod_Contacto = currentPerson.Codigo.value;
+							sources.Respondido.Tipo = 'Pregunta';
+						}else{
+							sources.cASOS.Cod_Colaborador = currentPerson.Codigo.value;
+							sources.Respondido.Tipo = 'Respuesta';
+						}
+						
+						sources.cASOS.save({
+							onSuccess:function(event){
+	  							sources.Respondido.Cod_Caso = event.dataSource.Codigo;
+	  							sources.Respondido.save();
+	  							
+	  							sources.cASOS.serverRefresh();
+	  							sources.cASOS.orderBy('Fecha_Final desc, Hora_Final desc');
+	  							waf.widgets.nvAppSupport.goToPreviousView();
+			    			}
+						});
+					}
+				});
+			}, 
+			params: [waf.directory.currentUser().ID]
+		});
+	};// @lock
+
+	button4.click = function button4_click (event)// @startlock
+	{// @endlock
+		var text = this.getValue();
+		switch(text) {
+			case 'Siguiente':
+				this.setValue("Atras");
+				$$("tfDescripNewCase").hide();
+				$$("tfBodyNewCase").show();
+				$$("bSendNewCase").show();
+				break;
+			case 'Atras':
+				this.setValue("Siguiente");
+				$$("tfDescripNewCase").show();
+				$$("tfBodyNewCase").hide();
+				$$("bSendNewCase").hide();
+				break;
+		}
+
+	};// @lock
+
+	image7.click = function image7_click (event)// @startlock
+	{// @endlock
+		$$("cbListSO").rebuild();
+		$$("cbListVersion").rebuild();
+		
+		var atListSO = sources.cASOS.GET_LIST_SO().soS;
+		for (var i = 0; i < atListSO.length; i++) {
+			$("#cbListSO select").append(new Option(atListSO[i], atListSO[i]));
+		};
+		
+		var atListVersion = sources.cASOS.GET_LIST_VERSION().Versiones;
+		for (var i = 0; i < atListVersion.length; i++) {
+			$('#cbListVersion select').append(new Option(atListVersion[i], atListVersion[i]));
+		};
+		
+		sources.cASOS.create();
+		sources.Respondido.create();
+		
+		waf.widgets.nvAppSupport.goToView(12);
+	};// @lock
+
+	matrix2.onChildrenDraw = function matrix2_onChildrenDraw (event)// @startlock
+	{// @endlock
+		//debugger;
+		var time = sources.Respondido.GetTime();
+		$$("vtHora").setValue(time); 
+	};// @lock
+
+	ctnItemMenu.touchend = function ctnItemMenu_touchend (event)// @startlock
+	{// @endlock
+		ctnItemMenu.click();
+	};// @lock
+
+	ctnItemMenu.click = function ctnItemMenu_click (event)// @startlock
+	{// @endlock
+		changePage = true;
+	};// @lock
 
 	RespondidoEvent.onCurrentElementChange = function RespondidoEvent_onCurrentElementChange (event)// @startlock
 	{// @endlock
@@ -67,28 +183,13 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 	};// @lock
 
-	RespondidoEvent.onCollectionChange = function RespondidoEvent_onCollectionChange (event)// @startlock
-	{// @endlock
-//		arrTimeMsg = sources.Respondido.GetTime();
-//		if(arrTimeMsg != null){
-//			arrTimeMsg = arrTimeMsg.times;
-//			sources.arrTimeMsg.sync();
-//		
-////			debugger;
-//			sources.Respondido.getEntityCollection().forEach(function(event){
-//				event.entity.Hora = arrTimeMsg[event.position];
-////				debugger
-//			});
-//		}
-	};// @lock
-
 	container11.touchend = function container11_touchend (event)// @startlock
 	{// @endlock
 		sources.Almacena.previous();
 		waf.widgets.imgAttachP.show();
 		setTimeout(function(){
 			waf.widgets.imgAttachP.hide();
-		},500);
+		}, 500);
 	};// @lock
 
 	container21.touchend = function container21_touchend (event)// @startlock
@@ -97,7 +198,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		waf.widgets.imgAttachN.show();
 		setTimeout(function(){
 			waf.widgets.imgAttachN.hide();
-		},500);
+		}, 500);
 	};// @lock
 
 	AlmacenaEvent.onCurrentElementChange = function AlmacenaEvent_onCurrentElementChange (event)// @startlock
@@ -140,11 +241,14 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		waf.widgets.tfSearch.setValue("");
 	};// @lock
 
+	image5.click = function image5_click (event)// @startlock
+	{// @endlock
+		image5.touchend();
+	};// @lock
+
 	image5.touchend = function image5_touchend (event)// @startlock
 	{// @endlock
 		waf.widgets.nvAppSupport.goToView(8);
-		
-		
 	};// @lock
 
 	tfSearchMessage.keyup = function tfSearchMessage_keyup (event)// @startlock
@@ -174,8 +278,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	icon6.click = function icon6_click (event)// @startlock
 	{// @endlock
 		waf.widgets.nvAppSupport.goToView(10);
-		
-		
 	};// @lock
 
 	eMPRESASEvent.onCollectionChange = function eMPRESASEvent_onCollectionChange (event)// @startlock
@@ -267,6 +369,11 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		waf.widgets.nvAppSupport.goToView(7);
 	};// @lock
 
+	row1.touchend = function row1_touchend (event)// @startlock
+	{// @endlock
+		row1.click();
+	};// @lock
+
 	row1.click = function row1_click (event)// @startlock
 	{// @endlock
 		waf.widgets.nvAppSupport.goToView(6);
@@ -306,12 +413,10 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 	tfSearch.keyup = function tfSearch_keyup (event)// @startlock
 	{// @endlock
+		var textSearched = this.getValue();
 		if((event.timeStamp-stampSearchedCases) >= 1000 || (stampSearchedCases == undefined)){
-			var textSearched = this.getValue();
-			if(textSearched.length >= 4){
+			if(textSearched.length >= 3){
 				stampSearchedCases = event.timeStamp;
-				console.log(event.timeStamp);
-			
 				var textSearched = WAF.widgets.tfSearch.getValue();
 				var cpmSearched = new SearchedPlugin();
 				cpmSearched.setOptionSearch(["Contacto","Empresa","Versión","Tema","Clasificación","Complejidad","Descripción"]);
@@ -324,6 +429,16 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 				waf.widgets.image1.setValue("/images/search.png");
 			}
 		}
+		
+		setTimeout (function (){ 
+			if(event.timeStamp > stampSearchedCases){
+				stampSearchedCases = event.timeStamp;
+				var textSearched = WAF.widgets.tfSearch.getValue();
+				var cpmSearched = new SearchedPlugin();
+				cpmSearched.setOptionSearch(["Contacto","Empresa","Versión","Tema","Clasificación","Complejidad","Descripción"]);
+				cpmSearched.SearchCases(0, textSearched);
+			}
+		}, 500);
 	};// @lock
 
 	tfAgainPass.change = function tfAgainPass_change (event)// @startlock
@@ -368,16 +483,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		ctnChangePwd.show();
 	};// @lock
 
-	ctnItemMenu.click = function ctnItemMenu_click (event)// @startlock
-	{// @endlock
-		var pageView = sources.arrMenu.View;
-		if(pageView == 3){
-			showInforms = true;
-			sources.eMPRESAS.collectionRefresh();
-		}
-		waf.widgets.nvAppSupport.goToView(pageView);
-	};// @lock
-
 	documentEvent.onLoad = function documentEvent_onLoad (event)// @startlock
 	{// @endlock
 		var target = document.getElementById('Loading');
@@ -410,6 +515,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 //				Opcion: false
 //			});
 			
+			waf.sources.arrMenu.selectByKey(1);
 		}else{
 			location.href = "/";
 		}
@@ -429,8 +535,16 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	};// @lock
 
 // @region eventManager// @startlock
+	WAF.addListener("image5", "click", image5.click, "WAF");
+	WAF.addListener("row1", "touchend", row1.touchend, "WAF");
+	WAF.addListener("ctnItemMenu", "touchend", ctnItemMenu.touchend, "WAF");
+	WAF.addListener("arrMenu", "onCurrentElementChange", arrMenuEvent.onCurrentElementChange, "WAF");
+	WAF.addListener("bSendNewCase", "click", bSendNewCase.click, "WAF");
+	WAF.addListener("button4", "click", button4.click, "WAF");
+	WAF.addListener("image7", "click", image7.click, "WAF");
+	WAF.addListener("matrix2", "onChildrenDraw", matrix2.onChildrenDraw, "WAF");
+	WAF.addListener("ctnItemMenu", "click", ctnItemMenu.click, "WAF");
 	WAF.addListener("Respondido", "onCurrentElementChange", RespondidoEvent.onCurrentElementChange, "WAF");
-	WAF.addListener("Respondido", "onCollectionChange", RespondidoEvent.onCollectionChange, "WAF");
 	WAF.addListener("container11", "touchend", container11.touchend, "WAF");
 	WAF.addListener("container21", "touchend", container21.touchend, "WAF");
 	WAF.addListener("Almacena", "onCurrentElementChange", AlmacenaEvent.onCurrentElementChange, "WAF");
@@ -455,7 +569,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	WAF.addListener("icon1", "click", icon1.click, "WAF");
 	WAF.addListener("icon2", "click", icon2.click, "WAF");
 	WAF.addListener("button1", "click", button1.click, "WAF");
-	WAF.addListener("ctnItemMenu", "click", ctnItemMenu.click, "WAF");
 	WAF.addListener("document", "onLoad", documentEvent.onLoad, "WAF");
 	WAF.addListener("richText1", "click", richText1.click, "WAF");
 // @endregion

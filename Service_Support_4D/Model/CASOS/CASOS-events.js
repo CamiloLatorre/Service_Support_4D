@@ -8,4 +8,3 @@ CasosEvent.restrict = function() {
 model.CASOS.events.restrict = function(event) {
 	return ds.CASOS.query("Cod_Colaborador = :1", 41);
 };
-

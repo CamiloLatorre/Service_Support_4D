@@ -1,1 +1,10 @@
-﻿{"name":"CreateMesagge","html":"CreateMesagge.html","scripts":["CreateMesagge.js"],"styles":["CreateMesagge.css"]}
+{
+	"name": "CreateMesagge",
+	"html": "CreateMesagge.html",
+	"scripts": [
+		"CreateMesagge.js"
+	],
+	"styles": [
+		"CreateMesagge.css"
+	]
+}

@@ -69,17 +69,16 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 	textField1.keyup = function textField1_keyup (event)// @startlock
 	{// @endlock
-		if((event.timeStamp-stampSearchedCases) >= 600 || (stampSearchedCases == undefined)){
+		var textSearched = this.getValue();
+
+		if((event.timeStamp-stampSearchedCases) >= 1000 || (stampSearchedCases == undefined)){
 			stampSearchedCases = event.timeStamp;
-			console.log(event.timeStamp);
-			var textSearched = this.getValue();
-			if(textSearched.length >= 2){
+			if(textSearched.length >= 3){
 				setTimeout (function (){ 
 					waf.widgets.cpmSearchCase.loadComponent();
 					waf.widgets.cpmSearchCase.SearchCases(0, textSearched);
 					waf.widgets.cpmSearchCase.removeComponent();
 				}, 1000);
-				
 			}
 			
 			if(textSearched.length == 0){
@@ -88,6 +87,14 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 				waf.widgets.image4.show();
 			}
 		}
+		
+		setTimeout (function (){ 
+			if(event.timeStamp > stampSearchedCases){
+				waf.widgets.cpmSearchCase.loadComponent();
+				waf.widgets.cpmSearchCase.SearchCases(0, textSearched);
+				waf.widgets.cpmSearchCase.removeComponent();
+			}
+		}, 500);
 		
 	};// @lock
 

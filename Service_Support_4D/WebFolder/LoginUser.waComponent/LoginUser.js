@@ -54,7 +54,7 @@ function constructor (id) {
 		if(user.length > 4 && pdw.length > 4){
 			pdw = $().crypt({method:"md5",source:pdw});
 			
-			WAF.directory.loginByPassword(user, pdw, response = {
+			WAF.directory.loginByPassword(user, pdw, 3600*24, response = {
 			    onSuccess: function(event){
 			        if(event.result == true){  
 			        	var currentUser = waf.directory.currentUser();

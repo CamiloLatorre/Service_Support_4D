@@ -1,1 +1,67 @@
-﻿{"name":"Service_Support_4D/CreateMesagge.waComponent","version":"1.0.0","webComponent":"CreateMesagge.waComponent/CreateMesagge.js","loadDependencies":[{"id":"Widget/wysiwyg","type":"widget"},{"id":"Widget/label","type":"widget"},{"id":"Widget/image","type":"widget"},{"id":"Widget/richText","type":"widget"},{"id":"Widget/container","type":"widget"},{"id":"Widget/errorDiv","type":"widget"},{"id":"Widget/fileUpload","type":"widget"},{"id":"Widget/button","type":"widget"},{"id":"CreateMesagge.waComponent/CreateMesagge.html","path":"WEBFOLDER","type":"html"},{"id":"CreateMesagge.waComponent/CreateMesagge.css","path":"WEBFOLDER","type":"style"},{"id":"CreateMesagge.waComponent/CreateMesagge.js","path":"WEBFOLDER","type":"script"}]}
+{
+	"name": "Service_Support_4D/CreateMesagge.waComponent",
+	"version": "1.0.0",
+	"webComponent": "CreateMesagge.waComponent/CreateMesagge.js",
+	"loadDependencies": [
+		{
+			"id": "Widget/wysiwyg",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/label",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/image",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/richText",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/container",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/errorDiv",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/fileUpload",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/button",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/textField",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/combobox",
+			"type": "widget"
+		},
+		{
+			"id": "CreateMesagge.waComponent/CreateMesagge.html",
+			"path": "WEBFOLDER",
+			"type": "html"
+		},
+		{
+			"id": "CreateMesagge.waComponent/CreateMesagge.css",
+			"path": "WEBFOLDER",
+			"type": "style"
+		},
+		{
+			"id": "CreateMesagge.waComponent/styles/CreateMesagge.css",
+			"path": "WEBFOLDER",
+			"type": "style"
+		},
+		{
+			"id": "CreateMesagge.waComponent/CreateMesagge.js",
+			"path": "WEBFOLDER",
+			"type": "script"
+		}
+	]
+}

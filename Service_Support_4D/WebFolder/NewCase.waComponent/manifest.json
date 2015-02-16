@@ -1,1 +1,12 @@
-﻿{"name":"NewCase","html":"NewCase.html","scripts":["NewCase.js","/Scripts/jquery.crypt.js"],"styles":["NewCase.css","NewCase-custom.css"]}
+{
+	"name": "NewCase",
+	"html": "NewCase.html",
+	"scripts": [
+		"NewCase.js",
+		"/Scripts/jquery.crypt.js"
+	],
+	"styles": [
+		"NewCase.css",
+		"NewCase-custom.css"
+	]
+}

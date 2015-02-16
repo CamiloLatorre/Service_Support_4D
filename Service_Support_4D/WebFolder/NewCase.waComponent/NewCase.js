@@ -15,34 +15,43 @@ function constructor (id) {
 	this.load = function (data) {// @lock
 
 	// @region namespaceDeclaration// @startlock
+	var cASOSEvent = {};	// @dataSource
 	var fileUpload1 = {};	// @fileUpload
-	var tfDescription = {};	// @textField
 	var imgSendCase = {};	// @image
 	var imgNextStep = {};	// @image
 	var image1 = {};	// @image
 	// @endregion// @endlock
-
+	
 	// eventHandlers// @lock
 
-	fileUpload1.filesUploaded = function fileUpload1_filesUploaded (event)// @startlock
-	{// @endlock
-		var blob = this.getFiles()[0];
-		var reader = new FileReader();
-		reader.onload = function(e) {
-			objAttach.Attachment = e.target.result;
-		};
-		objAttach.name  = blob.name;
-		if(blob.type.indexOf("image") != -1){
-			objAttach.kind = "Imagen";
-		}else{
-			objAttach.kind = blob.type;
-		}
-		reader.readAsDataURL(blob);
-	};// @lock
-	
 	var left = $(window).innerWidth();
 	var top = $(window).innerHeight();
 	this.move(left/4, top/4);
+	$$(id+'_menuBar1').hide();
+	var currentUser = waf.directory.currentUser();
+	source.cpmNewCase_uSUARIOS.query('ID_Directory = :1', {
+	onSuccess:function(entity){
+		 	entity.dataSource.Adquirido.load({					
+		    	onSuccess: function(relation){
+					currentPerson = relation.entity;
+					currentPerson.IDPersona = currentPerson.Codigo;
+					var tipoPersona = currentPerson.Cod_Tipo.value;
+					if((tipoPersona ==1) || (tipoPersona ==3)){ 
+						currentUser.type = 1;
+						$$(id+'_tabView1').selectTab(1);
+						$$(id+'_cbContactResponses').hide();
+						$$(id+'_tfMsgDate').hide();
+						$$(id+'_tfMsgTime').hide();
+					}else{
+						currentUser.type = 0;
+						$$(id+'_tabView1').selectTab(2);
+					}
+				}
+			});
+			
+		}, 
+		params: [waf.directory.currentUser().ID]
+	});
 	
 	try{
 		SetShortCuts('Disable');
@@ -51,30 +60,58 @@ function constructor (id) {
 		$comp.sources.cASOS.addNewElement();
 		$comp.sources.Respondido.addNewElement();
 		
-		var atListSO = this.sources.cASOS.GET_LIST_SO().soS;
+		var atListSO = $comp.sources.cASOS.GET_LIST_SO().soS;
 		for (var i = 0; i < atListSO.length; i++) {
 			$$(id+'_cbListSO').addOption(atListSO[i]);
+			$$(id+'_cbListSOAdmin').addOption(atListSO[i]);
 		};
 				
-		var atListVersion = this.sources.cASOS.GET_LIST_VERSION().Versiones;
+		var atListVersion = $comp.sources.cASOS.GET_LIST_VERSION().Versiones;
 		for (var i = 0; i < atListVersion.length; i++) {
 			$$(id+'_cbListVersion').addOption(atListVersion[i]);
+			$$(id+'_cbListVersionAdmin').addOption(atListVersion[i]);
+		};
+		
+		var objPeople = $comp.sources.Respondido.GET_PEOPLE(0);
+		var atPeopleNames = objPeople.contactNames;
+		var atPeopleIDs = objPeople.contactIDs;
+		
+		for (var i = 0; i < atPeopleNames.length; i++) {
+			$$(id+'_cbContacts').addOption(atPeopleIDs[i], atPeopleNames[i]);
+		};
+		
+		var objPeople = $comp.sources.Respondido.GET_PEOPLE(1);
+		var atPeopleNames = objPeople.contactNames;
+		var atPeopleIDs = objPeople.contactIDs;
+		
+		for (var i = 0; i < atPeopleNames.length; i++) {
+			$$(id+'_cbColaboradores').addOption(atPeopleIDs[i], atPeopleNames[i]);
+		};
+		
+		var objTopics = $comp.sources.cASOS.GET_TOPICS();
+		var atTopicIDs = objTopics.ID;
+		var atTopics = objTopics.name;
+
+		for (var i = 0; i < atTopicIDs.length; i++) {
+			$$(id+'_cbTemas').addOption(atTopicIDs[i], atTopics[i]);
 		};
 		
 		this.sources.cASOS.getCurrentElement().So.setValue(atListSO[0]);
 		this.sources.cASOS.getCurrentElement().Version.setValue(atListVersion[0]);
+		this.sources.pRODUCTOS.all();
 	
 	}catch(e){}
-		
-	tfDescription.change = function tfDescription_change (event)// @startlock
+	
+	cASOSEvent.onDescripcionAttributeChange = function cASOSEvent_onDescripcionAttributeChange (event)// @startlock
 	{// @endlock
 		var enabledNextStep = 0;
+		var description = this.Descripcion;
 		switch(enabledNextStep) {
 			case 0:
-				if($$($comp.id+'_tfDescription').getValue().length < 8)
+				if(description.length < 8)
 				break;
 			case 1:
-				var titleSize = $$($comp.id+"_tfName").getValue().length;
+				var titleSize = this.Nombre.length;
 				if(( titleSize <= 3) && (titleSize > 50))
 				break;
 			case 2:
@@ -92,55 +129,57 @@ function constructor (id) {
 			}, 1000);
 		}
 	};// @lock
+
+	fileUpload1.filesUploaded = function fileUpload1_filesUploaded (event)// @startlock
+	{// @endlock
+		debugger;
+		var blob = this.getFiles()[0];
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			objAttach.Attachment = e.target.result;
+		};
+		objAttach.name  = blob.name;
+		objAttach.size = blob.size;
+		if(blob.type.indexOf("image") != -1){
+			objAttach.kind = "Imagen";
+		}else{
+			objAttach.kind = blob.type;
+		}
+		reader.readAsDataURL(blob);
+	};// @lock
 		
 	imgSendCase.click = function imgSendCase_click (event)// @startlock
 	{// @endlock
-		var message = $$('cpmNewCase_detailMsg').getValue();
-		var description = $$('cpmNewCase_tfDescription').getValue();
-		var name = $$('cpmNewCase_tfName').getValue();
+		var message = $$(id+'_detailMsg').getValue();
+		var description = $$(id+'_tfDescription').getValue();
+		var name = $$(id+'_tfName').getValue();
 		
 		if((message.length != "") && (description != "") && (name != "")){
-			source.cpmNewCase_uSUARIOS.query('ID_Directory = :1', {
-				onSuccess:function(entity){
-				 	entity.dataSource.Adquirido.load({					
-				    	onSuccess: function(relation){
-							debugger;
-							var Respondido = sources.cpmNewCase_Respondido;
-							var vCase = sources.cpmNewCase_cASOS.getCurrentElement();
-							var Producto = sources.cpmNewCase_pRODUCTOS.getCurrentElement();
-				   			currentPerson = relation.entity;
-							var tipoPersona = currentPerson.Cod_Tipo.value;
-							vCase.Originado.setValue(Producto);
-							vCase.Obtenido.setValue(currentPerson);		
-							vCase.Fecha_Inicio.setValue(new Date());
-							vCase.Hora_Inicio.setValue(vCase.Fecha_Inicio.getValue().getTime());
-							Respondido.Fecha = new Date();
-							Respondido.Hora = Respondido.Fecha.getTime();
-							Respondido.Contesto = currentPerson;
-							Respondido.Cod_Persona = currentPerson.Codigo.value;
-							Respondido.Cuerpo = $$('cpmNewCase_detailMsg').getValue();
-							
-							if((tipoPersona ==1) || (tipoPersona ==3)){ 
-								Respondido.Tipo = 'Pregunta';
-							}else{
-								Respondido.Tipo = 'Respuesta';
-							}
-							
-							try{
-								Respondido.save({
-									onSuccess: function(event){
-										objAttach.IDMsg = event.dataSource.Codigo;
-										Respondido.GS_CREATE_ATTACHMENT(objAttach);
-										location.reload();
-									}
-								});
-							}catch(e){}
-	    				}
-	    			});
-	    			
-				}, 
-				params: [waf.directory.currentUser().ID]
-			});	
+			var Respondido = $comp.sources.Respondido;
+			var vCase = $comp.sources.cASOS.getCurrentElement(); 
+			var tipoPersona = currentUser.type;
+			
+			if((tipoPersona == 1) || (tipoPersona == 3)){ 
+				vCase.Cod_Contacto = currentPerson.IDPersona;
+				
+				Respondido.Tipo = 'Pregunta';
+				Respondido.Fecha = new Date();
+				Respondido.Hora = Respondido.Fecha.getTime();
+				Respondido.Cod_Persona = currentPerson.IDPersona;
+			}
+			
+			Respondido.Cuerpo = $$(id+'_detailMsg').getValue();
+			try{
+				Respondido.save({
+					onSuccess: function(event){
+						if(objAttach.size > 0 ){
+							objAttach.IDMsg = event.dataSource.Codigo;
+							Respondido.GS_CREATE_ATTACHMENT(objAttach);
+							location.reload();
+						}
+					}
+				});
+			}catch(e){}
 		}else{
 			$$($comp.id+'_ctnAlert').show();
 			$$($comp.id+'_ctnAlert').move(200, 300);
@@ -149,12 +188,10 @@ function constructor (id) {
 				$$($comp.id+'_ctnAlert').hide();
 			}, 1000);
 		}
-		
 	};// @lock
 	
 	imgNextStep.click = function imgNextStep_click (event)// @startlock
 	{// @endlock
-		tfDescription.change();
 		if(!OK){
 			$$($comp.id+'_ctnAlert').show();
 			$$($comp.id+'_ctnAlert').move(200, 300);
@@ -168,18 +205,32 @@ function constructor (id) {
 			var imageFile;
 			switch(pos.index) {
 				case 1:
-					numTab = 2;
+				case 2:
+					numTab = 3;
 					imageFile = '/images/002_45-hover.png';
 					$$(id+'_imgSendCase').show();
 					break;
-				case 2:
-					numTab = 1;
+				case 3:
+					if(currentUser.type == 0){
+						numTab = 2;
+					}else{
+						numTab = 1;
+					}
 					imageFile = '/images/002_46-hover.png';
 					$$(id+'_imgSendCase').hide();
 					break;
 			}
 				
 			$$(id+'_tabView1').selectTab(numTab);
+			var contactID = $$(id+'_cbContacts').getValue();
+			var objPeople = $comp.sources.Respondido.GET_PEOPLE(2, contactID);
+			var atPeopleNames = objPeople.contactNames;
+			var atPeopleIDs = objPeople.contactIDs;
+			$$(id+'_cbContactResponses').rebuild();
+			for (var i = 0; i < atPeopleNames.length; i++) {
+				$$(id+'_cbContactResponses').addOption(atPeopleIDs[i], atPeopleNames[i]);
+			};
+			
 			this.setValue(imageFile);
 		}
 	};// @lock
@@ -194,8 +245,8 @@ function constructor (id) {
 	};// @lock
 
 	// @region eventManager// @startlock
+	WAF.addListener(this.id + "_cASOS", "onDescripcionAttributeChange", cASOSEvent.onDescripcionAttributeChange, "WAF", "Descripcion");
 	WAF.addListener(this.id + "_fileUpload1", "filesUploaded", fileUpload1.filesUploaded, "WAF");
-	WAF.addListener(this.id + "_tfDescription", "change", tfDescription.change, "WAF");
 	WAF.addListener(this.id + "_imgSendCase", "click", imgSendCase.click, "WAF");
 	WAF.addListener(this.id + "_imgNextStep", "click", imgNextStep.click, "WAF");
 	WAF.addListener(this.id + "_image1", "click", image1.click, "WAF");

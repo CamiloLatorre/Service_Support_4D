@@ -9,11 +9,13 @@
 		var vdStart = new Date(pVdStart);
 		var	vdEnd = new Date(pVdEnd);
 		var optionSelector = i;
-		
+		if(optionSelector == -1)
+			vtLineConsult = "*"+vtLineConsult;
+		vtLineConsult = vtLineConsult.trim();
+
 		try{
 			if(optionSelector != -1)
-			vtoptionConsult = this.optionChoose(vtLineConsult, optionSelector);		
-			
+			vtoptionConsult = $comp.optionChoose(vtLineConsult, optionSelector);		
 				switch(vtoptionConsult) {
 					case "SO":
 						vQueryArray = 'So == "'+vtLineConsult+'*"';
@@ -23,16 +25,16 @@
 						var arrParams1 = new Array();
 						
 						for(var i=0; i <= arrParams.length; i++){
-							if(arrParams[i] != ''){
+							if((arrParams[i] != '') && (arrParams[i] != 'undefined')){
 							   arrParams1.push(arrParams[i]);
 							}
 						}
 						
 						arrParams = arrParams1;
-						vQueryArray = 'Obtenido.Nombre == '+'"*'+arrParams[0]+'*" || '+'Obtenido.Apellido == '+'"*'+arrParams[1]+'*"';
+						vQueryArray = 'Obtenido.Nombre == '+'"'+arrParams[0]+'*" || '+'Obtenido.Apellido == '+'"'+arrParams[1]+'*"';
 						break;
 					case "Empresa":
-						vQueryArray = 'Obtenido.Integra.Nombre == "*'+vtLineConsult+'*"';
+						vQueryArray = 'Obtenido.Integra.Nombre == "'+vtLineConsult+'*"';
 						break;
 					case "Versión":
 						vQueryArray = 'Version == "'+vtLineConsult+'"';
@@ -65,7 +67,7 @@
 			        onSuccess: function(e){
 			            var vCountCases = sources.cASOS.length;
 						try{
-							if((vCountCases == 0) && (optionSelector != -1)) throw "Not Entities";
+							if((vCountCases <= 3) && (optionSelector != -1)) throw "Not Entities";
 							sources.cASOS.orderBy('Fecha_Final desc, Hora_Final desc');
 			           	}catch(e){
 							var opts = $comp.arOptionSearch;
