@@ -1,53 +1,47 @@
 ﻿var showInforms;
 var spinnerLoading;
 var opts = {
-	  lines: 13, // The number of lines to draw
-  length: 21, // The length of each line
-  width: 11, // The line thickness
-  radius: 25, // The radius of the inner circle
-  corners: 1, // Corner roundness (0..1)
-  rotate: 31, // The rotation offset
-  direction: 1, // 1: clockwise, -1: counterclockwise
-  color: '#000', // #rgb or #rrggbb or array of colors
-  speed: 1.1, // Rounds per second
-  trail: 57, // Afterglow percentage
-  shadow: false, // Whether to render a shadow
-  hwaccel: false, // Whether to use hardware acceleration
-  className: 'spinner', // The CSS class to assign to the spinner
-  zIndex: 2e9, // The z-index (defaults to 2000000000)
-  top: '50%', // Top position relative to parent
-  left: '50%' // Left position relative to parent
+	lines: 13, // The number of lines to draw
+	length: 21, // The length of each line
+	width: 11, // The line thickness
+	radius: 25, // The radius of the inner circle
+	corners: 1, // Corner roundness (0..1)
+	rotate: 31, // The rotation offset
+	direction: 1, // 1: clockwise, -1: counterclockwise
+	color: '#000', // #rgb or #rrggbb or array of colors
+	speed: 1.1, // Rounds per second
+	trail: 57, // Afterglow percentage
+	shadow: false, // Whether to render a shadow
+	hwaccel: false, // Whether to use hardware acceleration
+	className: 'spinner', // The CSS class to assign to the spinner
+	zIndex: 2e9, // The z-index (defaults to 2000000000)
+	top: '50%', // Top position relative to parent
+	left: '50%' // Left position relative to parent
 };
 
 WAF.onAfterInit = function onAfterInit() {// @lock
 
 // @region namespaceDeclaration// @startlock
-	var arrMenuEvent = {};	// @dataSource
+	var image2 = {};	// @image
+	var tfSearch = {};	// @textField
+	var row2 = {};	// @container
 	var bSendNewCase = {};	// @button
 	var button4 = {};	// @button
 	var image7 = {};	// @image
-	var matrix2 = {};	// @matrix
-	var ctnItemMenu = {};	// @container
-	var RespondidoEvent = {};	// @dataSource
 	var container11 = {};	// @container
 	var container21 = {};	// @container
 	var AlmacenaEvent = {};	// @dataSource
-	var iAttachemnt = {};	// @icon
+	var iAttachment = {};	// @icon
 	var tfUserName = {};	// @richText
-	var image4 = {};	// @image
 	var image1 = {};	// @image
-	var image5 = {};	// @image
-	var tfSearchMessage = {};	// @textField
 	var icon6 = {};	// @icon
 	var eMPRESASEvent = {};	// @dataSource
 	var section3 = {};	// @section
 	var image3 = {};	// @image
 	var icon5 = {};	// @icon
-	var icon3 = {};	// @icon
 	var icon4 = {};	// @icon
 	var button2 = {};	// @button
 	var row1 = {};	// @container
-	var tfSearch = {};	// @textField
 	var tfAgainPass = {};	// @textField
 	var button3 = {};	// @button
 	var icon1 = {};	// @icon
@@ -60,19 +54,56 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	var OKPDWChange;
 	var stampSearchedCases;
 	var changePage;
+	var vbRefreshMessages = false;
 
 // eventHandlers// @lock
 
-	arrMenuEvent.onCurrentElementChange = function arrMenuEvent_onCurrentElementChange (event)// @startlock
+	image2.click = function image2_click (event)// @startlock
 	{// @endlock
-		if(changePage){
-			var pageView = sources.arrMenu.View;
-			if(pageView == 3){
-				showInforms = true;
-				sources.eMPRESAS.collectionRefresh();
+		this.hide();
+		sources.Respondido.resolveSource();
+		GetMessagesCases(false);
+		$("#searchMsg").val("");
+	};// @lock
+
+	tfSearch.keyup = function tfSearch_keyup (event)// @startlock
+	{// @endlock
+		var textSearched = this.getValue();
+		if((event.timeStamp-stampSearchedCases) >= 1000 || (stampSearchedCases == undefined)){
+			if(textSearched.length >= 3){
+				stampSearchedCases = event.timeStamp;
+				var textSearched = WAF.widgets.tfSearch.getValue();
+				var cpmSearched = new SearchedPlugin();
+				cpmSearched.setOptionSearch(["Contacto","Empresa","Versión","Tema","Clasificación","Complejidad","Descripción"]);
+				cpmSearched.SearchCases(0, textSearched);
 			}
-			waf.widgets.nvAppSupport.goToView(pageView);
+		
+			if(textSearched.length >= 1){
+				waf.widgets.image1.show();
+			}else{
+				waf.widgets.image1.hide();
+			}
 		}
+		
+		setTimeout (function (){ 
+			if(event.timeStamp > stampSearchedCases){
+				stampSearchedCases = event.timeStamp;
+				var textSearched = WAF.widgets.tfSearch.getValue();
+				var cpmSearched = new SearchedPlugin();
+				cpmSearched.setOptionSearch(["Contacto","Empresa","Versión","Tema","Clasificación","Complejidad","Descripción"]);
+				cpmSearched.SearchCases(0, textSearched);
+			}
+		}, 500);
+	};// @lock
+
+	row2.click = function row2_click (event)// @startlock
+	{// @endlock
+		var pageView = sources.arrMenu.View;
+		if(pageView == 3){
+			showInforms = true;
+			sources.eMPRESAS.collectionRefresh();
+		}
+		waf.widgets.nvAppSupport.goToView(pageView);
 	};// @lock
 
 	bSendNewCase.click = function bSendNewCase_click (event)// @startlock
@@ -99,16 +130,33 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 							sources.Respondido.Tipo = 'Respuesta';
 						}
 						
-						sources.cASOS.save({
-							onSuccess:function(event){
-	  							sources.Respondido.Cod_Caso = event.dataSource.Codigo;
-	  							sources.Respondido.save();
-	  							
-	  							sources.cASOS.serverRefresh();
-	  							sources.cASOS.orderBy('Fecha_Final desc, Hora_Final desc');
-	  							waf.widgets.nvAppSupport.goToPreviousView();
-			    			}
+						var bValidatedSave;
+						
+						$("#container5 [required]").each(function(index){
+							if(bValidatedSave || bValidatedSave == undefined){
+								if($(this).val().length > 0){
+									bValidatedSave = true;
+								}else{
+									bValidatedSave = false;
+								}
+							}
 						});
+						
+						if(bValidatedSave){
+							sources.cASOS.save({
+								onSuccess:function(event){
+		  							sources.Respondido.Cod_Caso = event.dataSource.Codigo;
+		  							sources.Respondido.save();
+		  							
+		  							sources.cASOS.serverRefresh();
+		  							sources.cASOS.orderBy('Hora_Final desc, Fecha_Final desc');
+		  							waf.widgets.nvAppSupport.goToPreviousView();
+				    			}
+							});
+						}else{
+							alert("los campos * son obligatorios");
+						}
+						
 					}
 				});
 			}, 
@@ -157,32 +205,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		waf.widgets.nvAppSupport.goToView(12);
 	};// @lock
 
-	matrix2.onChildrenDraw = function matrix2_onChildrenDraw (event)// @startlock
-	{// @endlock
-		//debugger;
-		var time = sources.Respondido.GetTime();
-		$$("vtHora").setValue(time); 
-	};// @lock
-
-	ctnItemMenu.touchend = function ctnItemMenu_touchend (event)// @startlock
-	{// @endlock
-		ctnItemMenu.click();
-	};// @lock
-
-	ctnItemMenu.click = function ctnItemMenu_click (event)// @startlock
-	{// @endlock
-		changePage = true;
-	};// @lock
-
-	RespondidoEvent.onCurrentElementChange = function RespondidoEvent_onCurrentElementChange (event)// @startlock
-	{// @endlock
-		var MsgTime = sources.Respondido.GetTime();
-		if(MsgTime != null){
-			this.Hora = MsgTime;
-		}
-
-	};// @lock
-
 	container11.touchend = function container11_touchend (event)// @startlock
 	{// @endlock
 		sources.Almacena.previous();
@@ -204,13 +226,35 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	AlmacenaEvent.onCurrentElementChange = function AlmacenaEvent_onCurrentElementChange (event)// @startlock
 	{// @endlock
 		if(sources.Almacena.length == 0){
-			waf.widgets.iAttachemnt.hide();
+			waf.widgets.iAttachment.hide();
 		}else{
-			waf.widgets.iAttachemnt.show();
+			waf.widgets.iAttachment.show();
 		}
 	};// @lock
 
-	iAttachemnt.click = function iAttachemnt_click (event)// @startlock
+	$("#searchMsg").keyup(function(){
+		if((event.timeStamp-stampSearchedCases) >= 1500 || (stampSearchedCases == undefined)){
+			var textSearched = $(this).val();
+			if(textSearched.length >= 4){
+			stampSearchedCases = event.timeStamp;
+			$$("image2").show();
+			setTimeout(function(event){
+				var vtQuery = 'Cuerpo == '+'"*'+textSearched+'*"';
+				sources.Respondido.filterQuery(vtQuery, {
+		        	onSuccess: function(){
+					 	try{
+		           	 		sources.Respondido.orderBy('Hora_Final desc, Fecha_Final desc');
+							GetMessagesCases(false);
+							$$("rtCountMsg").setValue(sources.Respondido.length+" Mensajes encontrados");
+		           	    }catch(e){}
+		            }
+		        });
+			},1000);
+				}				
+		}
+	});
+	
+	iAttachment.click = function iAttachment_click (event)// @startlock
 	{// @endlock
 		waf.widgets.nvAppSupport.goToView(11);
 	};// @lock
@@ -227,52 +271,11 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		});
 	};// @lock
 
-	image4.click = function image4_click (event)// @startlock
-	{// @endlock
-		sources.cASOS.next();
-		sources.cASOS.previous();
-		waf.widgets.image4.setValue("/images/search.png");
-	};// @lock
-
 	image1.click = function image1_click (event)// @startlock
 	{// @endlock
-		this.setValue("/images/search.png");
+		this.hide();
 		sources.cASOS.allEntities();
 		waf.widgets.tfSearch.setValue("");
-	};// @lock
-
-	image5.click = function image5_click (event)// @startlock
-	{// @endlock
-		image5.touchend();
-	};// @lock
-
-	image5.touchend = function image5_touchend (event)// @startlock
-	{// @endlock
-		waf.widgets.nvAppSupport.goToView(8);
-	};// @lock
-
-	tfSearchMessage.keyup = function tfSearchMessage_keyup (event)// @startlock
-	{// @endlock
-		if((event.timeStamp-stampSearchedCases) >= 1000 || (stampSearchedCases == undefined)){
-			var textSearched = this.getValue();
-			if(textSearched.length >= 4){	
-				var vtQuery = 'Cuerpo == '+'"*'+textSearched+'*"';
-				
-				sources.Respondido.filterQuery(vtQuery, {
-		        	onSuccess: function(){
-					 	try{
-		           	 		sources.Respondido.orderBy('Fecha desc, Hora desc');
-		           	    }catch(e){}
-		            }
-		        });
-			}
-		
-			if(textSearched.length >= 1){
-				waf.widgets.image4.setValue("/images/action_delete.png");
-			}else{
-				waf.widgets.image4.setValue("/images/search.png");
-			}
-		}
 	};// @lock
 
 	icon6.click = function icon6_click (event)// @startlock
@@ -301,8 +304,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		varYearReport = year;
 		sources.varYearReport.sync();
 		refreshDataInform(year);
-
-		
 	};// @lock
 
 	image3.click = function image3_click (event)// @startlock
@@ -315,7 +316,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 			waf.widgets.pMenuYear.hide();
 			this.setValue('/Images/001_26.png');
 		}
-		
 	};// @lock
 
 	icon5.click = function icon5_click (event)// @startlock
@@ -342,7 +342,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 							onSuccess:function(event){
 		  							sources.Respondido.addEntity(source.Respondido.getCurrentElement());
 		  							sources.Respondido.serverRefresh();
-		  							sources.Respondido.orderBy('Fecha desc, Hora desc');
+		  							sources.Respondido.orderBy('Hora_Final desc, Fecha_Final desc');
 			    			}
 						});
 					}
@@ -352,26 +352,15 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		});
 	};// @lock
 
-	icon3.click = function icon3_click (event)// @startlock
+	icon4.click = function icon4_click (event)// @startlock
 	{// @endlock
 		waf.widgets.nvAppSupport.goToView(9);
 		sources.Respondido.addNewElement();
 	};// @lock
 
-	icon4.click = function icon4_click (event)// @startlock
-	{// @endlock
-		waf.widgets.nvAppSupport.goToView(9);
-		sources.Respondido.addNewElement()
-	};// @lock
-
 	button2.click = function button2_click (event)// @startlock
 	{// @endlock
-		waf.widgets.nvAppSupport.goToView(7);
-	};// @lock
-
-	row1.touchend = function row1_touchend (event)// @startlock
-	{// @endlock
-		row1.click();
+		GetMessagesCases(true);
 	};// @lock
 
 	row1.click = function row1_click (event)// @startlock
@@ -409,36 +398,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 			}
 		}catch(e){
 		}
-	};// @lock
-
-	tfSearch.keyup = function tfSearch_keyup (event)// @startlock
-	{// @endlock
-		var textSearched = this.getValue();
-		if((event.timeStamp-stampSearchedCases) >= 1000 || (stampSearchedCases == undefined)){
-			if(textSearched.length >= 3){
-				stampSearchedCases = event.timeStamp;
-				var textSearched = WAF.widgets.tfSearch.getValue();
-				var cpmSearched = new SearchedPlugin();
-				cpmSearched.setOptionSearch(["Contacto","Empresa","Versión","Tema","Clasificación","Complejidad","Descripción"]);
-				cpmSearched.SearchCases(0, textSearched);
-			}
-		
-			if(textSearched.length >= 1){
-				waf.widgets.image1.setValue("/images/action_delete.png");
-			}else{
-				waf.widgets.image1.setValue("/images/search.png");
-			}
-		}
-		
-		setTimeout (function (){ 
-			if(event.timeStamp > stampSearchedCases){
-				stampSearchedCases = event.timeStamp;
-				var textSearched = WAF.widgets.tfSearch.getValue();
-				var cpmSearched = new SearchedPlugin();
-				cpmSearched.setOptionSearch(["Contacto","Empresa","Versión","Tema","Clasificación","Complejidad","Descripción"]);
-				cpmSearched.SearchCases(0, textSearched);
-			}
-		}, 500);
 	};// @lock
 
 	tfAgainPass.change = function tfAgainPass_change (event)// @startlock
@@ -515,7 +474,17 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 //				Opcion: false
 //			});
 			
-			waf.sources.arrMenu.selectByKey(1);
+			waf.sources.arrMenu.selectPrevious();
+			
+			var idCase = getUrlVars()["ID"];
+			if(idCase > 0){
+				setTimeout(function(){
+					sources.cASOS.selectByKey(idCase);
+					waf.widgets.nvAppSupport.goToView(2);
+				}, 100);
+				
+			}
+			
 		}else{
 			location.href = "/";
 		}
@@ -535,35 +504,26 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	};// @lock
 
 // @region eventManager// @startlock
-	WAF.addListener("image5", "click", image5.click, "WAF");
-	WAF.addListener("row1", "touchend", row1.touchend, "WAF");
-	WAF.addListener("ctnItemMenu", "touchend", ctnItemMenu.touchend, "WAF");
-	WAF.addListener("arrMenu", "onCurrentElementChange", arrMenuEvent.onCurrentElementChange, "WAF");
+	WAF.addListener("image2", "click", image2.click, "WAF");
+	WAF.addListener("tfSearch", "keyup", tfSearch.keyup, "WAF");
+	WAF.addListener("row2", "click", row2.click, "WAF");
 	WAF.addListener("bSendNewCase", "click", bSendNewCase.click, "WAF");
 	WAF.addListener("button4", "click", button4.click, "WAF");
 	WAF.addListener("image7", "click", image7.click, "WAF");
-	WAF.addListener("matrix2", "onChildrenDraw", matrix2.onChildrenDraw, "WAF");
-	WAF.addListener("ctnItemMenu", "click", ctnItemMenu.click, "WAF");
-	WAF.addListener("Respondido", "onCurrentElementChange", RespondidoEvent.onCurrentElementChange, "WAF");
 	WAF.addListener("container11", "touchend", container11.touchend, "WAF");
 	WAF.addListener("container21", "touchend", container21.touchend, "WAF");
 	WAF.addListener("Almacena", "onCurrentElementChange", AlmacenaEvent.onCurrentElementChange, "WAF");
-	WAF.addListener("iAttachemnt", "click", iAttachemnt.click, "WAF");
+	WAF.addListener("iAttachment", "click", iAttachment.click, "WAF");
 	WAF.addListener("tfUserName", "click", tfUserName.click, "WAF");
-	WAF.addListener("image4", "click", image4.click, "WAF");
 	WAF.addListener("image1", "click", image1.click, "WAF");
-	WAF.addListener("image5", "touchend", image5.touchend, "WAF");
 	WAF.addListener("row1", "click", row1.click, "WAF");
-	WAF.addListener("tfSearchMessage", "keyup", tfSearchMessage.keyup, "WAF");
 	WAF.addListener("icon6", "click", icon6.click, "WAF");
 	WAF.addListener("eMPRESAS", "onCollectionChange", eMPRESASEvent.onCollectionChange, "WAF");
 	WAF.addListener("section3", "touchstart", section3.touchstart, "WAF");
 	WAF.addListener("image3", "click", image3.click, "WAF");
 	WAF.addListener("icon5", "click", icon5.click, "WAF");
-	WAF.addListener("icon3", "click", icon3.click, "WAF");
 	WAF.addListener("icon4", "click", icon4.click, "WAF");
 	WAF.addListener("button2", "click", button2.click, "WAF");
-	WAF.addListener("tfSearch", "keyup", tfSearch.keyup, "WAF");
 	WAF.addListener("tfAgainPass", "change", tfAgainPass.change, "WAF");
 	WAF.addListener("button3", "click", button3.click, "WAF");
 	WAF.addListener("icon1", "click", icon1.click, "WAF");
@@ -574,10 +534,58 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 // @endregion
 };// @endlock
 
+function GetMessagesCases(pClick){
+	$$("ctn_google_cards").clear();
+	var collectionMessages = sources.Respondido.getEntityCollection();
+	collectionMessages.forEach({
+		onSuccess: function(event)
+        {
+            var msg = event.entity;
+            var section  =  document.createElement("section");  
+			$(section).addClass("card");
+			
+			var text = '<span id="CodigoMsg" style="Display: none">'+msg.Codigo.value+'</span><h1><strong>'+msg.Contesto.getOldValue().Nombre.value+'</strong> dijo:</h1>';
+			text += '<h2>'+msg.GetTime()+ ' - '+ msg.Fecha.value.toLocaleDateString()+'</h2>';
+			var bodyMsg = document.createElement("div");
+			$(bodyMsg).addClass("map");
+			$(bodyMsg).html(msg.Cuerpo.value);
+		
+			$(section).append(text);
+			$(section).append(bodyMsg);
+			
+			if(event.position >= 1){
+				$(bodyMsg).hide();
+			}else{
+				sources.Respondido.selectByKey(msg.Codigo.value);
+				
+			}
+			if(msg.Tipo.value == 'Respuesta'){
+				$(section).css('background-color', '#e8f2f2');
+			}else{
+				$(section).css('background-color', '#d4ffaa');
+			}
+			
+			$("#ctn_google_cards").append(section);
+			
+			if(pClick){
+				waf.widgets.nvAppSupport.goToView(8);				
+			}
+        }
+	});
+	
+	$("#ctn_google_cards section").click(function(){
+		$("#ctn_google_cards .map").hide();
+		var id = $(this).children()[0].innerText;
+		var map = $(this).children()[3];
+		sources.Respondido.selectByKey(id)
+		$(map).show();	
+	});
+}
+
 function refreshDataInform(pYear){
 	if(showInforms){
-		if(pYear == ""){
-			pYear = "2014";
+		if(pYear == undefined){
+			pYear = new Date().getFullYear();
 		}
 		
 		sources.eMPRESAS.Info_Informe_Casos("Empresas", pYear, {
@@ -629,6 +637,14 @@ function refreshDataInform(pYear){
 			}
 		});	
 	}
+}
+
+function getUrlVars(){
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
 }
 
 function createChartColumn(){

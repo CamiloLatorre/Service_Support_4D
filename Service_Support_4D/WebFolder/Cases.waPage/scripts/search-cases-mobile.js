@@ -67,8 +67,9 @@
 			        onSuccess: function(e){
 			            var vCountCases = sources.cASOS.length;
 						try{
-							if((vCountCases <= 3) && (optionSelector != -1)) throw "Not Entities";
+							if((vCountCases <= 3) && (optionSelector != -1)) throw "No Entities";
 							sources.cASOS.orderBy('Fecha_Final desc, Hora_Final desc');
+							$$("rtCountCases").setValue(sources.cASOS.length+" Casos encontrados");
 			           	}catch(e){
 							var opts = $comp.arOptionSearch;
 							if(optionSelector <= opts.length+1){
